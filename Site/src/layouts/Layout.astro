@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import Navigation from '../components/Navigation.astro';
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - Amplifly</title>
+    <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+    <meta name="description" content="Amplifly is your personal AI-powered support system, built to help you manage anxiety, sensory overload, and executive function — in real-time." />
+    <script>
+      // Smooth scroll for anchor links
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && link.hash && link.origin + link.pathname === window.location.origin + window.location.pathname) {
+          e.preventDefault();
+          const target = document.querySelector(link.hash);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+            // Update URL without jumping
+            history.pushState(null, '', link.hash);
+          }
+        }
+      });
+    </script>
+  </head>
+  <body class="font-avenir">
+    <Navigation />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    @apply text-5xl font-bold leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply text-4xl font-bold leading-tight tracking-tight;
+  }
+
+  p {
+    @apply text-lg leading-relaxed;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  ::selection {
+    @apply bg-bright-blue/20 text-deep-navy;
+  }
+</style>

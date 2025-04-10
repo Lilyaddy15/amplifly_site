@@ -1,0 +1,42 @@
+---
+const gradientStyle = `
+  background: linear-gradient(135deg, #15273F 0%, #0A1525 100%);
+`;
+---
+
+<section class="relative min-h-screen flex items-center" style={gradientStyle}>
+  <!-- Subtle gradient overlay -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0" style="
+      background: radial-gradient(circle at 0% 0%, rgba(96, 147, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(96, 147, 212, 0.1) 0%, transparent 50%);
+    "></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container relative z-10 px-6 md:px-8">
+    <div class="max-w-3xl">
+      <h1 class="text-white mb-8 text-5xl md:text-6xl lg:text-7xl font-bold">
+        AI-Powered Support for
+        <span class="text-bright-blue">Neurodivergent</span>
+        Minds
+      </h1>
+      <p class="text-white/90 text-xl md:text-2xl mb-10 leading-relaxed">
+        Amplifly uses your Oura Ring data and AI to help you manage stress, sleep, and energy—giving you personalized insights and recommendations based on your biometric patterns.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#pricing" class="bg-bright-blue text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-opacity-90 transition-all text-center">
+          Join the Waitlist
+        </a>
+        <a href="#features" class="border border-white/20 bg-white/5 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition-all text-center">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple decorative element -->
+  <div class="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block">
+    <div class="absolute inset-0 bg-gradient-to-l from-bright-blue/5 to-transparent"></div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+const features = [
+  {
+    title: "Readiness Tracking",
+    description: "Get real-time readiness scores and insights from your Oura Ring data to understand your energy capacity.",
+    icon: "💪"
+  },
+  {
+    title: "Stress Management",
+    description: "Monitor stress levels with biometric tracking and receive personalized interventions before overwhelm occurs.",
+    icon: "❤️"
+  },
+  {
+    title: "Sleep Analysis",
+    description: "Track deep sleep, REM, and overall sleep efficiency metrics with neurodivergent-specific insights.",
+    icon: "💤"
+  },
+  {
+    title: "Activity Monitoring",
+    description: "Balance physical activity with your energy levels through adaptive step goals and movement recommendations.",
+    icon: "🚶"
+  },
+  {
+    title: "Breathing Exercises",
+    description: "Access guided breathing sessions for stress reduction and sensory regulation when you need them most.",
+    icon: "🫁"
+  },
+  {
+    title: "AI-Powered Insights",
+    description: "Receive personalized recommendations based on your biometric data, stress patterns, and activity levels.",
+    icon: "🧠"
+  }
+];
+---
+
+<section id="features" class="py-20 bg-white">
+  <div class="container px-6 md:px-8">
+    <h2 class="text-center text-deep-navy mb-6">Core Features</h2>
+    <p class="text-center text-neutral-gray max-w-2xl mx-auto mb-16">
+      Every feature is designed with neurodivergent needs in mind, combining your Oura Ring biometric data with AI-powered insights to support your unique brain.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map(feature => (
+        <div class="bg-soft-blue p-8 rounded-2xl text-center hover:transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          <div class="text-4xl mb-4">{feature.icon}</div>
+          <h3 class="text-xl font-bold text-deep-navy mb-3">{feature.title}</h3>
+          <p class="text-neutral-gray">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

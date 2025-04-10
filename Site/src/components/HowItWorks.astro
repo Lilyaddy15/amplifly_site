@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Connect your Oura Ring",
+    description: "Link your Oura Ring account to Amplifly to securely access your biometric data including heart rate, sleep metrics, and activity levels."
+  },
+  {
+    number: "02",
+    title: "Receive personalized insights",
+    description: "Amplifly's AI analyzes your biometric patterns to generate readiness scores, stress levels, and personalized recommendations."
+  },
+  {
+    number: "03",
+    title: "Get real-time support",
+    description: "Monitor your daily dashboard for stress trends, sleep quality, and activity metrics, with tailored interventions when you need them most."
+  }
+];
+---
+
+<section id="how-it-works" class="py-20 bg-deep-navy text-white">
+  <div class="container px-6 md:px-8">
+    <h2 class="text-center mb-16">How Amplifly Works</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {steps.map(step => (
+        <div class="bg-navy-light p-8 rounded-2xl relative overflow-hidden group hover:bg-bright-blue/10 transition-all duration-300">
+          <div class="absolute -right-4 -top-4 text-8xl font-black opacity-10 group-hover:opacity-20 transition-opacity">
+            {step.number}
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold mb-4">{step.title}</h3>
+            <p class="text-white/70">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <p class="max-w-2xl mx-auto mb-8 text-white/70">
+        Our AI models are specifically trained to recognize patterns relevant to neurodivergent individuals, providing insights that standard health apps might miss.
+      </p>
+      <a href="#pricing" class="inline-block bg-bright-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,86 @@
+---
+---
+
+<section class="py-20 bg-soft-blue">
+  <div class="container px-6 md:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="bg-white rounded-3xl p-8 shadow-lg">
+        <div class="bg-deep-navy rounded-2xl overflow-hidden">
+          <div class="p-4 border-b border-white/10">
+            <div class="flex items-center justify-between">
+              <div class="text-white font-semibold">Today's Insights</div>
+              <div class="text-white/60">9:41 AM</div>
+            </div>
+          </div>
+          <div class="p-6 space-y-6">
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="flex items-center mb-3">
+                <div class="w-8 h-8 bg-bright-blue/20 rounded-full flex items-center justify-center mr-3">
+                  <span class="text-bright-blue">💪</span>
+                </div>
+                <div class="text-white font-medium">Readiness Score</div>
+              </div>
+              <div class="flex items-end justify-between">
+                <div class="text-3xl font-bold text-white">85</div>
+                <div class="text-bright-blue text-sm">+5 from yesterday</div>
+              </div>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="flex items-center mb-3">
+                <div class="w-8 h-8 bg-bright-blue/20 rounded-full flex items-center justify-center mr-3">
+                  <span class="text-bright-blue">❤️</span>
+                </div>
+                <div class="text-white font-medium">Stress Level</div>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-bright-blue rounded-full" style="width: 30%"></div>
+              </div>
+              <div class="mt-2 text-white/60 text-sm">Low - Trending stable today</div>
+            </div>
+
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="flex items-center mb-3">
+                <div class="w-8 h-8 bg-bright-blue/20 rounded-full flex items-center justify-center mr-3">
+                  <span class="text-bright-blue">💤</span>
+                </div>
+                <div class="text-white font-medium">Sleep Quality</div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="text-white/80">7h 42m total</div>
+                  <div class="text-bright-blue text-sm">88% efficiency</div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="text-white/80">1h 32m deep sleep</div>
+                  <div class="text-white/80">2h 15m REM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-deep-navy mb-6">What Is Amplifly?</h2>
+        <p class="text-deep-navy mb-6">
+          Amplifly combines biometric tracking from your Oura Ring with real-time AI insights to support your neurodivergent brain through stress management, executive function, and sensory processing.
+        </p>
+        <ul class="space-y-4">
+          {[
+            "Real-time stress monitoring and personalized intervention",
+            "Executive function support with adaptive task prioritization",
+            "Sleep quality analysis with neurodivergent-focused insights",
+            "Activity recommendations based on your energy capacity",
+            "Data-driven breathing exercises for sensory regulation",
+            "Privacy-first design with secure data processing"
+          ].map(item => (
+            <li class="flex items-center text-deep-navy">
+              <span class="text-bright-blue mr-3">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
