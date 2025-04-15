@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="8" fill="#1A365D"/>
-  <path d="M8 24V8h2.4l6.4 12V8h2.4v16h-2.4l-6.4-12v12H8z" fill="white"/>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .avenir-font {
+      font-family: Avenir, sans-serif;
+      font-weight: bold;
+      font-size: 28px;
+      fill: #15273F; /* Deep Navy from Amplifly Branding Guide */
+    }
+  </style>
+  <text x="50%" y="65%" text-anchor="middle" class="avenir-font">A</text>
 </svg>
