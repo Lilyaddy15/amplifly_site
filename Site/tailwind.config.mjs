@@ -10,6 +10,7 @@ export default {
         "medium-blue": "#ADC9E9",
         "bright-blue": "#6093D4",
         "neutral-gray": "#AEAEAE",
+        "accessible-gray": "#666666",
       },
       fontFamily: {
         avenir: ["Avenir", "sans-serif"],
