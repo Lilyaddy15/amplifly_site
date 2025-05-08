@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .avenir-font {
+      font-family: Avenir, sans-serif;
+      font-weight: bold;
+      font-size: 28px;
+      fill: #15273F; /* Deep Navy from Amplifly Branding Guide */
+    }
+  </style>
+  <text x="50%" y="65%" text-anchor="middle" class="avenir-font">A</text>
+</svg>

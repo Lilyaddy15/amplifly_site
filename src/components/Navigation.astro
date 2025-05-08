@@ -1,0 +1,59 @@
+---
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-deep-navy/90 backdrop-blur-sm">
+  <div class="container px-6 md:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="/" class="text-white text-2xl font-bold">
+        Amplifly
+      </a>
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/#features" class="text-white/80 hover:text-white transition-colors">Features</a>
+        <a href="/#how-it-works" class="text-white/80 hover:text-white transition-colors">How It Works</a>
+        <a href="/#faq" class="text-white/80 hover:text-white transition-colors">FAQ</a>
+        <a href="/about" class="text-white/80 hover:text-white transition-colors">About</a>
+        <a href="/#email-signup" class="bg-bright-blue/90 hover:bg-bright-blue text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">
+          Join Waitlist
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-white" id="mobile-menu-button" aria-label="Open mobile menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/#features" class="block px-3 py-2 text-white/80 hover:text-white transition-colors">Features</a>
+        <a href="/#how-it-works" class="block px-3 py-2 text-white/80 hover:text-white transition-colors">How It Works</a>
+        <a href="/#faq" class="block px-3 py-2 text-white/80 hover:text-white transition-colors">FAQ</a>
+        <a href="/about" class="block px-3 py-2 text-white/80 hover:text-white transition-colors">About</a>
+        <a href="/#email-signup" class="block px-3 py-2 text-bright-blue hover:text-bright-blue/80 transition-colors">Join Waitlist</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+</script>
