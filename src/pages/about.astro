@@ -5,34 +5,39 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="About Us - Amplifly">
   <main>
-    <section class="py-20 bg-soft-blue">
+    <section class="pt-32 pb-20 bg-soft-blue">
       <div class="container px-6 md:px-8">
         <div class="max-w-4xl mx-auto">
           <h1 class="text-deep-navy text-4xl md:text-5xl font-bold mb-12 text-center">About Amplifly</h1>
           
           <!-- Team Photo Section -->
           <div class="mb-16">
-            <div class="aspect-w-16 aspect-h-9 bg-white/50 rounded-2xl overflow-hidden">
-              <!-- Replace src with your image path -->
-              <img 
-                src="/images/lily.jpeg" 
-                alt="Amplifly Team" 
-                class="object-cover w-full h-full"
-              />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="aspect-w-16 aspect-h-9 bg-white/50 rounded-2xl overflow-hidden">
+                <!-- Replace src with your image path -->
+                <img 
+                  src="/images/lily.jpeg" 
+                  alt="Amplifly Team" 
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold text-deep-navy mb-4">Meet Our Founder: Lily Stone</h2>
+                <p class="text-accessible-gray text-lg">
+                  Hi, I'm Lily 👋 I'm the founder of Amplifly and a passionate advocate for neurodivergent voices. As someone who understands the beauty and challenge of navigating the world with a unique mind, I created Amplifly to turn insight into empowerment. I believe we deserve tools built for our needs—not just adapted to them. With a background in engineering and a heart rooted in advocacy, I'm building Amplifly to make thriving more accessible for all of us.
+                </p>
+              </div>
             </div>
-            <p class="text-center text-accessible-gray mt-4 text-sm">
-              Our team is dedicated to making neurodivergent lives easier through technology
-            </p>
           </div>
 
           <!-- Mission Section -->
           <div class="bg-white rounded-2xl p-8 md:p-12 mb-12">
             <h2 class="text-2xl font-bold text-deep-navy mb-6">Our Mission</h2>
             <p class="text-accessible-gray mb-6">
-              [Your mission statement here] Amplifly was born from a simple idea: technology should adapt to neurodivergent minds, not the other way around. We're building tools that understand and support the unique ways your brain works.
+              Our mission is to empower neurodivergent individuals by combining biometric data and AI to deliver real-time support, personalized insights, and a deeper understanding of our minds and bodies—so we can thrive on our own terms.
             </p>
             <p class="text-accessible-gray">
-              [Your vision here] We envision a world where neurodivergent individuals have the tools and support they need to thrive in their own way, on their own terms.
+              We envision a world where neurodivergent people are supported by technology that understands them—not one that asks them to change.
             </p>
           </div>
 
@@ -40,10 +45,10 @@ import Footer from '../components/Footer.astro';
           <div class="bg-white rounded-2xl p-8 md:p-12 mb-12">
             <h2 class="text-2xl font-bold text-deep-navy mb-6">Our Story</h2>
             <p class="text-accessible-gray mb-6">
-              [Your story here] Founded in 2024, Amplifly began when our team recognized the gap between existing health technology and the needs of neurodivergent individuals. We saw an opportunity to create something different – a tool that truly understands and adapts to neurodivergent experiences.
+              Amplifly was born from lived experience. Like many neurodivergent people, we've faced overwhelm, burnout, and the pressure to "mask" just to get through the day. Traditional wellness tools didn't understand us—so we built one that does.
             </p>
             <p class="text-accessible-gray">
-              [More details about your journey] Today, we're proud to be building a platform that combines cutting-edge technology with deep understanding of neurodivergent needs, helping people navigate their daily lives with more confidence and ease.
+              What started as an idea to track energy has evolved into a dynamic app that connects biometric data with emotional support, giving users personalized guidance when they need it most. Backed by cutting-edge AI and a deep respect for neurodiversity, Amplifly is here to change the story from survival to self-regulation, confidence, and empowerment.
             </p>
           </div>
 
@@ -54,25 +59,25 @@ import Footer from '../components/Footer.astro';
               <div class="bg-soft-blue p-6 rounded-xl">
                 <h3 class="text-xl font-bold text-deep-navy mb-3">User-Centered Design</h3>
                 <p class="text-accessible-gray">
-                  [Value description] We believe in building tools that adapt to you, not the other way around.
+                  We build with neurodivergent people at the center—because one-size-fits-all never fits us.
                 </p>
               </div>
               <div class="bg-soft-blue p-6 rounded-xl">
                 <h3 class="text-xl font-bold text-deep-navy mb-3">Privacy First</h3>
                 <p class="text-accessible-gray">
-                  [Value description] Your data is yours. We're committed to protecting your privacy and security.
+                  Your data is yours. We're committed to transparency, safety, and control over your information.
                 </p>
               </div>
               <div class="bg-soft-blue p-6 rounded-xl">
                 <h3 class="text-xl font-bold text-deep-navy mb-3">Continuous Learning</h3>
                 <p class="text-accessible-gray">
-                  [Value description] We're constantly learning and improving based on user feedback and research.
+                  We believe in celebrating progress over perfection—growing through research, feedback, and lived experience.
                 </p>
               </div>
               <div class="bg-soft-blue p-6 rounded-xl">
                 <h3 class="text-xl font-bold text-deep-navy mb-3">Inclusive Innovation</h3>
                 <p class="text-accessible-gray">
-                  [Value description] We're committed to creating technology that works for everyone.
+                  We use tech to amplify, not replace, human experience—creating tools that are adaptable, respectful, and empowering.
                 </p>
               </div>
             </div>
@@ -82,4 +87,4 @@ import Footer from '../components/Footer.astro';
     </section>
     <Footer />
   </main>
-</Layout> 
+</Layout>
