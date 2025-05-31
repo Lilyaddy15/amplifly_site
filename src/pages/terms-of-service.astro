@@ -4,63 +4,77 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Terms of Service | Amplifly">
+<Layout title="Terms of Service - Amplifly">
   <Navigation />
   
-  <section class="py-32 bg-white">
-    <div class="container px-6 md:px-8 max-w-4xl mx-auto">
-      <h1 class="text-3xl md:text-4xl font-bold text-deep-navy mb-8">Terms of Service</h1>
-      
-      <div class="prose prose-lg max-w-none">
-        <p class="mb-4">
-          <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
-        </p>
-        
-        <h2 class="text-2xl font-bold text-deep-navy mt-8 mb-4">1. Agreement to Terms</h2>
-        <p>
-          By accessing or using Amplifly, you agree to be bound by these Terms of Service and all applicable laws and regulations. 
-          If you do not agree with any of these terms, you are prohibited from using or accessing this site.
-        </p>
-        
-        <h2 class="text-2xl font-bold text-deep-navy mt-8 mb-4">2. Use License</h2>
-        <p>
-          Permission is granted to temporarily use Amplifly for personal, non-commercial purposes only. 
-          This is the grant of a license, not a transfer of title, and under this license you may not:
-        </p>
+  <main class="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-8">Terms of Service</h1>
+    
+    <div class="prose prose-lg max-w-none">
+      <p class="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
+        <p>By accessing or using Amplifly's services, you agree to be bound by these Terms of Service, Oura's API Terms of Use, and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">2. Oura Ring Integration</h2>
+        <h3 class="text-xl font-medium mb-2">2.1 API Usage</h3>
+        <p>By connecting your Oura Ring account to Amplifly, you:</p>
         <ul class="list-disc pl-6 mb-4">
-          <li>Modify or copy the materials</li>
-          <li>Use the materials for any commercial purpose</li>
-          <li>Attempt to decompile or reverse engineer any software contained in Amplifly</li>
-          <li>Remove any copyright or other proprietary notations from the materials</li>
-          <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+          <li>Authorize Amplifly to access your Oura Ring data through Oura's official API</li>
+          <li>Agree to comply with Oura's Terms of Service and API Terms of Use</li>
+          <li>Understand that we will process your health data according to our Privacy Policy</li>
+          <li>Acknowledge that we are subject to Oura's API rate limits and usage restrictions</li>
         </ul>
-        
-        <h2 class="text-2xl font-bold text-deep-navy mt-8 mb-4">3. Disclaimer</h2>
-        <p>
-          The materials on Amplifly are provided on an 'as is' basis. Amplifly makes no warranties, expressed or implied, 
-          and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions 
-          of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
-        </p>
-        <p>
-          Amplifly does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use 
-          of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
-        </p>
-        
-        <h2 class="text-2xl font-bold text-deep-navy mt-8 mb-4">4. Medical Disclaimer</h2>
-        <p>
-          Amplifly is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease or health condition. 
-          The content provided by Amplifly is for informational purposes only and should not be used as a substitute for medical advice, 
-          diagnosis, or treatment from a qualified healthcare provider.
-        </p>
-        
-        <h2 class="text-2xl font-bold text-deep-navy mt-8 mb-4">5. Contact Us</h2>
-        <p>
-          If you have any questions about these Terms, please contact us at 
-          <a href="mailto:support@amplifly.ai" class="text-bright-blue hover:underline">support@amplifly.ai</a>.
-        </p>
-      </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">3. User Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Provide accurate information when creating your account</li>
+          <li>Maintain the security of your account credentials</li>
+          <li>Use the service in compliance with all applicable laws</li>
+          <li>Not attempt to reverse engineer or decompile the service</li>
+          <li>Not use the service for any unauthorized or illegal purposes</li>
+          <li>Not share your account credentials with others</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">4. Service Modifications</h2>
+        <p>We reserve the right to modify or discontinue the service at any time without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of the service. We will make reasonable efforts to notify you of any significant changes to the service.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">5. Limitation of Liability</h2>
+        <p>Amplifly provides health and wellness recommendations based on your Oura Ring data, but we do not guarantee specific results. Our service is not a substitute for professional medical advice, diagnosis, or treatment. We are not responsible for:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>The accuracy or completeness of data provided by Oura Ring</li>
+          <li>Any decisions made based on the recommendations provided</li>
+          <li>Any health outcomes or results</li>
+          <li>Service interruptions or technical issues</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">6. Subscription and Payments</h2>
+        <p>By subscribing to our service, you agree to pay the subscription fee and authorize us to charge your payment method. Subscription fees are non-refundable except as required by law. We reserve the right to modify our pricing with reasonable notice.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">7. Termination</h2>
+        <p>We may terminate or suspend your access to the service immediately, without prior notice, for any breach of these Terms of Service. Upon termination:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Your access to the service will be revoked</li>
+          <li>Your Oura Ring data will be deleted according to our Privacy Policy</li>
+          <li>Any remaining subscription fees will not be refunded</li>
+        </ul>
+      </section>
     </div>
-  </section>
+  </main>
   
   <Footer />
 </Layout> 
