@@ -17,6 +17,24 @@ const links = {
     { text: "Terms of Service", href: "/terms-of-service" }
   ]
 };
+
+const socialLinks = [
+  { 
+    text: "Instagram", 
+    href: "https://www.instagram.com/amplifly_app?igsh=emZ4YWd2ZnAwZHZy&utm_source=qr",
+    icon: "📷"
+  },
+  { 
+    text: "TikTok", 
+    href: "https://www.tiktok.com/@amplifly_app?_t=ZT-8xXFsk6j3eQ&_r=1",
+    icon: "🎵"
+  },
+  { 
+    text: "LinkedIn", 
+    href: "https://www.linkedin.com/company/amplifly-app/",
+    icon: "💼"
+  }
+];
 ---
 
 <footer class="bg-deep-navy text-white py-20">
@@ -73,9 +91,25 @@ const links = {
     </div>
 
     <div class="border-t border-white/10 pt-8">
-      <p class="text-center text-white/70">
-        © {currentYear} Amplifly. All rights reserved.
-      </p>
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-white/70 mb-4 md:mb-0">
+          © {currentYear} Amplifly. All rights reserved.
+        </p>
+        <div class="flex space-x-6">
+          {socialLinks.map(link => (
+            <a 
+              href={link.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-white/70 hover:text-white transition-colors flex items-center space-x-2"
+              title={link.text}
+            >
+              <span class="text-lg">{link.icon}</span>
+              <span class="hidden sm:inline">{link.text}</span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </footer>
