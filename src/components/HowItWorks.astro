@@ -1,47 +1,57 @@
 ---
-const steps = [
-  {
-    number: "01",
-    title: "Connect your Oura Ring",
-    description: "Link your Oura Ring to Amplifly in just a few taps. We'll securely access your biometric data to provide personalized insights."
-  },
-  {
-    number: "02",
-    title: "Download Amplifly",
-    description: "Get the Amplifly app from the App Store. It's free to download and includes a 7-day trial of all premium features."
-  },
-  {
-    number: "03",
-    title: "Start Your Journey",
-    description: "Open the app and follow the quick setup guide. You'll receive your first personalized insights within minutes."
-  }
-];
 ---
+<section id="how-it-works" class="bg-white py-24">
+  <div class="container px-6 mx-auto">
 
-<section id="how-it-works" class="py-20 bg-deep-navy text-white">
-  <div class="container px-6 md:px-8">
-    <h2 class="text-center mb-16">Get Started with Amplifly</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {steps.map(step => (
-        <div class="bg-navy-light p-8 rounded-2xl relative overflow-hidden group hover:bg-bright-blue/10 transition-all duration-300">
-          <div class="absolute -right-4 -top-4 text-8xl font-black opacity-10 group-hover:opacity-20 transition-opacity">
-            {step.number}
-          </div>
-          <div class="relative z-10">
-            <h3 class="text-xl font-bold mb-4">{step.title}</h3>
-            <p class="text-white/70">{step.description}</p>
-          </div>
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">The Loop</p>
+      <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-4">Four steps. Runs itself.</h2>
+      <p class="text-accessible-gray">
+        Amplifly isn't a to-do list app or a habit tracker. It's a feedback loop that gets
+        smarter the more you use it — without you doing extra work.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      {[
+        {
+          step: '01',
+          title: 'Check your brain',
+          desc: 'Each morning, pick the state that matches how your brain feels today — Sharp, Spicy, Flat, Foggy, or Scattered. Takes five seconds.',
+          icon: '🧠',
+        },
+        {
+          step: '02',
+          title: 'Get matched techniques',
+          desc: 'Amplifly\'s on-device recommender suggests the conditions most likely to work for your current state — then learns from your feedback.',
+          icon: '🎯',
+        },
+        {
+          step: '03',
+          title: 'Log your sessions',
+          desc: 'After deep work, log how long, how locked-in you were, what helped, and what drained you. 60 seconds.',
+          icon: '📝',
+        },
+        {
+          step: '04',
+          title: 'Your manual builds',
+          desc: 'Over time, the Manual tab fills in: your best hours, your top helpers, your highest-flow brain states, what the recommender has learned.',
+          icon: '📖',
+        },
+      ].map(item => (
+        <div class="relative bg-soft-blue rounded-2xl p-6">
+          <div class="text-4xl mb-4">{item.icon}</div>
+          <div class="text-bright-blue text-xs font-bold tracking-widest mb-2">{item.step}</div>
+          <h3 class="text-deep-navy font-bold text-lg mb-3">{item.title}</h3>
+          <p class="text-accessible-gray text-sm leading-relaxed">{item.desc}</p>
         </div>
       ))}
     </div>
-    
-    <div class="mt-16 text-center">
-      <p class="max-w-2xl mx-auto mb-8 text-white/70">
-        Ready to transform how you manage stress and energy? Join our waitlist to be among the first to experience Amplifly.
-      </p>
-      <a href="#email-signup" class="inline-block bg-bright-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all">
-        Join the Waitlist
+
+    <div class="mt-12 text-center">
+      <a href="/#waitlist"
+         class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-base">
+        Get Early Access
       </a>
     </div>
   </div>

@@ -1,0 +1,71 @@
+---
+const profiles = [
+  'ADHD', 'Autism', 'AuDHD', 'Dyslexia', 'Dyscalculia',
+  'Dyspraxia / DCD', "Tourette's / Tics", 'Sensory Processing',
+  'OCD', 'Anxiety', 'Depression', 'PTSD / C-PTSD',
+  'Bipolar', 'Twice Exceptional (2e)', 'Other',
+];
+---
+<section id="for-nd" class="bg-deep-navy py-24">
+  <div class="container px-6 mx-auto">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: ND profiles -->
+      <div>
+        <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">Built for you</p>
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
+          15 ND profiles. Zero judgment.<br/>
+          <span class="text-bright-blue">You tell us once.</span>
+        </h2>
+        <p class="text-medium-blue text-lg leading-relaxed mb-8">
+          During onboarding, you select the profiles that match your brain. Amplifly uses this to
+          warm the recommendation engine with research-cited priors for your specific profile —
+          so it's already calibrated before you log a single session.
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+          {profiles.map(p => (
+            <span class="bg-white/5 border border-white/10 text-medium-blue text-sm px-3 py-1.5 rounded-full">
+              {p}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: values -->
+      <div class="space-y-6">
+        {[
+          {
+            icon: '🧩',
+            title: 'Not a productivity app',
+            desc: 'Amplifly doesn\'t tell you to do more. It helps you understand how your brain actually works so you can stop fighting it.',
+          },
+          {
+            icon: '📡',
+            title: 'An algorithm that actually learns',
+            desc: 'The on-device recommender is a Thompson-sampling contextual bandit. It starts from research priors for your ND profile and updates every time you give feedback.',
+          },
+          {
+            icon: '🔄',
+            title: 'Different brains, different days',
+            desc: 'AuDHD isn\'t the same as ADHD. A sharp day isn\'t the same as a foggy one. Amplifly\'s arm key includes your ND profile, brain state, and time of day — so posteriors don\'t average across contexts.',
+          },
+          {
+            icon: '🌱',
+            title: 'Starts useful, gets better',
+            desc: 'Research priors mean recommendations make sense from day one. After 20–30 outcomes, your personal data starts to dominate.',
+          },
+        ].map(item => (
+          <div class="flex gap-4">
+            <div class="text-2xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">{item.title}</h3>
+              <p class="text-medium-blue text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

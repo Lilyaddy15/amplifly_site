@@ -1,86 +1,122 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+const lastUpdated = 'May 2025';
 ---
 
-<Layout title="Terms of Service - Amplifly">
-  <Navigation />
-  
-  <main class="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Terms of Service</h1>
-    
-    <div class="prose prose-lg max-w-none">
-      <p class="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
+<Layout
+  title="Terms of Service"
+  description="Amplifly terms of service."
+>
+  <main class="container mx-auto px-6 pt-32 pb-20 max-w-3xl">
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">1. Agreement to Terms</h2>
-        <p>By accessing or using Amplifly's services, you agree to be bound by these Terms of Service, Oura's API Terms of Use, and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services.</p>
+    <h1 class="text-deep-navy text-4xl font-bold mb-3">Terms of Service</h1>
+    <p class="text-neutral-gray text-sm mb-12">Last updated: {lastUpdated}</p>
+
+    <div class="space-y-10 text-accessible-gray text-base leading-relaxed">
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">1. Acceptance</h2>
+        <p>
+          By downloading or using Amplifly, you agree to these Terms of Service. If you do not
+          agree, do not use the app.
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">2. Oura Ring Integration</h2>
-        <h3 class="text-xl font-medium mb-2">2.1 API Usage</h3>
-        <p>By connecting your Oura Ring account to Amplifly, you:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Authorize Amplifly to access your Oura Ring data through Oura's official API</li>
-          <li>Agree to comply with Oura's Terms of Service and API Terms of Use</li>
-          <li>Understand that we will process your health data according to our Privacy Policy</li>
-          <li>Acknowledge that we are subject to Oura's API rate limits and usage restrictions</li>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">2. What Amplifly is</h2>
+        <p>
+          Amplifly is a personal productivity and self-understanding tool designed for
+          neurodivergent individuals. It is <strong>not a medical device</strong> and is not
+          intended to diagnose, treat, cure, or prevent any condition. Nothing in Amplifly
+          constitutes medical advice. Always consult a qualified healthcare professional for
+          any health-related questions or decisions.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">3. Your account</h2>
+        <p class="mb-4">
+          Creating an account is optional. If you create one, you are responsible for
+          maintaining the security of your credentials. Notify us immediately at{' '}
+          <a href="mailto:hello@amplifly.app" class="text-bright-blue hover:underline">hello@amplifly.app</a>{' '}
+          if you suspect unauthorized access.
+        </p>
+        <p>
+          You may delete your account at any time by emailing us. We will remove all associated
+          data from Supabase within 7 days of your request.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">4. Pricing</h2>
+        <p>
+          Amplifly is currently free to download and use. All core features — brain check-ins,
+          conditions, flow logging, the recommender, and the operating manual — are available
+          without payment. Creating an account for cross-device sync is also free.
+        </p>
+        <p class="mt-4">
+          If we introduce paid features in the future, we will provide clear notice in advance
+          and obtain your explicit consent before any charges.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">5. User responsibilities</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Use Amplifly only for lawful personal purposes.</li>
+          <li>Do not attempt to reverse engineer, decompile, or tamper with the app.</li>
+          <li>Do not attempt to gain unauthorized access to any backend infrastructure.</li>
+          <li>You are responsible for the content you enter (notes, activity descriptions, etc.).</li>
         </ul>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">3. User Responsibilities</h2>
-        <p>You agree to:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Provide accurate information when creating your account</li>
-          <li>Maintain the security of your account credentials</li>
-          <li>Use the service in compliance with all applicable laws</li>
-          <li>Not attempt to reverse engineer or decompile the service</li>
-          <li>Not use the service for any unauthorized or illegal purposes</li>
-          <li>Not share your account credentials with others</li>
-        </ul>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">6. Intellectual property</h2>
+        <p>
+          All app code, design, copy, and algorithms are owned by Amplifly. Your personal data
+          (check-ins, sessions, profile) belongs to you. We claim no ownership over the content
+          you create within the app.
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">4. Service Modifications</h2>
-        <p>We reserve the right to modify or discontinue the service at any time without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of the service. We will make reasonable efforts to notify you of any significant changes to the service.</p>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">7. Disclaimer of warranties</h2>
+        <p>
+          Amplifly is provided "as is" without warranties of any kind, express or implied.
+          We do not warrant that the app will be uninterrupted, error-free, or that any
+          recommendation will produce a particular outcome.
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">5. Limitation of Liability</h2>
-        <p>Amplifly provides health and wellness recommendations based on your Oura Ring data, but we do not guarantee specific results. Our service is not a substitute for professional medical advice, diagnosis, or treatment. We are not responsible for:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>The accuracy or completeness of data provided by Oura Ring</li>
-          <li>Any decisions made based on the recommendations provided</li>
-          <li>Any health outcomes or results</li>
-          <li>Service interruptions or technical issues</li>
-        </ul>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">8. Limitation of liability</h2>
+        <p>
+          To the maximum extent permitted by law, Amplifly and its founders shall not be
+          liable for any indirect, incidental, or consequential damages arising from your use
+          of the app.
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">6. Subscription and Payments</h2>
-        <p>By subscribing to our service, you agree to pay the subscription fee and authorize us to charge your payment method. Subscription fees are non-refundable except as required by law. We reserve the right to modify our pricing with reasonable notice.</p>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">9. Changes to these terms</h2>
+        <p>
+          We may update these terms from time to time. Material changes will be communicated
+          via in-app notice. Continued use of Amplifly after changes constitutes acceptance.
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">7. Termination</h2>
-        <p>We may terminate or suspend your access to the service immediately, without prior notice, for any breach of these Terms of Service. Upon termination:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Your access to the service will be revoked</li>
-          <li>Your Oura Ring data will be deleted according to our Privacy Policy</li>
-          <li>Any remaining subscription fees will not be refunded</li>
-        </ul>
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">10. Contact</h2>
+        <p>
+          Questions about these terms?{' '}
+          <a href="mailto:hello@amplifly.app" class="text-bright-blue hover:underline">hello@amplifly.app</a>
+        </p>
       </section>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">8. Contact Information</h2>
-        <p>For questions about these Terms of Service, please contact us at:</p>
-        <p class="mt-2">Email: lily@amplifly.me</p>
-      </section>
     </div>
   </main>
-  
+
   <Footer />
-</Layout> 
+</Layout>

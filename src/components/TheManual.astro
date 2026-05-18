@@ -1,0 +1,94 @@
+---
+---
+<section id="manual" class="bg-soft-blue py-24">
+  <div class="container px-6 mx-auto">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Your operating manual</p>
+        <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-6">
+          A living doc, built entirely from your own data.
+        </h2>
+        <p class="text-accessible-gray text-lg leading-relaxed mb-6">
+          Every brain check-in and flow session you log teaches Amplifly something. Over time,
+          the Manual tab becomes the most honest description of how your brain actually works —
+          not how it's supposed to work.
+        </p>
+        <p class="text-accessible-gray text-lg leading-relaxed mb-8">
+          The more you log, the sharper it gets. Patterns that took years to half-notice become
+          visible in weeks.
+        </p>
+        <a href="/#waitlist"
+           class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-base">
+          Start building yours
+        </a>
+      </div>
+
+      <!-- Right: insight cards -->
+      <div class="grid grid-cols-2 gap-4">
+        {[
+          {
+            icon: '🕐',
+            title: 'Your sharpest hour',
+            value: '10 AM',
+            sub: 'Most 4–5★ sessions logged here',
+          },
+          {
+            icon: '🧠',
+            title: 'Highest-flow state',
+            value: 'Sharp 🎯',
+            sub: 'Avg 4.3★ on sharp days',
+          },
+          {
+            icon: '🔥',
+            title: 'Current streak',
+            value: '12 days',
+            sub: 'Longest: 21 days',
+          },
+          {
+            icon: '⚡',
+            title: 'Top helper',
+            value: 'Music / playlist',
+            sub: 'Appeared in 14 sessions',
+          },
+          {
+            icon: '📅',
+            title: 'Best day of week',
+            value: 'Tuesday',
+            sub: '6 high-intensity sessions',
+          },
+          {
+            icon: '🎯',
+            title: 'Top condition',
+            value: 'One Tab Only',
+            sub: '78% success rate · 9 outcomes',
+          },
+        ].map(card => (
+          <div class="bg-white rounded-xl p-5 shadow-sm border border-white/80">
+            <div class="text-2xl mb-2">{card.icon}</div>
+            <p class="text-neutral-gray text-xs font-semibold uppercase tracking-wider mb-1">{card.title}</p>
+            <p class="text-deep-navy font-bold text-base">{card.value}</p>
+            <p class="text-accessible-gray text-xs mt-1">{card.sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- What builds it -->
+    <div class="mt-16 grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-center">
+      {[
+        { icon: '📊', label: 'Brain state × flow quality', desc: 'Which states produce your best work' },
+        { icon: '📈', label: 'Day-of-week patterns', desc: 'Bar chart of your high-intensity days' },
+        { icon: '🤖', label: 'Learned condition rankings', desc: 'What the recommender has figured out' },
+      ].map(item => (
+        <div>
+          <div class="text-3xl mb-3">{item.icon}</div>
+          <p class="text-deep-navy font-semibold text-sm">{item.label}</p>
+          <p class="text-accessible-gray text-sm mt-1">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

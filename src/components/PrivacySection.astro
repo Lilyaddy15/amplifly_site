@@ -1,0 +1,64 @@
+---
+---
+<section id="privacy" class="bg-white py-24">
+  <div class="container px-6 mx-auto">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: headline -->
+      <div>
+        <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Privacy by default</p>
+        <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-6">
+          Your data belongs to you.<br/>
+          <span class="text-bright-blue">All of it. Always.</span>
+        </h2>
+        <p class="text-accessible-gray text-lg leading-relaxed mb-6">
+          Amplifly works entirely offline by default. Brain check-ins, flow sessions, your ND profile,
+          and the recommendation model all live in your device's local storage. Nothing leaves your
+          phone unless you create an account and ask it to.
+        </p>
+        <p class="text-accessible-gray text-lg leading-relaxed mb-8">
+          We collect no analytics, no crash reports, and no advertising data. There is no third-party
+          SDK in this app that phones home.
+        </p>
+        <a href="/privacy-policy" class="text-bright-blue font-semibold hover:text-deep-navy transition-colors text-sm">
+          Read the full privacy policy →
+        </a>
+      </div>
+
+      <!-- Right: detail cards -->
+      <div class="space-y-4">
+        {[
+          {
+            icon: '📱',
+            title: 'On-device by default',
+            desc: 'Every brain check-in, flow session, ND profile, and learned recommendation posterior is stored in your phone\'s local storage using AsyncStorage. No account needed.',
+          },
+          {
+            icon: '☁️',
+            title: 'Optional sync, your choice',
+            desc: 'Create a free account to back up and restore across devices. Your data is encrypted in transit and stored on Supabase\'s secure servers solely to power sync — never sold, never shared.',
+          },
+          {
+            icon: '🤖',
+            title: 'On-device AI',
+            desc: 'The recommendation engine (Thompson-sampling bandit) and the flow forecast (neural network) both run entirely on your device. We never see your posteriors or your sessions.',
+          },
+          {
+            icon: '🗑️',
+            title: 'Delete any time',
+            desc: 'Sign out to immediately stop syncing. Your local data stays on your device. To delete your account and all stored data, email hello@amplifly.app.',
+          },
+        ].map(item => (
+          <div class="flex gap-4 p-5 bg-soft-blue rounded-xl">
+            <div class="text-2xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <h3 class="text-deep-navy font-semibold mb-1 text-base">{item.title}</h3>
+              <p class="text-accessible-gray text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,24 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import WhatIs from '../components/WhatIs.astro';
-import Features from '../components/Features.astro';
 import HowItWorks from '../components/HowItWorks.astro';
-import EmailSignup from '../components/EmailSignup.astro';
+import BrainStates from '../components/BrainStates.astro';
+import Conditions from '../components/Conditions.astro';
+import TheManual from '../components/TheManual.astro';
+import ForND from '../components/ForND.astro';
+import PrivacySection from '../components/PrivacySection.astro';
 import FAQ from '../components/FAQ.astro';
+import EmailSignup from '../components/EmailSignup.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout 
-  title="AI-Powered Support for Neurodivergent Minds"
-  description="Amplifly helps you manage stress, sleep, and energy patterns with personalized insights from your Oura Ring data. Join the waitlist for early access."
-  keywords="neurodivergent, anxiety, sensory overload, executive function, Oura Ring, wellness, mental health, AI assistant, stress management, sleep optimization"
+<Layout
+  title="Amplifly"
+  description="A flow and strengths tool for neurodivergent minds. Check your brain state, get matched techniques, log your sessions, and build a personal operating manual — entirely on your device."
 >
   <Hero />
-  <WhatIs />
-  <Features />
   <HowItWorks />
-  <EmailSignup />
+  <BrainStates />
+  <Conditions />
+  <TheManual />
+  <ForND />
+  <PrivacySection />
   <FAQ />
+  <EmailSignup />
   <Footer />
 </Layout>

@@ -7,10 +7,10 @@ interface Props {
   canonical?: string;
 }
 
-const { 
-  title, 
-  description = "Amplifly is your personal AI-powered support system, built to help you manage anxiety, sensory overload, and executive function — in real-time. Get personalized insights from your Oura Ring data.",
-  keywords = "neurodivergent, anxiety, sensory overload, executive function, Oura Ring, wellness, mental health, AI assistant, stress management, sleep optimization",
+const {
+  title,
+  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched techniques, log your sessions, and build a personal operating manual — entirely on your device.",
+  keywords = "neurodivergent, ADHD, autism, flow state, focus, executive function, brain states, productivity, offline, privacy, mental health",
   ogImage = "/images/og-image.png",
   canonical = Astro.url.href
 } = Astro.props;
@@ -25,76 +25,57 @@ import Navigation from '../components/Navigation.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Primary Meta Tags -->
-    <title>{title} - Amplifly</title>
-    <meta name="title" content={`${title} - Amplifly`} />
+
+    <title>{title === 'Amplifly' ? 'Amplifly' : `${title} — Amplifly`}</title>
+    <meta name="title" content={title === 'Amplifly' ? 'Amplifly' : `${title} — Amplifly`} />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Amplifly" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    
-    <!-- Open Graph / Facebook -->
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={`${title} - Amplifly`} />
+    <meta property="og:title" content={`${title} — Amplifly`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:site_name" content="Amplifly" />
-    
-    <!-- Twitter -->
+
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
-    <meta property="twitter:title" content={`${title} - Amplifly`} />
+    <meta property="twitter:title" content={`${title} — Amplifly`} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
-    
-    <!-- Additional SEO Meta Tags -->
+
     <meta name="theme-color" content="#15273F" />
-    <meta name="msapplication-TileColor" content="#15273F" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Amplifly" />
-    
-    <!-- Structured Data for Rich Snippets -->
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Amplifly",
-        "description": "AI-powered support system for neurodivergent individuals",
-        "url": "https://amplifly.me",
+        "description": "A flow and strengths tool for neurodivergent minds.",
+        "url": "https://amplifly.app",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "iOS, Android",
-        "offers": {
-          "@type": "Offer",
-          "price": "10",
-          "priceCurrency": "USD"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Amplifly"
-        }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@type": "Organization", "name": "Amplifly" }
       }
     </script>
-    
+
     <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
-    
+
     <script>
-      // Smooth scroll for anchor links
       document.addEventListener('click', function(e) {
         if (!e.target || !(e.target instanceof Element)) return;
-        
         const link = e.target.closest('a');
         if (link && link.hash && link.origin + link.pathname === window.location.origin + window.location.pathname) {
           e.preventDefault();
-          const targetElement = document.querySelector(link.hash);
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth'
-            });
-            // Update URL without jumping
+          const target = document.querySelector(link.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
             history.pushState(null, '', link.hash);
           }
         }
@@ -108,32 +89,16 @@ import Navigation from '../components/Navigation.astro';
 </html>
 
 <style is:global>
-  html,
-  body {
+  html, body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
     background-color: #FFFFFF;
     scroll-behavior: smooth;
   }
-
-  h1 {
-    @apply text-5xl font-bold leading-tight tracking-tight;
-  }
-
-  h2 {
-    @apply text-4xl font-bold leading-tight tracking-tight;
-  }
-
-  p {
-    @apply text-lg leading-relaxed;
-  }
-
-  .container {
-    @apply max-w-7xl mx-auto;
-  }
-
-  ::selection {
-    @apply bg-bright-blue/20 text-deep-navy;
-  }
+  h1 { @apply text-5xl font-bold leading-tight tracking-tight; }
+  h2 { @apply text-4xl font-bold leading-tight tracking-tight; }
+  p  { @apply text-lg leading-relaxed; }
+  .container { @apply max-w-6xl mx-auto; }
+  ::selection { @apply bg-bright-blue/20 text-deep-navy; }
 </style>

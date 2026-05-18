@@ -1,0 +1,107 @@
+---
+const phases = [
+  {
+    id: 'primers',
+    label: 'Primers',
+    blurb: 'Set up the conditions before you sit down.',
+    color: 'text-blue-400',
+    bg: 'bg-blue-400/10',
+    border: 'border-blue-400/20',
+    conditions: [
+      { title: 'Box Breathing', label: '4-4-4-4 breath', duration: '2 min', desc: 'Drops your heart rate and clears the static so you can sit down to focused work.' },
+      { title: 'Movement Snack', label: '5 min of movement', duration: '5 min', desc: 'Five minutes of any movement before deep work. Drains spicy energy into a sharper state.' },
+      { title: 'One Tab Only', label: 'Close everything else', duration: '1 min', desc: 'Close every tab and app except the one you need. Open tabs are the strongest predictor of context-switching.' },
+      { title: 'Flow Playlist', label: 'Same music, every time', duration: 'Ongoing', desc: 'Play the same instrumental playlist every time you do deep work. Over weeks, the music becomes a primer.' },
+    ],
+  },
+  {
+    id: 'protectors',
+    label: 'Protectors',
+    blurb: 'Stay locked in once you arrive.',
+    color: 'text-green-400',
+    bg: 'bg-green-400/10',
+    border: 'border-green-400/20',
+    conditions: [
+      { title: 'DND + Timer', label: 'Silence + 25 min', duration: '25 min', desc: 'Phone in DND, 25-minute timer, no checking until it ends. The timer turns vague intention into a concrete container.' },
+      { title: 'Parking Lot', label: 'Capture, don\'t chase', duration: 'Ongoing', desc: 'When a tangent thought arrives mid-flow, write it on a sheet beside you. The paper holds it so your brain can let go.' },
+      { title: 'Body Check', label: 'Water, food, bathroom', duration: '2 min', desc: 'Every 60–90 minutes: are you hydrated, fed, and have you been to the bathroom? Most "I lost focus" moments are unmet body needs.' },
+    ],
+  },
+  {
+    id: 'recovery',
+    label: 'Recovery',
+    blurb: 'Refill the tank between sessions.',
+    color: 'text-orange-400',
+    bg: 'bg-orange-400/10',
+    border: 'border-orange-400/20',
+    conditions: [
+      { title: 'Flow Debrief', label: '60-second log', duration: '1 min', desc: 'When a session ends, take 60 seconds to log what happened. The data is what builds your operating manual.' },
+      { title: 'Horizontal Rest', label: 'Lie flat, 10 min', duration: '10 min', desc: 'Not a nap. Lie flat, no inputs, for 10 minutes. ND brains need real downstate, not just couch-and-phone.' },
+    ],
+  },
+  {
+    id: 'resets',
+    label: 'Resets',
+    blurb: 'Get back to a workable state when scattered.',
+    color: 'text-purple-400',
+    bg: 'bg-purple-400/10',
+    border: 'border-purple-400/20',
+    conditions: [
+      { title: 'Brain Dump', label: 'Empty your head onto paper', duration: '5 min', desc: 'Set a 5-minute timer and write down every loose thread in your head. The point is the emptying, not the list.' },
+      { title: 'One Anchor Task', label: 'Pick one thing', duration: '5–15 min', desc: 'When you can\'t think clearly enough to plan, pick ONE concrete, finishable task and do only that.' },
+      { title: '5-4-3-2-1 Grounding', label: 'Use your senses to land', duration: '3 min', desc: 'Five things you see, four you feel, three you hear, two you smell, one you taste. Pulls you out of your head and into the room.' },
+    ],
+  },
+];
+---
+<section id="conditions" class="bg-white py-24">
+  <div class="container px-6 mx-auto">
+
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">12 techniques · 4 phases</p>
+      <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-4">Not coping mechanisms.<br/>Levers you pull on purpose.</h2>
+      <p class="text-accessible-gray text-lg leading-relaxed">
+        Each condition is evidence-informed and phase-matched. Amplifly learns which ones
+        work for your specific brain state, time of day, and ND profile — then prioritizes accordingly.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {phases.map(phase => (
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <span class={`inline-block text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${phase.bg} ${phase.color} border ${phase.border}`}>
+              {phase.label}
+            </span>
+            <span class="text-accessible-gray text-sm">{phase.blurb}</span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {phase.conditions.map(c => (
+              <div class={`rounded-2xl p-5 border ${phase.border} ${phase.bg}`}>
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-deep-navy font-bold text-base">{c.title}</h3>
+                  <span class="text-neutral-gray text-xs whitespace-nowrap ml-2 mt-0.5">{c.duration}</span>
+                </div>
+                <p class="text-neutral-gray text-xs mb-3 font-medium">{c.label}</p>
+                <p class="text-accessible-gray text-sm leading-relaxed">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 bg-soft-blue rounded-2xl p-8 text-center">
+      <h3 class="text-deep-navy font-bold text-xl mb-3">The recommender learns which conditions work for you.</h3>
+      <p class="text-accessible-gray max-w-xl mx-auto mb-6 text-base">
+        Mark thumbs up or down on any condition. Log a flow session and tag which condition you used.
+        The on-device bandit updates its posteriors — no server, no account required.
+      </p>
+      <a href="/#waitlist"
+         class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-3 rounded-xl transition-colors text-base">
+        Get Early Access
+      </a>
+    </div>
+  </div>
+</section>

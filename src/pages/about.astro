@@ -1,93 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="About Us - Amplifly">
-  <Navigation />
-  <main>
-    <section class="pt-32 pb-20 bg-soft-blue">
-      <div class="container px-6 md:px-8">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-deep-navy text-4xl md:text-5xl font-bold mb-12 text-center">About Amplifly</h1>
+<Layout
+  title="About"
+  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it."
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-deep-navy">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">About Amplifly</p>
+      <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Built from lived experience,<br/>
+        <span class="text-bright-blue">not a feature brief.</span>
+      </h1>
+      <p class="text-medium-blue text-lg leading-relaxed">
+        Amplifly started as a personal tool. It became an app because nothing else was
+        honest about what ND brains actually need.
+      </p>
+    </div>
+  </section>
 
-          <!-- Team Photo Section -->
-          <div class="mb-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div class="aspect-w-16 aspect-h-9 bg-white/50 rounded-2xl overflow-hidden">
-                <!-- Replace src with your image path -->
-                <img 
-                  src="/images/lily.jpeg" 
-                  alt="Amplifly Team" 
-                  class="object-cover w-full h-full"
-                />
-              </div>
-              <div>
-                <h2 class="text-2xl font-bold text-deep-navy mb-4">Meet Our Founder: Lily Stone</h2>
-                <p class="text-accessible-gray text-lg">
-                  Hi, I'm Lily 👋 I'm the founder of Amplifly and a passionate advocate for neurodivergent voices. As someone who understands the beauty and challenge of navigating the world with a unique mind, I created Amplifly to turn insight into empowerment. I believe we deserve tools built for our needs—not just adapted to them. With a background in engineering and a heart rooted in advocacy, I'm building Amplifly to make thriving more accessible for all of us.
-                </p>
-              </div>
-            </div>
-            <p class="text-center text-accessible-gray mt-4 text-sm">
-              Our team is dedicated to making neurodivergent lives easier through technology
-            </p>
-          </div>
-
-          <!-- Mission Section -->
-          <div class="bg-white rounded-2xl p-8 md:p-12 mb-12">
-            <h2 class="text-2xl font-bold text-deep-navy mb-6">Our Mission</h2>
-            <p class="text-accessible-gray mb-6">
-              Amplifly was born from a simple idea: technology should adapt to neurodivergent minds, not the other way around. We're building tools that understand and support the unique ways your brain works.
-              Our mission is to empower neurodivergent individuals by combining biometric data and AI to deliver real-time support, personalized insights, and a deeper understanding of our minds and bodies—so we can thrive on our own terms.
-            </p>
-            <p class="text-accessible-gray">
-              We envision a world where neurodivergent people are supported by technology that understands them—not one that asks them to change.
-            </p>
-          </div>
-
-          <!-- Story Section -->
-          <div class="bg-white rounded-2xl p-8 md:p-12 mb-12">
-            <h2 class="text-2xl font-bold text-deep-navy mb-6">Our Story</h2>
-            <p class="text-accessible-gray mb-6">
-              Amplifly was born from lived experience. Like many neurodivergent people, we've faced overwhelm, burnout, and the pressure to "mask" just to get through the day. Traditional wellness tools didn't understand us—so we built one that does.
-            </p>
-            <p class="text-accessible-gray">
-              What started as an idea to track energy has evolved into a dynamic app that connects biometric data with emotional support, giving users personalized guidance when they need it most. Backed by cutting-edge AI and a deep respect for neurodiversity, Amplifly is here to change the story from survival to self-regulation, confidence, and empowerment.
-            </p>
-          </div>
-
-          <!-- Values Section -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-soft-blue p-6 rounded-xl">
-              <h3 class="text-xl font-bold text-deep-navy mb-3">User-Centered Design</h3>
-              <p class="text-accessible-gray">
-                We build with neurodivergent people at the center—because one-size-fits-all never fits us.
-              </p>
-            </div>
-            <div class="bg-soft-blue p-6 rounded-xl">
-              <h3 class="text-xl font-bold text-deep-navy mb-3">Privacy First</h3>
-              <p class="text-accessible-gray">
-                Your data is yours. We're committed to transparency, safety, and control over your information.
-              </p>
-            </div>
-            <div class="bg-soft-blue p-6 rounded-xl">
-              <h3 class="text-xl font-bold text-deep-navy mb-3">Continuous Learning</h3>
-              <p class="text-accessible-gray">
-                We believe in celebrating progress over perfection—growing through research, feedback, and lived experience.
-              </p>
-            </div>
-            <div class="bg-soft-blue p-6 rounded-xl">
-              <h3 class="text-xl font-bold text-deep-navy mb-3">Inclusive Innovation</h3>
-              <p class="text-accessible-gray">
-                We use tech to amplify, not replace, human experience—creating tools that are adaptable, respectful, and empowering.
-              </p>
-            </div>
-          </div>
+  <!-- Founder -->
+  <section class="py-20 bg-white">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <div class="flex flex-col md:flex-row gap-10 items-start">
+        <img
+          src="/images/lily.jpeg"
+          alt="Lily Stone, founder of Amplifly"
+          class="w-40 h-40 rounded-2xl object-cover flex-shrink-0"
+        />
+        <div>
+          <h2 class="text-deep-navy text-2xl font-bold mb-2">Hi, I'm Lily 👋</h2>
+          <p class="text-bright-blue text-sm font-semibold mb-4">Founder of Amplifly</p>
+          <p class="text-accessible-gray leading-relaxed mb-4">
+            I'm a neurodivergent founder who spent years trying to use productivity tools
+            that assumed my brain worked the same every day. It doesn't. None of ours do.
+          </p>
+          <p class="text-accessible-gray leading-relaxed mb-4">
+            Amplifly grew out of a simple question: what if an app actually started with
+            how your brain feels today, instead of treating every morning like a blank slate?
+            The five brain states, the techniques, the operating manual — all of it came from
+            trying to understand my own patterns and finding no tool that did it honestly.
+          </p>
+          <p class="text-accessible-gray leading-relaxed">
+            The technology should adapt to neurodivergent minds, not the other way around.
+            That's the whole point.
+          </p>
         </div>
       </div>
-    </section>
-    <Footer />
-  </main>
+    </div>
+  </section>
+
+  <!-- What we actually built -->
+  <section class="py-20 bg-soft-blue">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <h2 class="text-deep-navy text-2xl font-bold mb-8">What Amplifly actually is</h2>
+
+      <div class="space-y-6">
+        {[
+          {
+            title: 'A brain state tracker',
+            desc: 'Five states — Sharp, Spicy, Flat, Foggy, Scattered — that capture how ND brains actually feel day to day. You pick one each morning. No wrong answer.',
+          },
+          {
+            title: 'A condition recommender that learns',
+            desc: 'Twelve evidence-informed techniques across four phases. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. Research priors from day one, personal data as you build history.',
+          },
+          {
+            title: 'A flow logger',
+            desc: 'After any deep work block, log how long, how locked-in you were, what helped, what drained you, and which condition you used. 60 seconds. This is the data that builds your manual.',
+          },
+          {
+            title: 'Your operating manual',
+            desc: 'The Manual tab synthesises everything into a living document: your sharpest hour, your highest-flow brain state, your top helpers and drains, your streaks, what the recommender has figured out. The more you log, the sharper it gets.',
+          },
+          {
+            title: 'Fully offline, genuinely private',
+            desc: 'Everything lives in your phone\'s local storage. No analytics, no crash reports, no third-party SDKs. A free optional account lets you sync across devices via Supabase — encrypted in transit, never sold or shared.',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-xl p-6">
+            <h3 class="text-deep-navy font-bold text-lg mb-2">{item.title}</h3>
+            <p class="text-accessible-gray leading-relaxed text-base">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-deep-navy">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <h2 class="text-white text-2xl font-bold mb-10">What guides us</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {[
+          { icon: '🧠', title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
+          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Everything on-device by default. Optional sync, fully explained. No surprises.' },
+          { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture. We explain how things work.' },
+          { icon: '📈', title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
+        ].map(v => (
+          <div class="flex gap-4">
+            <div class="text-2xl flex-shrink-0">{v.icon}</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">{v.title}</h3>
+              <p class="text-medium-blue text-sm leading-relaxed">{v.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-16 bg-white">
+    <div class="container px-6 mx-auto max-w-3xl text-center">
+      <h2 class="text-deep-navy text-2xl font-bold mb-4">Get in touch</h2>
+      <p class="text-accessible-gray mb-6">Questions, feedback, or support — we read every email.</p>
+      <a href="mailto:hello@amplifly.app"
+         class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors">
+        hello@amplifly.app
+      </a>
+    </div>
+  </section>
+
+  <Footer />
 </Layout>

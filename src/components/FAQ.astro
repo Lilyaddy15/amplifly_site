@@ -1,64 +1,85 @@
 ---
 const faqs = [
   {
-    question: "Do I need an Oura Ring to use Amplifly?",
-    answer: "Currently, Amplifly is designed to work with the Oura Ring. The app uses your biometric data from the Oura Ring to provide personalized insights and recommendations for managing stress, sleep, and activity levels. We're working on expanding support to most major wearable devices soon!"
+    q: 'Does this require any hardware — Oura Ring, wearable, anything?',
+    a: 'No. Amplifly is a pure software app. You check in by tapping one of five brain states each morning. No sensors, no wearables, no subscriptions to other services.',
   },
   {
-    question: "How does Amplifly help with neurodivergent challenges?",
-    answer: "Amplifly analyzes patterns in your biometric data to identify potential stress triggers, energy fluctuations, and sleep disruptions that are common in neurodivergent individuals. It then provides personalized recommendations based on your actual physiological responses."
+    q: 'Is Amplifly free?',
+    a: 'Yes. Amplifly is free to download and use. Creating an account (for cross-device sync) is also free. There is no subscription.',
   },
   {
-    question: "What kind of insights will I receive?",
-    answer: "You'll get daily readiness scores, stress level monitoring, sleep quality analysis, activity recommendations, and personalized interventions when your biometric data indicates increasing stress or potential overwhelm."
+    q: 'Does it work offline?',
+    a: 'Fully. All data lives on your device in local storage. You can use every feature — brain check-ins, conditions, flow logging, the recommender, the manual — without a network connection.',
   },
   {
-    question: "Is my data private and secure?",
-    answer: "Absolutely. We use industry-standard encryption and secure data processing. Your biometric data is only used to generate personalized insights and is never sold to third parties."
+    q: 'How does the recommendation engine actually work?',
+    a: 'It\'s a Thompson-sampling contextual bandit. Each condition is an "arm" keyed by your ND profile, brain state, and time of day. The bandit starts from research-cited priors for your profile and updates a Beta posterior every time you give feedback — thumbs up/down, or a high-intensity flow session logged within 2 hours. All computation runs on your device.',
   },
   {
-    question: "Can Amplifly replace therapy or medical treatment?",
-    answer: "No, Amplifly is a supportive tool but not a replacement for professional healthcare. We recommend using it alongside appropriate medical and therapeutic support for neurodivergent conditions."
+    q: 'What neurodivergent profiles does it support?',
+    a: 'ADHD, Autism, AuDHD, Dyslexia, Dyscalculia, Dyspraxia/DCD, Tourette\'s, Sensory Processing, OCD, Anxiety, Depression, PTSD/C-PTSD, Bipolar, Twice Exceptional (2e), and Other. You can select multiple — the recommender handles them as a combined profile.',
   },
   {
-    question: "When will Amplifly be available?",
-    answer: "We're currently in private beta testing. Join our waitlist to be among the first to access Amplifly when we launch publicly."
-  }
+    q: 'What is the flow forecast?',
+    a: 'A small neural network trained on synthetic data built from published research on focus and neurodivergence. The weights are fixed. A personal calibration layer blends those predictions with your own logged session data as you build history.',
+  },
+  {
+    q: 'Is my data private?',
+    a: 'Yes. Everything is on your device by default. If you create an account for sync, your data is encrypted in transit and stored on Supabase\'s servers solely for backup — it is never sold, shared, or used for advertising. We collect no analytics or crash reports.',
+  },
+  {
+    q: 'What platforms is it on?',
+    a: 'iOS and Android. Built in React Native with Expo, so it runs natively on both.',
+  },
+  {
+    q: 'Can Amplifly replace therapy or medical support?',
+    a: 'No. Amplifly is a self-understanding and focus tool, not a clinical product. If you need mental health support, please work with a qualified professional.',
+  },
 ];
 ---
+<section id="faq" class="bg-soft-blue py-24">
+  <div class="container px-6 mx-auto max-w-3xl">
 
-<section id="faq" class="py-20 bg-soft-blue">
-  <div class="container px-6 md:px-8">
-    <h2 class="text-center text-deep-navy mb-16">Frequently Asked Questions</h2>
-    
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-6">
-        {faqs.map((faq, index) => (
-          <div class="bg-white p-6 rounded-xl shadow-sm">
-            <h3 class="text-xl font-bold text-deep-navy mb-3">{faq.question}</h3>
-            <p class="text-accessible-gray">{faq.answer}</p>
+    <div class="text-center mb-16">
+      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Questions</p>
+      <h2 class="text-deep-navy text-3xl md:text-4xl font-bold">Frequently asked</h2>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, i) => (
+        <div class="bg-white rounded-2xl overflow-hidden">
+          <button
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+            data-index={i}
+            aria-expanded="false"
+          >
+            <span class="text-deep-navy font-semibold text-base">{faq.q}</span>
+            <span class="faq-icon text-bright-blue flex-shrink-0 transition-transform duration-200 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-accessible-gray text-base leading-relaxed">{faq.a}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-    
-    <div class="text-center mt-12">
-      <p class="text-neutral-gray mb-6">Still have questions? We're here to help.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <a href="mailto:lily@amplifly.me" class="text-bright-blue hover:underline font-semibold">
-          Contact Us
-        </a>
-      </div>
-      
-      <div class="mt-12 pt-8 border-t border-gray-200">
-        <h3 class="text-2xl font-bold text-deep-navy mb-4">Ready to experience Amplifly?</h3>
-        <p class="text-neutral-gray mb-6 max-w-lg mx-auto">
-          Join our waitlist today and be among the first to access our platform when we launch.
-        </p>
-        <a href="#email-signup" class="inline-block bg-bright-blue text-white px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
-          Join the Waitlist
-        </a>
-      </div>
-    </div>
+
+    <p class="text-center text-accessible-gray mt-10 text-sm">
+      More questions? Email us at{' '}
+      <a href="mailto:hello@amplifly.app" class="text-bright-blue hover:underline">hello@amplifly.app</a>
+    </p>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling as HTMLElement;
+      const icon   = btn.querySelector('.faq-icon') as HTMLElement;
+      const open   = !answer.classList.contains('hidden');
+      answer.classList.toggle('hidden', open);
+      icon.textContent   = open ? '+' : '−';
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  });
+</script>
