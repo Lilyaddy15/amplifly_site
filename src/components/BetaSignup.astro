@@ -1,0 +1,95 @@
+---
+---
+<section id="beta" class="bg-navy-light py-24">
+  <div class="container px-6 mx-auto max-w-2xl text-center">
+
+    <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Beta Testing</p>
+    <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
+      Help us build Amplifly.
+    </h2>
+    <p class="text-medium-blue text-lg leading-relaxed mb-10">
+      We're looking for neurodivergent people to test the app before it's public. You'll get early
+      access and your feedback will directly shape what we build.
+    </p>
+
+    <form
+      method="POST"
+      action="/.netlify/functions/beta-signup"
+      class="space-y-4 text-left"
+    >
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label for="beta-first-name" class="block text-medium-blue text-sm font-medium mb-2">
+            First name <span class="text-medium-blue/50">(optional)</span>
+          </label>
+          <input
+            type="text"
+            id="beta-first-name"
+            name="first_name"
+            placeholder="Lily"
+            class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-bright-blue transition-colors text-base"
+          />
+        </div>
+        <div>
+          <label for="beta-email" class="block text-medium-blue text-sm font-medium mb-2">
+            Email <span class="text-red-400">*</span>
+          </label>
+          <input
+            type="email"
+            id="beta-email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-bright-blue transition-colors text-base"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="beta-nd-profile" class="block text-medium-blue text-sm font-medium mb-2">
+          ND profile <span class="text-medium-blue/50">(optional — helps us match you to the right tests)</span>
+        </label>
+        <select
+          id="beta-nd-profile"
+          name="nd_profile"
+          class="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-bright-blue transition-colors text-base appearance-none"
+        >
+          <option value="" class="text-deep-navy">Select your primary profile</option>
+          {[
+            'ADHD', 'Autism', 'AuDHD', 'Dyslexia', 'Dyscalculia',
+            'Dyspraxia / DCD', "Tourette's / Tics", 'Sensory Processing',
+            'OCD', 'Anxiety', 'Depression', 'PTSD / C-PTSD',
+            'Bipolar', 'Twice Exceptional (2e)', 'Other / Prefer not to say',
+          ].map(p => <option value={p} class="text-deep-navy">{p}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <label for="beta-device" class="block text-medium-blue text-sm font-medium mb-2">
+          Device <span class="text-medium-blue/50">(optional)</span>
+        </label>
+        <select
+          id="beta-device"
+          name="device"
+          class="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-bright-blue transition-colors text-base appearance-none"
+        >
+          <option value="" class="text-deep-navy">Select your device</option>
+          <option value="iPhone" class="text-deep-navy">iPhone</option>
+          <option value="Android" class="text-deep-navy">Android</option>
+          <option value="Both" class="text-deep-navy">Both</option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-bright-blue hover:bg-bright-blue/80 text-white font-semibold py-4 rounded-xl transition-colors text-base"
+      >
+        Sign Up to Beta Test
+      </button>
+    </form>
+
+    <p class="text-medium-blue/50 text-sm mt-6">
+      We respect your privacy. No spam, no selling your email. Ever.
+    </p>
+  </div>
+</section>
