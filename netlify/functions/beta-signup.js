@@ -1,5 +1,3 @@
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://subymyoazfdkroxoaahs.supabase.co';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 export const handler = async (event) => {
@@ -7,55 +5,21 @@ export const handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const params = new URLSearchParams(event.body);
-  const email = params.get('email')?.trim();
-  const firstName = params.get('first_name')?.trim() || '';
-  const ndProfile = params.get('nd_profile') || '';
-  const updates = params.get('updates') === 'true';
-
-  const ip =
-    event.headers['x-forwarded-for']?.split(',')[0].trim() ||
-    event.headers['client-ip'] ||
-    null;
-  const userAgent = event.headers['user-agent'] || null;
-  const referrer = event.headers['referer'] || null;
-
-  if (!email) {
-    return { statusCode: 302, headers: { Location: '/thank-you' }, body: '' };
+  if (!RESEND_API_KEY) {
+    return { statusCode: 200, body: 'No email key configured' };
   }
 
-  // Save to Supabase
+  let email, firstName;
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/beta_testers`, {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        Prefer: 'return=minimal',
-      },
-      body: JSON.stringify({
-        email,
-        first_name: firstName || null,
-        nd_profile: ndProfile || null,
-        updates,
-        ip,
-        user_agent: userAgent,
-        referrer,
-      }),
-    });
-    if (!res.ok && res.status !== 409) {
-      // 409 = duplicate email — treat as success
-      console.error('Supabase error:', res.status, await res.text());
-    }
-  } catch (err) {
-    console.error('Supabase insert error:', err);
+    ({ email, firstName } = JSON.parse(event.body || '{}'));
+  } catch {
+    return { statusCode: 400, body: 'Bad request' };
   }
 
-  // Send welcome email via Resend
-  if (RESEND_API_KEY) {
-    const greeting = firstName ? `Hey ${firstName}!` : 'Hey there!';
-    const emailHtml = `<!DOCTYPE html>
+  if (!email) return { statusCode: 400, body: 'Missing email' };
+
+  const greeting = firstName ? `Hey ${firstName}!` : 'Hey there!';
+  const emailHtml = `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#15273F;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -109,31 +73,28 @@ export const handler = async (event) => {
 </body>
 </html>`;
 
-    try {
-      const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'Amplifly <hello@amplifly.app>',
-          to: [email],
-          subject: "You're on the list — Amplifly Early Access",
-          html: emailHtml,
-        }),
-      });
-      if (!res.ok) {
-        console.error('Resend error:', res.status, await res.text());
-      }
-    } catch (err) {
-      console.error('Resend send error:', err);
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Amplifly <hello@amplifly.app>',
+        to: [email],
+        subject: "You're on the list — Amplifly Early Access",
+        html: emailHtml,
+      }),
+    });
+    if (!res.ok) {
+      console.error('Resend error:', res.status, await res.text());
+      return { statusCode: 500, body: 'Email failed' };
     }
+  } catch (err) {
+    console.error('Resend error:', err);
+    return { statusCode: 500, body: 'Email failed' };
   }
 
-  return {
-    statusCode: 302,
-    headers: { Location: '/thank-you' },
-    body: '',
-  };
+  return { statusCode: 200, body: 'OK' };
 };
