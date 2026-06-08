@@ -1,8 +1,11 @@
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://subymyoazfdkroxoaahs.supabase.co';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-
 exports.handler = async (event) => {
+  const SUPABASE_URL = process.env.SUPABASE_URL || 'https://subymyoazfdkroxoaahs.supabase.co';
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+  console.log('RESEND_API_KEY set:', !!RESEND_API_KEY);
+  console.log('SUPABASE_ANON_KEY set:', !!SUPABASE_ANON_KEY);
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
