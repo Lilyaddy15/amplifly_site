@@ -13,18 +13,10 @@
     </p>
 
     <form
-      name="waitlist"
       method="POST"
-      action="/thank-you"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+      action="/.netlify/functions/beta-signup"
       class="space-y-4 text-left"
     >
-      <input type="hidden" name="form-name" value="waitlist" />
-      <p class="hidden">
-        <label>Don't fill this out: <input name="bot-field" /></label>
-      </p>
-
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label for="first-name" class="block text-medium-blue text-sm font-medium mb-2">
@@ -73,7 +65,7 @@
       </div>
 
       <label class="flex items-start gap-3 cursor-pointer">
-        <input type="checkbox" name="updates" class="mt-1 rounded" />
+        <input type="checkbox" name="updates" value="true" class="mt-1 rounded" />
         <span class="text-medium-blue text-sm">I'd like to receive updates about Amplifly</span>
       </label>
 
