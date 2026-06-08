@@ -1,6 +1,4 @@
 ---
-const SUPABASE_URL = 'https://subymyoazfdkroxoaahs.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1YnlteW9hemZka3JveG9hYWhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxMTYxMjUsImV4cCI6MjA5NDY5MjEyNX0.N9Vlqf8jtmGOntCmAS6vRGrhd2ZuzW6ET6kxpuzWGMw';
 ---
 <section id="waitlist" class="bg-deep-navy py-24">
   <div class="container px-6 mx-auto max-w-2xl text-center">
@@ -14,7 +12,11 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
       We'll reach out as soon as early access opens.
     </p>
 
-    <form id="waitlist-form" class="space-y-4 text-left">
+    <form
+      method="POST"
+      action="/.netlify/functions/beta-signup"
+      class="space-y-4 text-left"
+    >
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label for="first-name" class="block text-medium-blue text-sm font-medium mb-2">
@@ -68,16 +70,11 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
       </label>
 
       <button
-        id="waitlist-btn"
         type="submit"
         class="w-full bg-bright-blue hover:bg-bright-blue/80 text-white font-semibold py-4 rounded-xl transition-colors text-base"
       >
         Join the Waitlist
       </button>
-
-      <p id="waitlist-error" class="text-red-400 text-sm text-center hidden">
-        Something went wrong. Please try again or email us at hello@amplifly.app.
-      </p>
     </form>
 
     <p class="text-medium-blue/50 text-sm mt-6">
@@ -85,55 +82,3 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
     </p>
   </div>
 </section>
-
-<script define:vars={{ SUPABASE_URL, SUPABASE_KEY }}>
-  document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('waitlist-btn');
-    const errorEl = document.getElementById('waitlist-error');
-    errorEl.classList.add('hidden');
-    btn.disabled = true;
-    btn.textContent = 'Signing you up…';
-
-    const fd = new FormData(e.target);
-    const email     = fd.get('email').trim();
-    const firstName = (fd.get('first_name') || '').trim() || null;
-    const ndProfile = fd.get('nd_profile') || null;
-    const updates   = fd.get('updates') === 'true';
-
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/beta_testers`, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal',
-        },
-        body: JSON.stringify({
-          email,
-          first_name: firstName,
-          nd_profile: ndProfile || null,
-          updates,
-          referrer: document.referrer || null,
-        }),
-      });
-
-      // 409 = already signed up — still treat as success
-      if (!res.ok && res.status !== 409) throw new Error(res.status);
-
-      // Fire welcome email (best-effort, don't block redirect)
-      fetch('/.netlify/functions/beta-signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, firstName }),
-      }).catch(() => {});
-
-      window.location.href = '/thank-you';
-    } catch {
-      btn.disabled = false;
-      btn.textContent = 'Join the Waitlist';
-      errorEl.classList.remove('hidden');
-    }
-  });
-</script>
