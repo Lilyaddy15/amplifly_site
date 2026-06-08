@@ -94,9 +94,9 @@ exports.handler = async (event) => {
           <tr>
             <td style="padding:0 40px 48px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);">
               <p style="color:#ADC9E9;font-size:14px;margin:24px 0 8px;">Questions? We'd love to hear from you.</p>
-              <a href="mailto:hello@amplifly.app" style="color:#6093D4;font-size:14px;text-decoration:none;">hello@amplifly.app</a>
+              <a href="mailto:hello@amplifly.me" style="color:#6093D4;font-size:14px;text-decoration:none;">hello@amplifly.me</a>
               <p style="color:#ADC9E9;font-size:12px;opacity:0.4;margin:24px 0 0;">
-                You received this because you signed up at amplifly.app.<br>We'll never share your email.
+                You received this because you signed up at amplifly.me.<br>We'll never share your email.
               </p>
             </td>
           </tr>
@@ -115,7 +115,7 @@ exports.handler = async (event) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Amplifly <hello@amplifly.app>',
+          from: 'Amplifly <hello@amplifly.me>',
           to: [email],
           subject: "You're on the list — Amplifly Early Access",
           html,
