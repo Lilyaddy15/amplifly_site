@@ -23,6 +23,33 @@ exports.handler = async (event) => {
     return { statusCode: 302, headers: { Location: '/thank-you' }, body: '' };
   }
 
+  // Add to Resend audience
+  if (RESEND_API_KEY) {
+    try {
+      const audiencesRes = await fetch('https://api.resend.com/audiences', {
+        headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
+      });
+      const { data: audiences } = await audiencesRes.json();
+      const audienceId = audiences?.[0]?.id;
+      if (audienceId) {
+        await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            first_name: firstName || undefined,
+            unsubscribed: false,
+          }),
+        });
+      }
+    } catch (err) {
+      console.error('Resend audience error:', err);
+    }
+  }
+
   // Save to Supabase
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/beta_testers`, {
