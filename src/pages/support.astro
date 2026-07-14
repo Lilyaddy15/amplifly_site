@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const supportEmail = 'hello@amplifly.me';
+
+const topics = [
+  {
+    q: 'Getting started',
+    a: 'Open the app and tap the brain state that matches how you woke up — Spicy, Sharp, Flat, Foggy, or Scattered. Amplifly gives you tailored picks for the day. Log a flow session after a work block (it takes about 60 seconds), and your operating manual starts filling in from there. No account, sensors, or wearables are required.',
+  },
+  {
+    q: 'Do I need an account?',
+    a: 'No. Every feature works fully offline with no account. An account is free and optional — its only purpose is to sync your data across devices. You can start using Amplifly immediately without signing up.',
+  },
+  {
+    q: 'My data isn\'t showing up on a new device',
+    a: 'Cross-device sync requires a free account. Sign in with the same email on both devices and make sure each has a network connection. Sync runs automatically in the background; give it a few seconds after signing in. If your data still doesn\'t appear, email us and we\'ll help.',
+  },
+  {
+    q: 'I can\'t sign in or forgot my password',
+    a: 'On the sign-in screen, tap "Forgot password?" and enter your email. We\'ll send you a reset code — enter it with a new password to get back in. If you don\'t receive the code, check your spam folder, or contact us and we\'ll sort it out.',
+  },
+  {
+    q: 'I\'m not getting reminders / notifications',
+    a: 'Make sure notifications are enabled for Amplifly in your device Settings > Notifications. Reminders are local and optional — the app works fully without them.',
+  },
+  {
+    q: 'How do I delete my data or account?',
+    a: `To remove data stored locally, simply uninstall the app — everything on your device is deleted automatically. To delete a synced account and all associated data from our servers, email ${supportEmail} with the subject "Delete my account," and we'll remove it within 7 days.`,
+  },
+  {
+    q: 'Is Amplifly free?',
+    a: 'Yes. Amplifly is free to download and use, and creating an account for sync is also free. There is no subscription.',
+  },
+  {
+    q: 'Is Amplifly a medical or therapy product?',
+    a: 'No. Amplifly is a self-understanding and focus tool, not a clinical or diagnostic product. If you need mental health support, please work with a qualified professional.',
+  },
+];
+---
+
+<Layout
+  title="Support"
+  description="Get help with Amplifly. Contact support, find answers to common questions, and learn how to manage your account and data."
+>
+  <main class="container mx-auto px-6 pt-32 pb-20 max-w-3xl">
+
+    <h1 class="text-deep-navy text-4xl font-bold mb-3">Support</h1>
+    <p class="text-neutral-gray text-base mb-12">
+      We're a small team and we read every message. Here's how to get help.
+    </p>
+
+    <!-- Contact card -->
+    <div class="bg-soft-blue rounded-2xl p-8 mb-14">
+      <h2 class="text-deep-navy text-2xl font-bold mb-3">Contact us</h2>
+      <p class="text-accessible-gray text-base leading-relaxed mb-5">
+        The fastest way to reach us is by email. Tell us what's happening — and, if it helps,
+        which device and app version you're on — and we'll get back to you, usually within
+        1–2 business days.
+      </p>
+      <a
+        href={`mailto:${supportEmail}?subject=Amplifly%20Support`}
+        class="inline-block bg-bright-blue text-white font-semibold rounded-full px-6 py-3 hover:bg-deep-navy transition-colors"
+      >
+        Email {supportEmail}
+      </a>
+    </div>
+
+    <!-- Common topics -->
+    <div class="space-y-10 text-accessible-gray">
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-6">Common questions</h2>
+        <div class="space-y-8">
+          {topics.map((topic) => (
+            <div>
+              <h3 class="text-deep-navy text-lg font-semibold mb-2">{topic.q}</h3>
+              <p class="leading-relaxed text-base">{topic.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">More resources</h2>
+        <ul class="list-disc pl-6 space-y-2 text-base">
+          <li><a href="/#faq" class="text-bright-blue hover:underline">Frequently asked questions</a></li>
+          <li><a href="/privacy-policy" class="text-bright-blue hover:underline">Privacy Policy</a> — what we store and how sync works</li>
+          <li><a href="/terms-of-service" class="text-bright-blue hover:underline">Terms of Service</a></li>
+          <li><a href="/about" class="text-bright-blue hover:underline">About Amplifly</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">Still stuck?</h2>
+        <p class="leading-relaxed text-base">
+          Email us at{' '}
+          <a href={`mailto:${supportEmail}?subject=Amplifly%20Support`} class="text-bright-blue hover:underline">
+            {supportEmail}
+          </a>{' '}
+          and we'll help you out.
+        </p>
+      </section>
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>
