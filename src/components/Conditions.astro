@@ -1,4 +1,5 @@
 ---
+import { APP_STORE_URL } from '../consts';
 const phases = [
   {
     id: 'primers',
@@ -98,9 +99,9 @@ const phases = [
         Mark thumbs up or down on any condition. Log a flow session and tag which condition you used.
         The on-device bandit updates its posteriors — no server, no account required.
       </p>
-      <a href="/#waitlist"
+      <a href={APP_STORE_URL} target="_blank" rel="noopener"
          class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-3 rounded-xl transition-colors text-base">
-        Get Early Access
+        Get it on the App Store
       </a>
     </div>
   </div>

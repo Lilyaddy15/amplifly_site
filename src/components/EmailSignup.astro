@@ -1,16 +1,28 @@
 ---
+import AppStoreBadge from './AppStoreBadge.astro';
 ---
-<section id="waitlist" class="bg-deep-navy py-24">
+<section id="download" class="bg-deep-navy py-24">
   <div class="container px-6 mx-auto max-w-2xl text-center">
 
-    <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">Early access</p>
+    <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">Out now</p>
     <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
-      Get Amplifly before it's public.
+      Amplifly is live on the App Store.
     </h2>
     <p class="text-medium-blue text-lg leading-relaxed mb-10">
-      Join the waitlist and be among the first to start building your operating manual.
-      We'll reach out as soon as early access opens.
+      Download it free and start building your operating manual today —
+      no subscription, no tracking, everything on your device.
     </p>
+
+    <div class="flex justify-center mb-16">
+      <AppStoreBadge height="h-16" />
+    </div>
+
+    <div class="border-t border-white/10 pt-12">
+      <p class="text-white font-semibold text-lg mb-2">On Android or want to stay in the loop?</p>
+      <p class="text-medium-blue text-base leading-relaxed mb-8">
+        Leave your email and we'll let you know about updates and the Android release.
+      </p>
+    </div>
 
     <form
       method="POST"
@@ -73,7 +85,7 @@
         type="submit"
         class="w-full bg-bright-blue hover:bg-bright-blue/80 text-white font-semibold py-4 rounded-xl transition-colors text-base"
       >
-        Join the Waitlist
+        Keep me posted
       </button>
     </form>
 
