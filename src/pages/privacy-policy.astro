@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 
-const lastUpdated = 'May 2025';
+const lastUpdated = 'July 2026';
 ---
 
 <Layout
   title="Privacy Policy"
-  description="Amplifly's privacy policy. Everything you log lives on your device by default. No analytics, no advertising, no data sales."
+  description="Amplifly's privacy policy. Everything you log is stored on your device and every algorithm runs there. No analytics, no advertising, no data sales."
 >
   <main class="container mx-auto px-6 pt-32 pb-20 max-w-3xl">
 
@@ -19,39 +19,49 @@ const lastUpdated = 'May 2025';
       <section>
         <h2 class="text-deep-navy text-2xl font-bold mb-4">The short version</h2>
         <p class="leading-relaxed">
-          Everything you do in Amplifly — brain check-ins, flow sessions, your ND profile,
-          the recommendation model — lives on your device in local storage. We don't collect
-          analytics, crash reports, or advertising data. An optional account lets you
-          sync your data across devices. That sync data is stored on Supabase's secure servers,
-          encrypted in transit, and is never sold, shared, or used for any purpose other than
-          restoring your data.
+          Everything you do in Amplifly — brain check-ins, flow and focus sessions, your ND profile,
+          your own tools and insights, the recommendation model — is stored on your device, and every
+          algorithm runs on your device. Amplifly requires an account to use, so that data also syncs
+          to your account: encrypted in transit, stored encrypted at rest on Supabase's servers, and
+          never sold, shared, or used for any purpose other than keeping your data available to you.
+          We collect no analytics, crash reports, or advertising data.
         </p>
       </section>
 
       <section>
         <h2 class="text-deep-navy text-2xl font-bold mb-4">What data Amplifly stores</h2>
-        <p class="leading-relaxed mb-4">If you use Amplifly without an account, the following is stored <strong>only on your device</strong> using AsyncStorage:</p>
+        <p class="leading-relaxed mb-4">
+          The following is stored <strong>on your device</strong> using AsyncStorage, and synced to
+          your account while you are signed in:
+        </p>
         <ul class="list-disc pl-6 space-y-2 text-base">
           <li>Daily brain check-ins (brain state + optional note + timestamp)</li>
-          <li>Flow sessions (activity, duration, intensity, interest level, helpers, drains, optional note)</li>
+          <li>Flow and focus sessions (activity, duration, intensity, interest level, helpers, drains, condition used, optional note)</li>
           <li>Your ND profile (which profiles you selected, executive function rating, working memory rating)</li>
+          <li>Tools you add yourself and self-insights you record</li>
           <li>Your name (optional, used only for personalized greetings)</li>
-          <li>The recommendation engine's learned state (Beta posteriors per condition/context cell)</li>
+          <li>The recommendation engine's learned state (Beta posteriors per condition/context cell) and its outcome history</li>
           <li>The personal calibration layer for the flow forecast</li>
+          <li>Your theme and notification preferences</li>
         </ul>
-        <p class="leading-relaxed mt-4">None of this leaves your device unless you create an account.</p>
+        <p class="leading-relaxed mt-4">
+          Local storage is capped so it stays bounded — for example, the most recent 365 brain
+          check-ins and sessions, and the most recent 500 recommendation outcomes.
+        </p>
       </section>
 
       <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">If you create an account</h2>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">Your account</h2>
         <p class="leading-relaxed mb-4">
-          Creating an account is optional. Its only purpose is to let you restore your
-          data on a new device. When you sign in:
+          Amplifly requires an account. There is no guest or signed-out mode — when you open the app
+          without an active session, you are taken to the sign-in screen. Signing up takes an email
+          address and a password.
         </p>
         <ul class="list-disc pl-6 space-y-2 text-base">
-          <li>Your email address is stored by Supabase for authentication.</li>
-          <li>Your brain checks, flow sessions, user profile, and bandit state are synced to Supabase's servers and stored encrypted at rest.</li>
-          <li>Sync happens automatically in the background. Signing out immediately stops syncing. Your local data remains on your device.</li>
+          <li>Your email address is stored by Supabase for authentication. Password resets are handled by emailing you a 6-digit code.</li>
+          <li>Your brain checks, sessions, profile, custom tools, insights, and recommender state are synced to Supabase's servers and stored encrypted at rest.</li>
+          <li>Sync runs in the background and never blocks the app. Once you are signed in, Amplifly works offline — an account is required, but a live connection is not.</li>
+          <li>Signing out immediately stops syncing. Your local data stays on your device. Signing in again with the same account keeps it; signing in with a different account clears the local data first.</li>
         </ul>
         <p class="leading-relaxed mt-4">
           Supabase is an open-source database platform. Their infrastructure is hosted on AWS.
@@ -75,15 +85,19 @@ const lastUpdated = 'May 2025';
         <h2 class="text-deep-navy text-2xl font-bold mb-4">The recommendation engine and flow forecast</h2>
         <p class="leading-relaxed">
           The recommendation engine is a Thompson-sampling contextual bandit. All computation
-          runs on your device. If you have an account, the model's learned posteriors sync to
-          Supabase so your preferences carry across devices — but nothing is used for advertising
-          or shared with anyone.
+          runs on your device. The model's learned posteriors sync to your account so your
+          learning carries across devices — but nothing is used for advertising or shared with
+          anyone.
         </p>
         <p class="leading-relaxed mt-4">
           The flow forecast uses a small neural network trained on synthetic data built from
           published research on focus and neurodivergence. The weights are fixed and ship with
-          the app. Only a personal calibration layer updates as you log sessions, and that stays
-          on your device (or syncs to your account if you have one).
+          the app — they never change on your device. Only a personal calibration layer updates
+          as you log sessions.
+        </p>
+        <p class="leading-relaxed mt-4">
+          Amplifly uses no sensors, wearables, or biometric data. Everything it reasons about
+          comes from what you tell it and what the phone already knows.
         </p>
       </section>
 
@@ -99,7 +113,8 @@ const lastUpdated = 'May 2025';
         </p>
         <p class="leading-relaxed mt-4">
           To delete data stored locally on your device, uninstall the app. All AsyncStorage
-          data is removed automatically when the app is uninstalled.
+          data is removed automatically when the app is uninstalled. Uninstalling does not
+          delete your account or the data synced to it — email us to do that.
         </p>
       </section>
 

@@ -5,12 +5,20 @@ const faqs = [
     a: 'No. Amplifly is a pure software app. You check in by tapping one of five brain states each morning. No sensors, no wearables, no external services required.',
   },
   {
-    q: 'Does it work offline?',
-    a: 'Fully. All data lives on your device in local storage. You can use every feature — brain check-ins, conditions, flow logging, the recommender, the manual — without a network connection.',
+    q: 'Do I need an account? Does it work offline?',
+    a: 'Amplifly needs an account — there is no guest mode. But all your data lives on your device in local storage and every algorithm runs there, so once you\'re signed in you can use every feature — brain check-ins, conditions, flow logging, the Focus timer, the recommender, the manual — without a network connection. An account is required; a live connection is not.',
   },
   {
     q: 'How does the recommendation engine actually work?',
     a: 'It\'s a Thompson-sampling contextual bandit. Each condition is an "arm" keyed by your ND profile, brain state, and time of day. The bandit starts from research-cited priors for your profile and updates a Beta posterior every time you give feedback — thumbs up/down, or a high-intensity flow session logged within 2 hours. All computation runs on your device.',
+  },
+  {
+    q: 'Do I have to remember to log sessions?',
+    a: 'Only if you want to. The Focus tab is a built-in work timer — pick 25, 50, or 90 minutes (or no limit), turn on breaks if you want them, and hit start. When you stop, it hands you the log already filled in with the measured time. Same data, no separate step. You can also log by hand on the Flow tab, and back-date a session so a late log still lands in the right time bucket.',
+  },
+  {
+    q: 'Can I add my own techniques?',
+    a: 'Yes. If you already know something works for you, add it as your own tool — name it, pick the phase it fits, and tag the brain states it helps. It shows up alongside the twelve built-ins and becomes a first-class option the recommender learns about, exactly like the built-ins. You can also record self-insights ("X helps when I\'m Y"), which feed the recommender\'s priors directly.',
   },
   {
     q: 'What neurodivergent profiles does it support?',
@@ -22,7 +30,7 @@ const faqs = [
   },
   {
     q: 'Is my data private?',
-    a: 'Yes. Everything is on your device by default. If you create an account for sync, your data is encrypted in transit and stored on Supabase\'s servers solely for backup — it is never sold, shared, or used for advertising. We collect no analytics or crash reports.',
+    a: 'Yes. Everything is stored on your device and all computation happens there. Your data also syncs to your account — encrypted in transit and stored on Supabase\'s servers solely so it\'s there on your next device. It is never sold, shared, or used for advertising, and we collect no analytics or crash reports. You can delete your account and everything in it by emailing us.',
   },
   {
     q: 'What platforms is it on?',

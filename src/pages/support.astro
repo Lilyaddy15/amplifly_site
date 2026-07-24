@@ -7,15 +7,19 @@ const supportEmail = 'hello@amplifly.me';
 const topics = [
   {
     q: 'Getting started',
-    a: 'Open the app and tap the brain state that matches how you woke up — Spicy, Sharp, Flat, Foggy, or Scattered. Amplifly gives you tailored picks for the day. Log a flow session after a work block (it takes about 60 seconds), and your operating manual starts filling in from there. No account, sensors, or wearables are required.',
+    a: 'Create an account or sign in, then tap the brain state that matches how you woke up — Spicy, Sharp, Flat, Foggy, or Scattered. Amplifly gives you tailored picks for the day. Log a flow session after a work block (it takes about 60 seconds), or run the Focus timer and it captures the session for you. Your operating manual starts filling in from there. No sensors or wearables are required.',
   },
   {
     q: 'Do I need an account?',
-    a: 'No. Every feature works fully offline with no account. An account is optional — its only purpose is to sync your data across devices. You can start using Amplifly immediately without signing up.',
+    a: 'Yes. Amplifly needs an account to get past the sign-in screen — there is no guest mode. Your data still lives on your device and every algorithm runs there, so once you are signed in the app works offline; the account is what keeps your data backed up and available across devices. Signing up takes an email address and a password.',
   },
   {
     q: 'My data isn\'t showing up on a new device',
-    a: 'Cross-device sync requires an account. Sign in with the same email on both devices and make sure each has a network connection. Sync runs automatically in the background; give it a few seconds after signing in. If your data still doesn\'t appear, email us and we\'ll help.',
+    a: 'Sign in with the same email on both devices and make sure each has a network connection. Sync runs automatically in the background; give it a few seconds after signing in. Note that signing in with a different account on a device clears that device\'s local data first. If your data still doesn\'t appear, email us and we\'ll help.',
+  },
+  {
+    q: 'The Focus timer isn\'t alerting me for breaks',
+    a: 'Break and back-to-work alerts are local notifications, so Amplifly needs notification permission in your device Settings > Notifications to reach you when the app is closed. Breaks are also off by default — turn on "Include breaks" when you set up a session.',
   },
   {
     q: 'I can\'t sign in or forgot my password',
@@ -23,11 +27,11 @@ const topics = [
   },
   {
     q: 'I\'m not getting reminders / notifications',
-    a: 'Make sure notifications are enabled for Amplifly in your device Settings > Notifications. Reminders are local and optional — the app works fully without them.',
+    a: 'Reminders are off by default. Turn them on under Profile > Notifications, where you can set a daily check-in time and an evening flow reminder. Also make sure notifications are enabled for Amplifly in your device Settings > Notifications. Reminders are local and optional — the app works fully without them.',
   },
   {
     q: 'How do I delete my data or account?',
-    a: `To remove data stored locally, simply uninstall the app — everything on your device is deleted automatically. To delete a synced account and all associated data from our servers, email ${supportEmail} with the subject "Delete my account," and we'll remove it within 7 days.`,
+    a: `To remove data stored locally, uninstall the app — everything on your device is deleted automatically. Uninstalling does not delete your account, though. To delete your account and all associated data from our servers, email ${supportEmail} with the subject "Delete my account," and we'll remove it within 7 days.`,
   },
   {
     q: 'Is Amplifly a medical or therapy product?',

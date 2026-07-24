@@ -66,19 +66,23 @@ import Footer from '../components/Footer.astro';
           },
           {
             title: 'A condition recommender that learns',
-            desc: 'Twelve evidence-informed techniques across four phases. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. Research priors from day one, personal data as you build history.',
+            desc: 'Twelve evidence-informed techniques across four phases — plus any tool you add yourself, which becomes a first-class option with the same standing as the built-ins. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. Research priors from day one, personal data as you build history.',
           },
           {
             title: 'A flow logger',
             desc: 'After any deep work block, log how long, how locked-in you were, what helped, what drained you, and which condition you used. 60 seconds. This is the data that builds your manual.',
           },
           {
+            title: 'A focus timer that logs itself',
+            desc: 'Start a work session in the app — 25, 50, or 90 minutes, or no limit, with optional breaks that alert you even if the app is closed. When you stop, the log arrives pre-filled with the measured time. The manual fills itself while you work.',
+          },
+          {
             title: 'Your operating manual',
             desc: 'The Manual tab synthesises everything into a living document: your sharpest hour, your highest-flow brain state, your top helpers and drains, your streaks, what the recommender has figured out. The more you log, the sharper it gets.',
           },
           {
-            title: 'Fully offline, genuinely private',
-            desc: 'Everything lives in your phone\'s local storage. No analytics, no crash reports, no third-party SDKs. An optional account lets you sync across devices via Supabase — encrypted in transit, never sold or shared.',
+            title: 'On-device, genuinely private',
+            desc: 'Everything lives in your phone\'s local storage and every algorithm runs there, so the app works offline once you\'re signed in. No analytics, no crash reports, no third-party SDKs. Your account syncs your data across devices via Supabase — encrypted in transit, never sold or shared.',
           },
         ].map(item => (
           <div class="bg-white rounded-xl p-6">
@@ -97,7 +101,7 @@ import Footer from '../components/Footer.astro';
       <div class="grid sm:grid-cols-2 gap-6">
         {[
           { icon: '🧠', title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
-          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Everything on-device by default. Optional sync, fully explained. No surprises.' },
+          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Stored on your device, computed on your device, synced only to your own account. Fully explained, no surprises.' },
           { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture. We explain how things work.' },
           { icon: '📈', title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
         ].map(v => (
