@@ -40,7 +40,7 @@ import { APP_STORE_URL } from '../consts';
             icon: '🧠',
             title: 'Highest-flow state',
             value: 'Sharp 🎯',
-            sub: 'Avg 4.3★ on sharp days',
+            sub: 'Avg 4.3★ in Sharp sessions',
           },
           {
             icon: '🔥',
@@ -78,8 +78,9 @@ import { APP_STORE_URL } from '../consts';
     </div>
 
     <!-- What builds it -->
-    <div class="mt-16 grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-center">
+    <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
       {[
+        { icon: '🕓', label: 'Your brain through the day', desc: 'Your most common state at each time of day' },
         { icon: '📊', label: 'Brain state × flow quality', desc: 'Which states produce your best work' },
         { icon: '📈', label: 'Day-of-week patterns', desc: 'Bar chart of your high-intensity days' },
         { icon: '🤖', label: 'Learned condition rankings', desc: 'What the recommender has figured out' },
