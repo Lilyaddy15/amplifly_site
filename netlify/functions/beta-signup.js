@@ -15,6 +15,7 @@ exports.handler = async (event) => {
   const firstName = (params.get('first_name') || '').trim() || null;
   const ndProfile = params.get('nd_profile') || null;
   const updates   = params.get('updates') === 'true';
+  const wearable  = params.get('wearable') === 'true';
   const ip        = (event.headers['x-forwarded-for'] || '').split(',')[0].trim() || null;
   const userAgent = event.headers['user-agent'] || null;
   const referrer  = event.headers['referer'] || null;
@@ -65,6 +66,7 @@ exports.handler = async (event) => {
         first_name: firstName,
         nd_profile: ndProfile,
         updates,
+        wearable_interest: wearable,
         ip,
         user_agent: userAgent,
         referrer,
@@ -90,17 +92,21 @@ exports.handler = async (event) => {
         <table width="560" cellpadding="0" cellspacing="0" style="background:#1E3859;border-radius:20px;overflow:hidden;max-width:100%;">
           <tr>
             <td style="padding:48px 40px 32px;text-align:center;">
-              <p style="color:#6093D4;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 16px;">Early Access</p>
+              <p style="color:#6093D4;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 16px;">Amplifly updates</p>
               <h1 style="color:#ffffff;font-size:32px;font-weight:700;margin:0 0 8px;line-height:1.2;">You're on the list.</h1>
-              <p style="color:#ADC9E9;font-size:16px;margin:0;">Welcome to Amplifly early access.</p>
+              <p style="color:#ADC9E9;font-size:16px;margin:0;">Thanks for following along with Amplifly.</p>
             </td>
           </tr>
           <tr>
             <td style="padding:0 40px 8px;">
               <p style="color:#DFE9F6;font-size:16px;line-height:1.7;margin:0 0 16px;">${greeting}</p>
+              <p style="color:#DFE9F6;font-size:16px;line-height:1.7;margin:0 0 16px;">
+                Amplifly is already live on iOS as <strong style="color:#ffffff;">Amplifly Lite</strong>, the
+                software-only release — five brain states, conditions that learn, a flow forecast, and an
+                operating manual built from your own data. No hardware required.
+              </p>
               <p style="color:#DFE9F6;font-size:16px;line-height:1.7;margin:0;">
-                Thank you for joining the Amplifly waitlist. We're building something genuinely
-                useful for neurodivergent minds, and we'll reach out as soon as early access opens.
+                <a href="https://apps.apple.com/us/app/amplifly-lite/id6775978052" style="color:#6093D4;text-decoration:none;font-weight:600;">Get it on the App Store &rarr;</a>
               </p>
             </td>
           </tr>
@@ -110,9 +116,11 @@ exports.handler = async (event) => {
                 <tr>
                   <td style="background:#15273F;border-radius:14px;padding:24px 28px;">
                     <p style="color:#6093D4;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 16px;">What happens next</p>
-                    <p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0 0 12px;">✦ &nbsp;We'll reach out when early access opens.</p>
-                    <p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0 0 12px;">✦ &nbsp;You'll get access before the public launch.</p>
-                    <p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0;">✦ &nbsp;Your feedback will shape what we build.</p>
+                    <p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0 0 12px;">✦ &nbsp;We'll email you about app updates and the Android release.</p>
+                    ${wearable
+                      ? `<p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0 0 12px;">✦ &nbsp;You asked to hear about the BioProxal wearable — we'll tell you the moment it ships. It's still in development, with no release date yet.</p>`
+                      : `<p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0 0 12px;">✦ &nbsp;A BioProxal wearable integration is in development; we'll share news when there is some.</p>`}
+                    <p style="color:#ADC9E9;font-size:15px;line-height:1.6;margin:0;">✦ &nbsp;Your feedback shapes what we build — just reply to this email.</p>
                   </td>
                 </tr>
               </table>
@@ -144,7 +152,7 @@ exports.handler = async (event) => {
         body: JSON.stringify({
           from: 'Amplifly <hello@amplifly.me>',
           to: [email],
-          subject: "You're on the list — Amplifly Early Access",
+          subject: "You're on the list — Amplifly updates",
           html,
         }),
       });

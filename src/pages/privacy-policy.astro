@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import { APP_STORE_NAME } from '../consts';
 
-const lastUpdated = 'July 2026';
+const lastUpdated = 'September 2026';
 ---
 
 <Layout
@@ -35,7 +36,7 @@ const lastUpdated = 'July 2026';
           your account while you are signed in:
         </p>
         <ul class="list-disc pl-6 space-y-2 text-base">
-          <li>Daily brain check-ins (brain state + optional note + timestamp)</li>
+          <li>Brain check-ins (brain state + optional note + timestamp) — several per day if you update your state</li>
           <li>Flow and focus sessions (activity, duration, intensity, interest level, helpers, drains, condition used, optional note)</li>
           <li>Your ND profile (which profiles you selected, executive function rating, working memory rating)</li>
           <li>Tools you add yourself and self-insights you record</li>
@@ -45,8 +46,8 @@ const lastUpdated = 'July 2026';
           <li>Your theme and notification preferences</li>
         </ul>
         <p class="leading-relaxed mt-4">
-          Local storage is capped so it stays bounded — for example, the most recent 365 brain
-          check-ins and sessions, and the most recent 500 recommendation outcomes.
+          Local storage is capped so it stays bounded — the most recent 2,000 brain check-ins,
+          365 flow sessions, 500 recommendation outcomes, 50 self-insights, and 100 custom tools.
         </p>
       </section>
 
@@ -58,7 +59,7 @@ const lastUpdated = 'July 2026';
           address and a password.
         </p>
         <ul class="list-disc pl-6 space-y-2 text-base">
-          <li>Your email address is stored by Supabase for authentication. Password resets are handled by emailing you a 6-digit code.</li>
+          <li>Your email address is stored by Supabase for authentication. Password resets are handled by emailing you a one-time code.</li>
           <li>Your brain checks, sessions, profile, custom tools, insights, and recommender state are synced to Supabase's servers and stored encrypted at rest.</li>
           <li>Sync runs in the background and never blocks the app. Once you are signed in, Amplifly works offline — an account is required, but a live connection is not.</li>
           <li>Signing out immediately stops syncing. Your local data stays on your device. Signing in again with the same account keeps it; signing in with a different account clears the local data first.</li>
@@ -96,8 +97,26 @@ const lastUpdated = 'July 2026';
           as you log sessions.
         </p>
         <p class="leading-relaxed mt-4">
-          Amplifly uses no sensors, wearables, or biometric data. Everything it reasons about
-          comes from what you tell it and what the phone already knows.
+          {APP_STORE_NAME}, the version of Amplifly on the App Store today, uses no sensors,
+          wearables, or biometric data. Everything it reasons about comes from what you tell it
+          and what the phone already knows.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-deep-navy text-2xl font-bold mb-4">The BioProxal wearable (in development)</h2>
+        <p class="leading-relaxed">
+          An optional BioProxal wearable integration is being built and is <strong>not part of the App
+          Store release</strong>. As currently built, the wearable computes its readings on the device
+          itself and sends only finished values — a flow score, heart rate, HRV, SpO2, and
+          breathing rate — to the app over Bluetooth while the app is open. The app displays those
+          values and does not store them, does not sync them to your account, and does not receive
+          raw sensor signals. Self-report labels you tap (for example "Focused" or "Calm") are sent
+          to the wearable, not to our servers.
+        </p>
+        <p class="leading-relaxed mt-4">
+          Before a wearable-enabled version is released, this policy will be updated to describe
+          the final data flow, and the date at the top of this page will change.
         </p>
       </section>
 

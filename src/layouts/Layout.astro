@@ -9,13 +9,16 @@ interface Props {
 
 const {
   title,
-  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched techniques, log your sessions, and build a personal operating manual — entirely on your device.",
+  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched techniques, log your sessions, and build a personal operating manual — computed on your device. On the App Store as Amplifly Lite; BioProxal wearable integration in development.",
   keywords = "neurodivergent, ADHD, autism, flow state, focus, executive function, brain states, productivity, offline, privacy, mental health",
   ogImage = "/images/og-image.png",
   canonical = Astro.url.href
 } = Astro.props;
 
 import Navigation from '../components/Navigation.astro';
+
+// Social cards need an absolute image URL.
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${ogImage}`;
 ---
 
 <!doctype html>
@@ -38,14 +41,16 @@ import Navigation from '../components/Navigation.astro';
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={`${title} — Amplifly`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Amplifly" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={`${title} — Amplifly`} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image" content={ogImageUrl} />
 
     <meta name="theme-color" content="#15273F" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +61,8 @@ import Navigation from '../components/Navigation.astro';
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Amplifly",
-        "description": "A flow and strengths tool for neurodivergent minds.",
+        "alternateName": "Amplifly Lite",
+        "description": "A flow and strengths tool for neurodivergent minds. Listed on the App Store as Amplifly Lite; BioProxal wearable integration in development.",
         "url": "https://amplifly.me",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "iOS",

@@ -1,5 +1,5 @@
 ---
-import { APP_STORE_URL } from '../consts';
+import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
 const year = new Date().getFullYear();
 ---
 <footer class="bg-deep-navy border-t border-white/10 py-16">
@@ -14,7 +14,8 @@ const year = new Date().getFullYear();
           A flow and strengths tool for neurodivergent minds. Understand your patterns.
           Work with your brain. Build your manual.
         </p>
-        <p class="text-medium-blue/50 text-xs">On-device by design. No tracking.</p>
+        <p class="text-medium-blue/50 text-xs">On-device by design. No analytics tracking.</p>
+        <p class="text-medium-blue/50 text-xs mt-1">On the App Store as {APP_STORE_NAME}. BioProxal wearable integration in development.</p>
       </div>
 
       <!-- Links: Product -->
@@ -24,6 +25,7 @@ const year = new Date().getFullYear();
           <li><a href={APP_STORE_URL} target="_blank" rel="noopener" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Download</a></li>
           <li><a href="/#brain-states" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Brain States</a></li>
           <li><a href="/#conditions"   class="text-medium-blue/70 hover:text-white text-sm transition-colors">Conditions</a></li>
+          <li><a href="/#wearable"     class="text-medium-blue/70 hover:text-white text-sm transition-colors">Wearable</a></li>
           <li><a href="/#manual"       class="text-medium-blue/70 hover:text-white text-sm transition-colors">Your Manual</a></li>
           <li><a href="/#privacy"      class="text-medium-blue/70 hover:text-white text-sm transition-colors">Privacy</a></li>
           <li><a href="/#faq"          class="text-medium-blue/70 hover:text-white text-sm transition-colors">FAQ</a></li>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
 ---
 
 <Layout
@@ -74,7 +75,7 @@ import Footer from '../components/Footer.astro';
           },
           {
             title: 'A focus timer that logs itself',
-            desc: 'Start a work session in the app — 25, 50, or 90 minutes, or no limit, with optional breaks that alert you even if the app is closed. When you stop, the log arrives pre-filled with the measured time. The manual fills itself while you work.',
+            desc: 'Start a work session in the app — 25, 50, or 90 minutes, or no limit, with optional breaks that alert you even if the app is closed. When you stop, the log opens with the measured duration already filled in; you add what you worked on and how it went.',
           },
           {
             title: 'Your operating manual',
@@ -82,7 +83,7 @@ import Footer from '../components/Footer.astro';
           },
           {
             title: 'On-device, genuinely private',
-            desc: 'Everything lives in your phone\'s local storage and every algorithm runs there, so the app works offline once you\'re signed in. No analytics, no crash reports, no third-party SDKs. Your account syncs your data across devices via Supabase — encrypted in transit, never sold or shared.',
+            desc: 'Everything lives in your phone\'s local storage and every algorithm runs there, so the app works offline once you\'re signed in. No analytics, crash-reporting, or advertising SDKs. The only service the app talks to is Supabase, which syncs your data to your own account — encrypted in transit, never sold or shared.',
           },
         ].map(item => (
           <div class="bg-white rounded-xl p-6">
@@ -90,6 +91,44 @@ import Footer from '../components/Footer.astro';
             <p class="text-accessible-gray leading-relaxed text-base">{item.desc}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Live vs. next -->
+  <section class="py-20 bg-white">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <h2 class="text-deep-navy text-2xl font-bold mb-3">What's live, and what's next</h2>
+      <p class="text-accessible-gray leading-relaxed mb-8">
+        Two versions exist. One you can download today; one is still being built. We keep the
+        line between them clear.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-soft-blue rounded-xl p-6">
+          <p class="text-green-600 text-xs font-bold tracking-widest uppercase mb-2">Live today</p>
+          <h3 class="text-deep-navy font-bold text-lg mb-2">{APP_STORE_NAME}</h3>
+          <p class="text-accessible-gray leading-relaxed text-sm mb-4">
+            The software-only release, on the App Store for iOS. Everything described above —
+            brain states, conditions, the recommender, the forecast, the Focus timer, the manual —
+            with no hardware required.
+          </p>
+          <a href={APP_STORE_URL} target="_blank" rel="noopener" class="text-bright-blue text-sm font-semibold hover:text-deep-navy transition-colors">
+            Get it on the App Store →
+          </a>
+        </div>
+        <div class="bg-soft-blue rounded-xl p-6">
+          <p class="text-bright-blue text-xs font-bold tracking-widest uppercase mb-2">In development</p>
+          <h3 class="text-deep-navy font-bold text-lg mb-2">BioProxal wearable integration</h3>
+          <p class="text-accessible-gray leading-relaxed text-sm mb-4">
+            We're partnering with BioProxal, a separate company whose wrist-worn optical sensor is being
+            built specifically for Amplifly, to add an optional live physiological signal to the loop. It computes a flow score, heart rate, HRV, SpO2, and
+            breathing rate on the wearable itself and sends only those finished values to the app
+            over Bluetooth. It is not in the App Store build, and there is no release date yet.
+          </p>
+          <a href="/#wearable" class="text-bright-blue text-sm font-semibold hover:text-deep-navy transition-colors">
+            How it's built →
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -102,7 +141,7 @@ import Footer from '../components/Footer.astro';
         {[
           { icon: '🧠', title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
           { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Stored on your device, computed on your device, synced only to your own account. Fully explained, no surprises.' },
-          { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture. We explain how things work.' },
+          { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture, and it tells you when it is running on synthetic priors versus your data. We explain how things work — and we say what is shipped versus still in development.' },
           { icon: '📈', title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
         ].map(v => (
           <div class="flex gap-4">

@@ -1,4 +1,5 @@
 ---
+import { APP_STORE_NAME } from '../consts';
 ---
 <section id="privacy" class="bg-white py-24">
   <div class="container px-6 mx-auto">
@@ -18,8 +19,8 @@
           data backed up and available across devices — nothing else touches it.
         </p>
         <p class="text-accessible-gray text-lg leading-relaxed mb-8">
-          We collect no analytics, no crash reports, and no advertising data. There is no third-party
-          SDK in this app that phones home.
+          We collect no analytics, no crash reports, and no advertising data. The only service the
+          app talks to is Supabase, and only to sync your own account.
         </p>
         <a href="/privacy-policy" class="text-bright-blue font-semibold hover:text-deep-navy transition-colors text-sm">
           Read the full privacy policy →
@@ -37,12 +38,17 @@
           {
             icon: '☁️',
             title: 'Sync you can read the terms of',
-            desc: 'Amplifly needs an account, so your data syncs to it — encrypted in transit and stored on Supabase\'s secure servers solely so it\'s there on your next device. Never sold, never shared.',
+            desc: 'Amplifly needs an account, so your data syncs to it — encrypted in transit and stored on Supabase\'s servers solely so it\'s there on your next device. Never sold, never shared.',
           },
           {
             icon: '🤖',
             title: 'On-device AI',
-            desc: 'The recommendation engine (Thompson-sampling bandit) and the flow forecast (neural network) both run entirely on your device. No sensors, no wearables — just what you tell it.',
+            desc: `The recommendation engine (Thompson-sampling bandit) and the flow forecast (neural network) both run entirely on your device. ${APP_STORE_NAME}, the version on the App Store today, uses no sensors, wearables, or biometric data — just what you tell it.`,
+          },
+          {
+            icon: '⌚',
+            title: 'The wearable, when it comes',
+            desc: 'The optional BioProxal integration in development keeps the same rule: readings are computed on the wearable, the app receives only finished numbers, and as currently built it does not store or sync them. The privacy policy will be updated before that version ships.',
           },
           {
             icon: '🗑️',

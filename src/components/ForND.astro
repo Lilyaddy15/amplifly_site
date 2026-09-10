@@ -5,6 +5,7 @@ const profiles = [
   'OCD', 'Anxiety', 'Depression', 'PTSD / C-PTSD',
   'Bipolar', 'Twice Exceptional (2e)', 'Other',
 ];
+const withPriors = ['ADHD', 'Autism', 'AuDHD', 'Dyslexia', 'Dyscalculia'];
 ---
 <section id="for-nd" class="bg-deep-navy py-24">
   <div class="container px-6 mx-auto">
@@ -18,20 +19,24 @@ const profiles = [
           15 ND profiles. Zero judgment.<br/>
           <span class="text-bright-blue">You tell us once.</span>
         </h2>
-        <p class="text-medium-blue text-lg leading-relaxed mb-8">
+        <p class="text-medium-blue text-lg leading-relaxed mb-4">
           Pick the profiles that match your brain — during onboarding or whenever you feel like it.
-          Amplifly uses them to warm the recommendation engine with research-cited priors for your
-          specific profile, so it's already calibrated before you log a single session. You can pick
-          none if you'd rather not say; the recommender still works, it just starts more generic.
+          Five of them come with research-cited priors that warm up the recommender before you've
+          logged a single session. The rest start from the brain-state and time-of-day priors and
+          learn purely from your own outcomes — no invented effect sizes.
+        </p>
+        <p class="text-medium-blue text-base leading-relaxed mb-8">
+          You can pick none if you'd rather not say; the recommender still works, it just starts more generic.
         </p>
 
         <div class="flex flex-wrap gap-2">
           {profiles.map(p => (
-            <span class="bg-white/5 border border-white/10 text-medium-blue text-sm px-3 py-1.5 rounded-full">
+            <span class={`border text-sm px-3 py-1.5 rounded-full ${withPriors.includes(p) ? 'bg-bright-blue/10 border-bright-blue/30 text-white' : 'bg-white/5 border-white/10 text-medium-blue'}`}>
               {p}
             </span>
           ))}
         </div>
+        <p class="text-medium-blue/50 text-xs mt-3">Highlighted profiles ship with research-cited priors.</p>
       </div>
 
       <!-- Right: values -->
@@ -45,7 +50,7 @@ const profiles = [
           {
             icon: '📡',
             title: 'An algorithm that actually learns',
-            desc: 'The on-device recommender is a Thompson-sampling contextual bandit. It starts from research priors for your ND profile and updates every time you give feedback.',
+            desc: 'The on-device recommender is a Thompson-sampling contextual bandit. It starts from research priors and updates a Beta posterior every time you give feedback.',
           },
           {
             icon: '🔄',
@@ -55,7 +60,7 @@ const profiles = [
           {
             icon: '🌱',
             title: 'Starts useful, gets better',
-            desc: 'Research priors mean recommendations make sense from day one. After 20–30 outcomes, your personal data starts to dominate.',
+            desc: 'Research priors mean recommendations make sense from day one. Every thumbs-up, thumbs-down, or tagged session adds a full observation; after 20–30 outcomes, your personal data starts to dominate.',
           },
         ].map(item => (
           <div class="flex gap-4">

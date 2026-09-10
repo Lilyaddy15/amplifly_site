@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
+import { APP_STORE_NAME } from '../consts';
 ---
 
 <Layout title="You're on the list" description="Thanks for subscribing to Amplifly updates.">
@@ -10,10 +11,11 @@ import AppStoreBadge from '../components/AppStoreBadge.astro';
       <div class="text-6xl mb-6">🎉</div>
       <h1 class="text-white text-4xl font-bold mb-4">You're on the list.</h1>
       <p class="text-medium-blue text-lg leading-relaxed mb-8">
-        Thanks for subscribing. We'll keep you posted on updates and the Android release.
+        Thanks for subscribing. We'll keep you posted on app updates and the Android release —
+        and if you asked, we'll tell you the moment the BioProxal wearable ships.
       </p>
       <p class="text-medium-blue/80 text-base leading-relaxed mb-4">
-        Amplifly is already live on iOS — grab it now:
+        {APP_STORE_NAME} is already live on iOS — grab it now:
       </p>
       <div class="flex justify-center mb-10">
         <AppStoreBadge height="h-14" />

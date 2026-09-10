@@ -1,0 +1,110 @@
+---
+import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
+
+const liveToday = [
+  'Five brain states, with timestamped check-ins you can update through the day',
+  'Twelve built-in conditions across four phases, plus tools you add yourself',
+  'An on-device Thompson-sampling recommender that learns from your feedback',
+  'Flow Forecast, Focus timer, flow logging, and your operating manual',
+  'An account with cross-device sync; works offline once you are signed in',
+  'No sensors, no wearables, no biometric data',
+];
+
+const inDevelopment = [
+  {
+    title: 'A wrist-worn optical sensor over Bluetooth',
+    desc: 'The BioProxal wearable talks to the phone over Bluetooth LE while the app is open. No background scanning, no location permission.',
+  },
+  {
+    title: 'Every number is computed on the wearable',
+    desc: 'The app receives finished values — a flow score, heart rate, HRV, SpO2, breathing rate — and never a raw signal. It only decodes and displays them.',
+  },
+  {
+    title: 'Flow score leads the Today screen',
+    desc: 'When connected, the wearable\'s flow score sits at the top of Today, above your brain check-in. Readings are withheld when contact is poor or data goes stale, rather than shown as if they were good.',
+  },
+  {
+    title: 'You label how you feel',
+    desc: 'Tap Overwhelmed, Crashing, Focused, or Calm, or log a break. Those labels are sent to the wearable and are what move its baseline from population-level to personalized.',
+  },
+  {
+    title: 'Everything else keeps working',
+    desc: 'The wearable is optional — one more signal in the loop. Check-ins, conditions, the recommender, the manual — all of it runs with or without a device connected.',
+  },
+  {
+    title: 'Readings stay in the moment',
+    desc: 'As currently built, wearable readings are shown live and then gone: the app does not store them and does not sync them to your account.',
+  },
+];
+---
+<section id="wearable" class="bg-navy-light py-24 scroll-mt-16">
+  <div class="container px-6 mx-auto">
+
+    <div class="max-w-3xl mb-14">
+      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">What's live, and what's next</p>
+      <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
+        {APP_STORE_NAME} is on the App Store today.<br/>
+        <span class="text-bright-blue">The BioProxal wearable is what we're building next.</span>
+      </h2>
+      <p class="text-medium-blue text-lg leading-relaxed mb-4">
+        The app you can download right now is <strong class="text-white">{APP_STORE_NAME}</strong>: every
+        feature on this page, no hardware required. In parallel, we're partnering with BioProxal, a
+        separate company whose wearable is being built specifically for Amplifly, to bring a live
+        physiological signal into the same loop. The wearable will be optional.
+      </p>
+      <p class="text-medium-blue text-lg leading-relaxed">
+        The wearable integration is not in the App Store build yet, and we won't say it is until it
+        ships. What's below describes how it is actually built today, not a promise about the final version.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6">
+
+      <!-- Live today -->
+      <div class="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="inline-block w-2 h-2 rounded-full bg-green-400"></span>
+          <p class="text-green-400 text-xs font-bold tracking-widest uppercase">Live today · {APP_STORE_NAME}</p>
+        </div>
+        <p class="text-white font-bold text-xl mb-4">Software only. Nothing to pair.</p>
+        <ul class="space-y-3 mb-6">
+          {liveToday.map(item => (
+            <li class="flex gap-3 text-medium-blue text-sm leading-relaxed">
+              <span class="text-green-400 flex-shrink-0">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={APP_STORE_URL} target="_blank" rel="noopener"
+           class="inline-block bg-bright-blue hover:bg-bright-blue/80 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
+          Get {APP_STORE_NAME} on the App Store
+        </a>
+      </div>
+
+      <!-- In development -->
+      <div class="lg:col-span-3 bg-white/5 border border-bright-blue/30 rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="inline-block w-2 h-2 rounded-full bg-bright-blue"></span>
+          <p class="text-bright-blue text-xs font-bold tracking-widest uppercase">In development · BioProxal wearable</p>
+        </div>
+        <p class="text-white font-bold text-xl mb-5">How the integration is built</p>
+        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+          {inDevelopment.map(item => (
+            <div>
+              <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+              <p class="text-medium-blue text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 pt-5 border-t border-white/10">
+          <p class="text-medium-blue/70 text-sm leading-relaxed">
+            No release date yet. The privacy policy will describe the wearable data flow before a
+            wearable-enabled version ships.{' '}
+            <a href="/#email-updates" class="text-bright-blue hover:text-white transition-colors font-semibold">Join the email list</a>
+            {' '}and we'll tell you when it does.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 ---
 import AppStoreBadge from './AppStoreBadge.astro';
+import { APP_STORE_NAME } from '../consts';
 ---
 <section class="bg-deep-navy min-h-screen flex items-center pt-16">
   <div class="container px-6 mx-auto py-24 lg:py-32">
@@ -15,12 +16,12 @@ import AppStoreBadge from './AppStoreBadge.astro';
       </h1>
 
       <p class="text-medium-blue text-lg md:text-xl leading-relaxed mb-10 max-w-2xl">
-        Check in with how your brain feels today. Get matched techniques that work for
+        Check in with how your brain feels right now. Get matched techniques that work for
         that specific state. Log your sessions. Watch a personal operating manual build
-        itself — all on your device, no tracking.
+        itself — stored and computed on your device, no analytics tracking.
       </p>
 
-      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-16">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
         <AppStoreBadge height="h-14" />
         <a href="/#how-it-works"
            class="border border-medium-blue/40 hover:border-medium-blue text-medium-blue hover:text-white font-semibold px-8 py-4 rounded-xl transition-colors text-center text-base">
@@ -28,10 +29,16 @@ import AppStoreBadge from './AppStoreBadge.astro';
         </a>
       </div>
 
+      <p class="text-medium-blue/70 text-sm mb-14 max-w-2xl">
+        On the App Store as <span class="text-white font-semibold">{APP_STORE_NAME}</span> — the software-only
+        release. Integration with the BioProxal wearable is in development.{' '}
+        <a href="/#wearable" class="text-bright-blue hover:text-white transition-colors font-semibold">What that means →</a>
+      </p>
+
       <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-medium-blue/70">
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Your data stays on your device</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Stored and computed on your device</span>
         <span class="flex items-center gap-2"><span class="text-green-400">✓</span> No analytics or ad tracking</span>
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Now on the App Store</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Now on the App Store for iOS</span>
       </div>
     </div>
 
@@ -51,6 +58,6 @@ import AppStoreBadge from './AppStoreBadge.astro';
         </div>
       ))}
     </div>
-    <p class="text-medium-blue/50 text-sm mt-4">Five brain states. Pick one each morning. No wrong answer.</p>
+    <p class="text-medium-blue/50 text-sm mt-4">Five brain states. Pick one when you wake up, update it whenever it shifts. No wrong answer.</p>
   </div>
 </section>

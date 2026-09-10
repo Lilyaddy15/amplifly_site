@@ -74,6 +74,7 @@ import { APP_STORE_URL } from '../consts';
             <p class="text-accessible-gray text-xs mt-1">{card.sub}</p>
           </div>
         ))}
+        <p class="col-span-2 text-neutral-gray text-xs text-center mt-1">Example values. Your manual is built only from what you log.</p>
       </div>
     </div>
 
@@ -82,7 +83,7 @@ import { APP_STORE_URL } from '../consts';
       {[
         { icon: '🕓', label: 'Your brain through the day', desc: 'Your most common state at each time of day' },
         { icon: '📊', label: 'Brain state × flow quality', desc: 'Which states produce your best work' },
-        { icon: '📈', label: 'Day-of-week patterns', desc: 'Bar chart of your high-intensity days' },
+        { icon: '📈', label: 'Day-of-week patterns', desc: 'Bar chart of your 4–5★ sessions by weekday' },
         { icon: '🤖', label: 'Learned condition rankings', desc: 'What the recommender has figured out' },
       ].map(item => (
         <div>
