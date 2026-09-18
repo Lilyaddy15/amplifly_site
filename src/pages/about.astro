@@ -2,11 +2,40 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
+
+const team = [
+  {
+    name: 'Lily Stone',
+    role: 'Founder, Amplifly',
+    img: '/images/lily.jpeg',
+    alt: 'Lily Stone, founder of Amplifly',
+    linkedin: 'https://www.linkedin.com/in/lily-stone-6118311b9/',
+    heading: "Hi, I'm Lily 👋",
+    paragraphs: [
+      "I'm a neurodivergent founder who spent years trying to use productivity tools that assumed my brain worked the same every day. It doesn't. None of ours do.",
+      'Amplifly grew out of a simple question: what if an app actually started with how your brain feels today, instead of treating every morning like a blank slate? The five brain states, the techniques, the operating manual — all of it came from trying to understand my own patterns and finding no tool that did it honestly.',
+      "The technology should adapt to neurodivergent minds, not the other way around. That's the whole point.",
+    ],
+  },
+  {
+    name: 'Michael Moschello',
+    role: 'Founder, BioProxal',
+    img: '/images/michael.jpg',
+    alt: 'Michael Moschello, founder of BioProxal',
+    linkedin: 'https://www.linkedin.com/in/michael-moschello-b0647b231/',
+    heading: 'Michael Moschello',
+    paragraphs: [
+      'Michael is the founder of BioProxal, a separate company building a wrist-worn optical sensor specifically for Amplifly. We are working together to bring the BioProxal wearable to the app as an optional live signal alongside your check-ins.',
+      "BioProxal's rule is the same as ours: the wearable does its own thinking. Heart rate, HRV, and flow are computed on the device itself, and the app only ever receives finished numbers — never a raw signal.",
+      'The integration is in development and is not in the App Store build yet. There is no release date.',
+    ],
+  },
+];
 ---
 
 <Layout
   title="About"
-  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it."
+  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it. The BioProxal wearable is being built for it by Michael Moschello."
 >
   <!-- Hero -->
   <section class="pt-32 pb-20 bg-deep-navy">
@@ -23,33 +52,44 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
     </div>
   </section>
 
-  <!-- Founder -->
+  <!-- Team -->
   <section class="py-20 bg-white">
     <div class="container px-6 mx-auto max-w-3xl">
-      <div class="flex flex-col md:flex-row gap-10 items-start">
-        <img
-          src="/images/lily.jpeg"
-          alt="Lily Stone, founder of Amplifly"
-          class="w-40 h-40 rounded-2xl object-cover flex-shrink-0"
-        />
-        <div>
-          <h2 class="text-deep-navy text-2xl font-bold mb-2">Hi, I'm Lily 👋</h2>
-          <p class="text-bright-blue text-sm font-semibold mb-4">Founder of Amplifly</p>
-          <p class="text-accessible-gray leading-relaxed mb-4">
-            I'm a neurodivergent founder who spent years trying to use productivity tools
-            that assumed my brain worked the same every day. It doesn't. None of ours do.
-          </p>
-          <p class="text-accessible-gray leading-relaxed mb-4">
-            Amplifly grew out of a simple question: what if an app actually started with
-            how your brain feels today, instead of treating every morning like a blank slate?
-            The five brain states, the techniques, the operating manual — all of it came from
-            trying to understand my own patterns and finding no tool that did it honestly.
-          </p>
-          <p class="text-accessible-gray leading-relaxed">
-            The technology should adapt to neurodivergent minds, not the other way around.
-            That's the whole point.
-          </p>
-        </div>
+      <h2 class="text-deep-navy text-2xl font-bold mb-10">Who's building it</h2>
+      <div class="space-y-16">
+        {team.map(person => (
+          <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
+            <div class="flex-shrink-0 flex flex-col items-center gap-3">
+              <img
+                src={person.img}
+                alt={person.alt}
+                width="160"
+                height="160"
+                loading="lazy"
+                class="w-40 h-40 rounded-2xl object-cover"
+              />
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener"
+                aria-label={`${person.name} on LinkedIn`}
+                class="inline-flex items-center gap-2 text-accessible-gray hover:text-bright-blue text-sm font-semibold transition-colors"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.2 0 22.23 0z"/>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+            <div>
+              <h3 class="text-deep-navy text-2xl font-bold mb-2">{person.heading}</h3>
+              <p class="text-bright-blue text-sm font-semibold mb-4">{person.role}</p>
+              {person.paragraphs.map(p => (
+                <p class="text-accessible-gray leading-relaxed mb-4 last:mb-0">{p}</p>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -67,7 +107,7 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
           },
           {
             title: 'A condition recommender that learns',
-            desc: 'Twelve evidence-informed techniques across four phases — plus any tool you add yourself, which becomes a first-class option with the same standing as the built-ins. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. Research priors from day one, personal data as you build history.',
+            desc: 'Twelve built-in techniques across four phases — primers, protectors, recovery, and resets — plus any tool you add yourself, which becomes a first-class option with the same standing as the built-ins. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. It starts from research priors and anything you tell it about yourself, and after roughly ten to twenty real outcomes in a cell, your own results outweigh both.',
           },
           {
             title: 'A flow logger',
@@ -78,12 +118,12 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
             desc: 'Start a work session in the app — 25, 50, or 90 minutes, or no limit, with optional breaks that alert you even if the app is closed. When you stop, the log opens with the measured duration already filled in; you add what you worked on and how it went.',
           },
           {
-            title: 'Your operating manual',
-            desc: 'The Manual tab synthesises everything into a living document: your sharpest hour, your highest-flow brain state, your top helpers and drains, your streaks, what the recommender has figured out. The more you log, the sharper it gets.',
+            title: 'A flow forecast that says what it is',
+            desc: 'A small neural network predicts how focused you are likely to be given your brain state, ND profile, and time of day. It was trained on a synthetic dataset built from published research, not on real participants, and its weights are fixed. It calibrates against the sessions you log, and it tells you when it is still running on priors instead of your data.',
           },
           {
-            title: 'On-device, genuinely private',
-            desc: 'Everything lives in your phone\'s local storage and every algorithm runs there, so the app works offline once you\'re signed in. No analytics, crash-reporting, or advertising SDKs. The only service the app talks to is Supabase, which syncs your data to your own account — encrypted in transit, never sold or shared.',
+            title: 'Your operating manual',
+            desc: 'The Manual tab synthesises everything into a living document: your sharpest hour, your highest-flow brain state, your top helpers and drains, your streaks, what the recommender has figured out. The more you log, the sharper it gets.',
           },
         ].map(item => (
           <div class="bg-white rounded-xl p-6">
@@ -95,8 +135,54 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
     </div>
   </section>
 
-  <!-- Live vs. next -->
+  <!-- Data -->
   <section class="py-20 bg-white">
+    <div class="container px-6 mx-auto max-w-3xl">
+      <h2 class="text-deep-navy text-2xl font-bold mb-3">Where your data actually lives</h2>
+      <p class="text-accessible-gray leading-relaxed mb-8">
+        This is how the app is built, not a summary of a policy. The
+        <a href="/privacy-policy" class="text-bright-blue font-semibold hover:text-deep-navy transition-colors">privacy policy</a>
+        is the formal version.
+      </p>
+
+      <div class="space-y-6">
+        {[
+          {
+            title: 'Your phone comes first',
+            desc: 'Every check-in, session, and setting is written to your phone\'s local storage the moment you save it. The screen never waits on the network, and the app keeps working with no connection once you are signed in. The phone holds a bounded recent copy — your last 2,000 check-ins and 365 sessions — and your account holds the full history.',
+          },
+          {
+            title: 'Your account is the backup',
+            desc: 'Amplifly requires an account. Each write is pushed to it in the background right after it lands on your phone, and signing in on a new phone pulls your history back down. Deletions are queued and replayed if you were offline, so nothing you removed comes back. Data travels encrypted in transit and sits in Supabase, isolated to your user ID, only so it is there on your next device. It is never sold or shared.',
+          },
+          {
+            title: 'What syncs',
+            desc: 'Your name and ND profile, brain check-ins, flow sessions, the recommender\'s learned state and each outcome it learned from, the things you told it about yourself, and any tools you added. That is the whole list for the version on the App Store today.',
+          },
+          {
+            title: 'Every algorithm runs on your phone',
+            desc: 'The recommender and the flow forecast are plain code inside the app. Nothing you log is sent anywhere to be scored, and no model is trained on our servers. There are no analytics, crash-reporting, or advertising SDKs in the app. Break reminders are local notifications scheduled by your phone.',
+          },
+          {
+            title: 'The wearable version',
+            desc: 'The BioProxal integration keeps the same rule: readings are computed on the wearable, and the app receives only finished numbers, never a raw signal. It is not in the App Store build, and the privacy policy will be updated to describe the wearable data flow before it ships.',
+          },
+          {
+            title: 'Leaving',
+            desc: 'Sign out and syncing stops immediately; your local data stays on your phone. To delete your account and everything stored under it, email hello@amplifly.me.',
+          },
+        ].map(item => (
+          <div class="bg-soft-blue rounded-xl p-6">
+            <h3 class="text-deep-navy font-bold text-lg mb-2">{item.title}</h3>
+            <p class="text-accessible-gray leading-relaxed text-base">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Live vs. next -->
+  <section class="py-20 bg-soft-blue">
     <div class="container px-6 mx-auto max-w-3xl">
       <h2 class="text-deep-navy text-2xl font-bold mb-3">What's live, and what's next</h2>
       <p class="text-accessible-gray leading-relaxed mb-8">
@@ -104,7 +190,7 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
         line between them clear.
       </p>
       <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-soft-blue rounded-xl p-6">
+        <div class="bg-white rounded-xl p-6">
           <p class="text-green-600 text-xs font-bold tracking-widest uppercase mb-2">Live today</p>
           <h3 class="text-deep-navy font-bold text-lg mb-2">{APP_STORE_NAME}</h3>
           <p class="text-accessible-gray leading-relaxed text-sm mb-4">
@@ -116,14 +202,14 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
             Get it on the App Store →
           </a>
         </div>
-        <div class="bg-soft-blue rounded-xl p-6">
+        <div class="bg-white rounded-xl p-6">
           <p class="text-bright-blue text-xs font-bold tracking-widest uppercase mb-2">In development</p>
           <h3 class="text-deep-navy font-bold text-lg mb-2">BioProxal wearable integration</h3>
           <p class="text-accessible-gray leading-relaxed text-sm mb-4">
-            We're partnering with BioProxal, a separate company whose wrist-worn optical sensor is being
-            built specifically for Amplifly, to add an optional live physiological signal to the loop. It computes a flow score, heart rate, HRV, SpO2, and
-            breathing rate on the wearable itself and sends only those finished values to the app
-            over Bluetooth. It is not in the App Store build, and there is no release date yet.
+            Built with Michael and BioProxal: an optional wrist-worn optical sensor that computes a
+            flow score, heart rate, HRV, SpO2, and breathing rate on the wearable itself and sends only
+            those finished values to the app over Bluetooth. It will ship as an update to the same app,
+            so your history carries forward. Not in the App Store build, and no release date yet.
           </p>
           <a href="/#wearable" class="text-bright-blue text-sm font-semibold hover:text-deep-navy transition-colors">
             How it's built →
@@ -140,7 +226,7 @@ import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
       <div class="grid sm:grid-cols-2 gap-6">
         {[
           { icon: '🧠', title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
-          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Stored on your device, computed on your device, synced only to your own account. Fully explained, no surprises.' },
+          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Written to your phone first, computed on your phone, synced only to your own account so it survives a new device. Fully explained, no surprises.' },
           { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture, and it tells you when it is running on synthetic priors versus your data. We explain how things work — and we say what is shipped versus still in development.' },
           { icon: '📈', title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
         ].map(v => (

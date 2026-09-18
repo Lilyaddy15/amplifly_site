@@ -42,9 +42,12 @@ const lastUpdated = 'September 2026';
           <li>Tools you add yourself and self-insights you record</li>
           <li>Your name (optional, used only for personalized greetings)</li>
           <li>The recommendation engine's learned state (Beta posteriors per condition/context cell) and its outcome history</li>
-          <li>The personal calibration layer for the flow forecast</li>
-          <li>Your theme and notification preferences</li>
         </ul>
+        <p class="leading-relaxed mt-4">
+          Your theme and notification preferences are also stored on your device, but they are not
+          synced. Reminders and Focus-timer break alerts are local notifications scheduled by your
+          phone; the app does not register for push notifications.
+        </p>
         <p class="leading-relaxed mt-4">
           Local storage is capped so it stays bounded — the most recent 2,000 brain check-ins,
           365 flow sessions, 500 recommendation outcomes, 50 self-insights, and 100 custom tools.
@@ -93,8 +96,8 @@ const lastUpdated = 'September 2026';
         <p class="leading-relaxed mt-4">
           The flow forecast uses a small neural network trained on synthetic data built from
           published research on focus and neurodivergence. The weights are fixed and ship with
-          the app — they never change on your device. Only a personal calibration layer updates
-          as you log sessions.
+          the app — they never change on your device. The forecast is then calibrated against the
+          flow sessions you have logged; that calibration is computed on the spot, not stored.
         </p>
         <p class="leading-relaxed mt-4">
           {APP_STORE_NAME}, the version of Amplifly on the App Store today, uses no sensors,
@@ -109,14 +112,13 @@ const lastUpdated = 'September 2026';
           An optional BioProxal wearable integration is being built and is <strong>not part of the App
           Store release</strong>. As currently built, the wearable computes its readings on the device
           itself and sends only finished values — a flow score, heart rate, HRV, SpO2, and
-          breathing rate — to the app over Bluetooth while the app is open. The app displays those
-          values and does not store them, does not sync them to your account, and does not receive
-          raw sensor signals. Self-report labels you tap (for example "Focused" or "Calm") are sent
-          to the wearable, not to our servers.
+          breathing rate — to the app over Bluetooth while the app is open. The app never receives
+          raw sensor signals.
         </p>
         <p class="leading-relaxed mt-4">
-          Before a wearable-enabled version is released, this policy will be updated to describe
-          the final data flow, and the date at the top of this page will change.
+          This policy describes the App Store release only. Before a wearable-enabled version is
+          released, it will be updated to describe what the app stores, syncs, and does with the
+          wearable's numbers, and the date at the top of this page will change.
         </p>
       </section>
 
@@ -149,7 +151,7 @@ const lastUpdated = 'September 2026';
         <h2 class="text-deep-navy text-2xl font-bold mb-4">Changes to this policy</h2>
         <p class="leading-relaxed">
           If we make material changes to this policy, we will update the date at the top of
-          this page and notify users via in-app messaging where possible.
+          this page.
         </p>
       </section>
 
