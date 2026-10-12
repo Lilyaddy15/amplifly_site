@@ -226,9 +226,9 @@ body.amp { margin: 0; background: var(--white); color: var(--deep-navy); font-fa
 
 /* ---------- Day timeline ---------- */
 .day { display: grid; gap: 18px; }
-.day__readout { display: flex; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; min-height: 64px; }
+.day__readout { display: grid; gap: 10px; align-content: start; }
 .day__time { font-weight: 900; font-size: clamp(40px, 6vw, 64px); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-.day__now { font-size: 18px; line-height: 28px; color: var(--ink-muted); }
+.day__now { font-size: 18px; line-height: 28px; color: var(--ink-muted); min-height: 56px; } /* always under the time; room for two lines so the band never jumps */
 .day__now b { color: var(--ink); }
 .day__track { position: relative; }
 .day__band { display: flex; height: 72px; border-radius: 14px; overflow: hidden; }
