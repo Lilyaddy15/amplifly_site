@@ -3,31 +3,30 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import { APP_STORE_NAME } from '../consts';
+import { STATES, glyph } from '../lib/states';
 ---
 
 <Layout title="You're on the list" description="Thanks for subscribing to Amplifly updates.">
-  <section class="min-h-screen flex items-center justify-center bg-deep-navy text-white py-20 pt-32">
-    <div class="container px-6 mx-auto text-center max-w-xl">
-      <div class="text-6xl mb-6">🎉</div>
-      <h1 class="text-white text-4xl font-bold mb-4">You're on the list.</h1>
-      <p class="text-medium-blue text-lg leading-relaxed mb-8">
-        Thanks for subscribing. We'll keep you posted on app updates and the Android release —
-        and if you asked, we'll tell you the moment the BioProxal wearable ships.
-      </p>
-      <p class="text-medium-blue/80 text-base leading-relaxed mb-4">
-        {APP_STORE_NAME} is already live on iOS — grab it now:
-      </p>
-      <div class="flex justify-center mb-10">
-        <AppStoreBadge height="h-14" />
+  <section class="band ty" data-theme="navy">
+    <div class="wrap">
+      <div class="ty__glyphs" aria-hidden="true">
+        {STATES.map(s => <Fragment set:html={glyph(s.id, 40)} />)}
       </div>
-      <p class="text-medium-blue/60 text-sm mb-10">
-        Questions, or want to share your ND experience to help shape the app? Email us at{' '}
-        <a href="mailto:hello@amplifly.me" class="text-bright-blue hover:underline">hello@amplifly.me</a>.
+      <p class="eyebrow">Subscribed</p>
+      <h1 class="display" style="margin-top:16px">You're on <em>the list.</em></h1>
+      <p class="lead" style="margin-top:24px;max-width:40ch">
+        Thanks for subscribing. We'll keep you posted on app updates and the Android release, and if
+        you asked, we'll tell you the moment the BioProxal wearable ships.
       </p>
-      <a href="/"
-         class="inline-block border border-medium-blue/40 hover:border-medium-blue text-medium-blue hover:text-white font-semibold px-8 py-4 rounded-xl transition-colors">
-        Back to Amplifly
-      </a>
+      <p class="body" style="margin-top:32px">{APP_STORE_NAME} is already live on iOS:</p>
+      <div class="actions" style="margin-top:16px">
+        <AppStoreBadge height="h-14" />
+        <a class="btn btn--ghost" href="/">Back to Amplifly</a>
+      </div>
+      <p class="small" style="margin-top:40px;max-width:52ch">
+        Questions, or want to share your ND experience to help shape the app? Email
+        <a class="link" href="mailto:hello@amplifly.me">hello@amplifly.me</a>.
+      </p>
     </div>
   </section>
   <Footer />

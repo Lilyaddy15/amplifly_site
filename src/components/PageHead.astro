@@ -1,0 +1,18 @@
+---
+// Navy header band shared by the inner pages: eyebrow, big title, optional lead and meta.
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent?: string; // second phrase of the title, set in the accent colour
+  lead?: string;
+}
+const { eyebrow, title, accent, lead } = Astro.props;
+---
+<section class="band ph" data-theme="navy">
+  <div class="wrap">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="display ph__title">{title}{accent && <> <em>{accent}</em></>}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    {Astro.slots.has('default') && <div class="ph__meta"><slot /></div>}
+  </div>
+</section>

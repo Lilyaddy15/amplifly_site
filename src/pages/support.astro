@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import PageHead from '../components/PageHead.astro';
 import { APP_STORE_NAME } from '../consts';
 
 const supportEmail = 'hello@amplifly.me';
@@ -49,66 +50,57 @@ const topics = [
   title="Support"
   description="Get help with Amplifly. Contact support, find answers to common questions, and learn how to manage your account and data."
 >
-  <main class="container mx-auto px-6 pt-32 pb-20 max-w-3xl">
+  <PageHead eyebrow="Support" title="Stuck? We read" accent="every message." lead="We're a small team. Here's how to get help, and answers to what people ask most." />
 
-    <h1 class="text-deep-navy text-4xl font-bold mb-3">Support</h1>
-    <p class="text-neutral-gray text-base mb-12">
-      We're a small team and we read every message. Here's how to get help.
-    </p>
-
-    <!-- Contact card -->
-    <div class="bg-soft-blue rounded-2xl p-8 mb-14">
-      <h2 class="text-deep-navy text-2xl font-bold mb-3">Contact us</h2>
-      <p class="text-accessible-gray text-base leading-relaxed mb-5">
-        The fastest way to reach us is by email. Tell us what's happening — and, if it helps,
-        which device and app version you're on — and we'll get back to you, usually within
-        1–2 business days.
-      </p>
-      <a
-        href={`mailto:${supportEmail}?subject=Amplifly%20Support`}
-        class="inline-block bg-bright-blue text-white font-semibold rounded-full px-6 py-3 hover:bg-deep-navy transition-colors"
-      >
-        Email {supportEmail}
-      </a>
-    </div>
-
-    <!-- Common topics -->
-    <div class="space-y-10 text-accessible-gray">
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-6">Common questions</h2>
-        <div class="space-y-8">
-          {topics.map((topic) => (
-            <div>
-              <h3 class="text-deep-navy text-lg font-semibold mb-2">{topic.q}</h3>
-              <p class="leading-relaxed text-base">{topic.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">More resources</h2>
-        <ul class="list-disc pl-6 space-y-2 text-base">
-          <li><a href="/#faq" class="text-bright-blue hover:underline">Frequently asked questions</a></li>
-          <li><a href="/privacy-policy" class="text-bright-blue hover:underline">Privacy Policy</a> — what we store and how sync works</li>
-          <li><a href="/terms-of-service" class="text-bright-blue hover:underline">Terms of Service</a></li>
-          <li><a href="/about" class="text-bright-blue hover:underline">About Amplifly</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">Still stuck?</h2>
-        <p class="leading-relaxed text-base">
-          Email us at{' '}
-          <a href={`mailto:${supportEmail}?subject=Amplifly%20Support`} class="text-bright-blue hover:underline">
-            {supportEmail}
-          </a>{' '}
-          and we'll help you out.
+  <section class="band band--tight" data-theme="blue">
+    <div class="wrap split" style="align-items:end">
+      <div class="col-a-wide">
+        <p class="eyebrow">Contact us</p>
+        <a class="mailbig" href={`mailto:${supportEmail}?subject=Amplifly%20Support`}>{supportEmail}</a>
+      </div>
+      <div class="col-b-narrow">
+        <p class="body">
+          Email is the fastest way to reach us. Tell us what's happening and, if it helps, which device
+          and app version you're on. We usually reply within 1–2 business days.
         </p>
-      </section>
+      </div>
     </div>
+  </section>
 
-  </main>
+  <section class="band" data-theme="paper">
+    <div class="wrap split">
+      <div class="col-a-narrow faq-intro">
+        <p class="eyebrow">Common questions</p>
+        <h2 class="h2 wipe" style="margin-top:12px">Answers, <em>first.</em></h2>
+        <p class="body" style="margin-top:20px">Tap a question to open it. More in the <a class="link" href="/#faq">homepage FAQ</a>.</p>
+      </div>
+      <div class="col-b-wide faq">
+        {topics.map(t => (
+          <details>
+            <summary>{t.q}<i aria-hidden="true"></i></summary>
+            <p>{t.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-theme="navy">
+    <div class="wrap split">
+      <div class="col-a-narrow">
+        <p class="eyebrow">More resources</p>
+        <h2 class="h2 wipe" style="margin-top:12px">Read the details.</h2>
+      </div>
+      <div class="col-b-wide">
+        <ul class="reslist">
+          <li><a href="/#faq"><div>Frequently asked questions<span>How the recommender, forecast and timer work</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/privacy-policy"><div>Privacy policy<span>What we store and how sync works</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/terms-of-service"><div>Terms of service<span>The agreement for using Amplifly</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/about"><div>About Amplifly<span>Who's building it, and why</span></div><span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <Footer />
 </Layout>

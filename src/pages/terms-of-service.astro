@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import PageHead from '../components/PageHead.astro';
+import Doc from '../components/Doc.astro';
 
 const lastUpdated = 'September 2026';
 ---
@@ -9,23 +11,23 @@ const lastUpdated = 'September 2026';
   title="Terms of Service"
   description="Amplifly terms of service."
 >
-  <main class="container mx-auto px-6 pt-32 pb-20 max-w-3xl">
+  <PageHead eyebrow="Legal" title="Terms of service" lead="The agreement for using Amplifly, in plain language where we can manage it.">
+    <p class="small">Last updated: {lastUpdated}</p>
+    <p class="small">Questions? <a class="link" href="mailto:hello@amplifly.me">hello@amplifly.me</a></p>
+  </PageHead>
 
-    <h1 class="text-deep-navy text-4xl font-bold mb-3">Terms of Service</h1>
-    <p class="text-neutral-gray text-sm mb-12">Last updated: {lastUpdated}</p>
+  <Doc>
 
-    <div class="space-y-10 text-accessible-gray text-base leading-relaxed">
-
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">1. Acceptance</h2>
+      <section id="acceptance">
+        <h2>1. Acceptance</h2>
         <p>
           By downloading or using Amplifly, you agree to these Terms of Service. If you do not
           agree, do not use the app.
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">2. What Amplifly is</h2>
+      <section id="what-amplifly-is">
+        <h2>2. What Amplifly is</h2>
         <p>
           Amplifly is a personal productivity and self-understanding tool designed for
           neurodivergent individuals. It is <strong>not a medical device</strong> and is not
@@ -33,7 +35,7 @@ const lastUpdated = 'September 2026';
           constitutes medical advice. Always consult a qualified healthcare professional for
           any health-related questions or decisions.
         </p>
-        <p class="mt-4">
+        <p>
           The app is currently listed on the App Store as "Amplifly Lite", the software-only
           release. These terms apply to it under either name. A BioProxal wearable integration is
           in development and is not part of the current release; these terms will be updated
@@ -41,12 +43,12 @@ const lastUpdated = 'September 2026';
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">3. Your account</h2>
-        <p class="mb-4">
+      <section id="your-account">
+        <h2>3. Your account</h2>
+        <p>
           Amplifly requires an account to use. You are responsible for maintaining the security
           of your credentials and for providing an email address you control. Notify us immediately at{' '}
-          <a href="mailto:hello@amplifly.me" class="text-bright-blue hover:underline">hello@amplifly.me</a>{' '}
+          <a href="mailto:hello@amplifly.me">hello@amplifly.me</a>{' '}
           if you suspect unauthorized access.
         </p>
         <p>
@@ -55,8 +57,8 @@ const lastUpdated = 'September 2026';
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">4. Pricing</h2>
+      <section id="pricing">
+        <h2>4. Pricing</h2>
         <p>
           Amplifly is a paid application. The current price is $2.99 (USD), as shown on the
           App Store at the point of download, and any purchase is processed by Apple under its
@@ -64,15 +66,15 @@ const lastUpdated = 'September 2026';
           the recommender, and the operating manual — are included, and the account required to
           use the app, along with its cross-device sync, carries no additional charge.
         </p>
-        <p class="mt-4">
+        <p>
           If we change pricing or introduce additional paid features in the future, the current
           terms will be reflected on the App Store before you purchase.
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">5. User responsibilities</h2>
-        <ul class="list-disc pl-6 space-y-2">
+      <section id="user-responsibilities">
+        <h2>5. User responsibilities</h2>
+        <ul>
           <li>Use Amplifly only for lawful personal purposes.</li>
           <li>Do not attempt to reverse engineer, decompile, or tamper with the app.</li>
           <li>Do not attempt to gain unauthorized access to any backend infrastructure.</li>
@@ -80,8 +82,8 @@ const lastUpdated = 'September 2026';
         </ul>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">6. Intellectual property</h2>
+      <section id="intellectual-property">
+        <h2>6. Intellectual property</h2>
         <p>
           All app code, design, copy, and algorithms are owned by Amplifly. Your personal data
           (check-ins, sessions, profile) belongs to you. We claim no ownership over the content
@@ -89,8 +91,8 @@ const lastUpdated = 'September 2026';
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">7. Disclaimer of warranties</h2>
+      <section id="disclaimer-of-warranties">
+        <h2>7. Disclaimer of warranties</h2>
         <p>
           Amplifly is provided "as is" without warranties of any kind, express or implied.
           We do not warrant that the app will be uninterrupted, error-free, or that any
@@ -98,8 +100,8 @@ const lastUpdated = 'September 2026';
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">8. Limitation of liability</h2>
+      <section id="limitation-of-liability">
+        <h2>8. Limitation of liability</h2>
         <p>
           To the maximum extent permitted by law, Amplifly and its founders shall not be
           liable for any indirect, incidental, or consequential damages arising from your use
@@ -107,24 +109,24 @@ const lastUpdated = 'September 2026';
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">9. Changes to these terms</h2>
+      <section id="changes-to-these-terms">
+        <h2>9. Changes to these terms</h2>
         <p>
           We may update these terms from time to time. Material changes will be communicated
           via in-app notice. Continued use of Amplifly after changes constitutes acceptance.
         </p>
       </section>
 
-      <section>
-        <h2 class="text-deep-navy text-2xl font-bold mb-4">10. Contact</h2>
+      <section id="contact">
+        <h2>10. Contact</h2>
         <p>
           Questions about these terms?{' '}
-          <a href="mailto:hello@amplifly.me" class="text-bright-blue hover:underline">hello@amplifly.me</a>
+          <a href="mailto:hello@amplifly.me">hello@amplifly.me</a>
         </p>
       </section>
 
-    </div>
-  </main>
+  </Doc>
+
 
   <Footer />
 </Layout>

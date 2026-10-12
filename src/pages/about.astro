@@ -1,29 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import PageHead from '../components/PageHead.astro';
 import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
 
 const team = [
   {
     name: 'Lily Stone',
     role: 'Founder, Amplifly',
-    img: '/images/lily.jpeg',
+    img: '/images/lily-640.webp',
     alt: 'Lily Stone, founder of Amplifly',
     linkedin: 'https://www.linkedin.com/in/lily-stone-6118311b9/',
-    heading: "Hi, I'm Lily Stone 👋",
+    heading: "Hi, I'm Lily Stone",
     paragraphs: [
       "I'm a neurodivergent founder who spent years trying to use productivity tools that assumed my brain worked the same every day. It doesn't. None of ours do.",
-      'Amplifly grew out of a simple question: what if an app actually started with how your brain feels today, instead of treating every morning like a blank slate? The five brain states, the techniques, the operating manual — all of it came from trying to understand my own patterns and finding no tool that did it honestly.',
+      'Amplifly grew out of a simple question: what if an app actually started with how your brain feels today, instead of treating every morning like a blank slate? The five brain states, the conditions, the operating manual — all of it came from trying to understand my own patterns and finding no tool that did it honestly.',
       "The technology should adapt to neurodivergent minds, not the other way around. That's the whole point.",
     ],
   },
   {
     name: 'Michael Moschello',
     role: 'Founder, BioProxal',
-    img: '/images/michael.jpg',
+    img: '/images/michael-640.webp',
     alt: 'Michael Moschello, founder of BioProxal',
     linkedin: 'https://www.linkedin.com/in/michael-moschello-b0647b231/',
-    heading: "Hi, I'm Michael Moschello 👋",
+    heading: "Hi, I'm Michael Moschello",
     paragraphs: [
       "I'm the founder of BioProxal, a separate company building a wrist-worn optical sensor specifically for Amplifly. Lily and I are working together to bring the BioProxal wearable to the app as an optional live signal alongside your check-ins.",
       "BioProxal's rule is the same as Amplifly's: the wearable does its own thinking. Heart rate, HRV, and flow are computed on the device itself, and the app only ever receives finished numbers — never a raw signal.",
@@ -31,83 +32,15 @@ const team = [
     ],
   },
 ];
----
 
-<Layout
-  title="About"
-  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it. The BioProxal wearable is being built for it by Michael Moschello."
->
-  <!-- Hero -->
-  <section class="pt-32 pb-20 bg-deep-navy">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">About Amplifly</p>
-      <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight mb-6">
-        Built from lived experience,<br/>
-        <span class="text-bright-blue">not a feature brief.</span>
-      </h1>
-      <p class="text-medium-blue text-lg leading-relaxed">
-        Amplifly started as a personal tool. It became an app because nothing else was
-        honest about what ND brains actually need.
-      </p>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="py-20 bg-white">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <h2 class="text-deep-navy text-2xl font-bold mb-10">Who's building it</h2>
-      <div class="space-y-16">
-        {team.map(person => (
-          <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
-            <div class="flex-shrink-0 flex flex-col items-center gap-3">
-              <img
-                src={person.img}
-                alt={person.alt}
-                width="160"
-                height="160"
-                loading="lazy"
-                class="w-40 h-40 rounded-2xl object-cover"
-              />
-              <a
-                href={person.linkedin}
-                target="_blank"
-                rel="noopener"
-                aria-label={`${person.name} on LinkedIn`}
-                class="inline-flex items-center gap-2 text-accessible-gray hover:text-bright-blue text-sm font-semibold transition-colors"
-              >
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.2 0 22.23 0z"/>
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-            <div>
-              <h3 class="text-deep-navy text-2xl font-bold mb-2">{person.heading}</h3>
-              <p class="text-bright-blue text-sm font-semibold mb-4">{person.role}</p>
-              {person.paragraphs.map(p => (
-                <p class="text-accessible-gray leading-relaxed mb-4 last:mb-0">{p}</p>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- What we actually built -->
-  <section class="py-20 bg-soft-blue">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <h2 class="text-deep-navy text-2xl font-bold mb-8">What Amplifly actually is</h2>
-
-      <div class="space-y-6">
-        {[
+const what = [
           {
             title: 'A brain state tracker',
             desc: 'Five states — Buzzing, Sharp, Flat, Foggy, Scattered — that capture how ND brains actually feel day to day. You pick one when you wake up and update it whenever it shifts — every check-in is timestamped. No wrong answer.',
           },
           {
             title: 'A condition recommender that learns',
-            desc: 'Twelve built-in techniques across four phases — primers, protectors, recovery, and resets — plus any tool you add yourself, which becomes a first-class option with the same standing as the built-ins. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. It starts from research priors and anything you tell it about yourself, and after roughly ten to twenty real outcomes in a cell, your own results outweigh both.',
+            desc: 'Twelve built-in conditions across four phases — primers, protectors, recovery, and resets — plus any tool you add yourself, which becomes a first-class option with the same standing as the built-ins. An on-device Thompson-sampling bandit learns which conditions work for your specific brain state, time of day, and ND profile. It starts from research priors and anything you tell it about yourself, and after roughly ten to twenty real outcomes in a cell, your own results outweigh both.',
           },
           {
             title: 'A flow logger',
@@ -125,28 +58,9 @@ const team = [
             title: 'Your operating manual',
             desc: 'The Manual tab synthesises everything into a living document: your sharpest hour, your highest-flow brain state, your top helpers and drains, your streaks, what the recommender has figured out. The more you log, the sharper it gets.',
           },
-        ].map(item => (
-          <div class="bg-white rounded-xl p-6">
-            <h3 class="text-deep-navy font-bold text-lg mb-2">{item.title}</h3>
-            <p class="text-accessible-gray leading-relaxed text-base">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+        ];
 
-  <!-- Data -->
-  <section class="py-20 bg-white">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <h2 class="text-deep-navy text-2xl font-bold mb-3">Where your data actually lives</h2>
-      <p class="text-accessible-gray leading-relaxed mb-8">
-        This is how the app is built, not a summary of a policy. The
-        <a href="/privacy-policy" class="text-bright-blue font-semibold hover:text-deep-navy transition-colors">privacy policy</a>
-        is the formal version.
-      </p>
-
-      <div class="space-y-6">
-        {[
+const data = [
           {
             title: 'Your phone comes first',
             desc: 'Every check-in, session, and setting is written to your phone\'s local storage the moment you save it. The screen never waits on the network, and the app keeps working with no connection once you are signed in. The phone holds a bounded recent copy — your last 2,000 check-ins and 365 sessions — and your account holds the full history.',
@@ -171,86 +85,161 @@ const team = [
             title: 'Leaving',
             desc: 'Sign out and syncing stops immediately; your local data stays on your phone. To delete your account and everything stored under it, email hello@amplifly.me.',
           },
-        ].map(item => (
-          <div class="bg-soft-blue rounded-xl p-6">
-            <h3 class="text-deep-navy font-bold text-lg mb-2">{item.title}</h3>
-            <p class="text-accessible-gray leading-relaxed text-base">{item.desc}</p>
+        ];
+
+const values = [
+          { title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
+          { title: 'Privacy as a feature', desc: 'Your data is yours. Written to your phone first, computed on your phone, synced only to your own account so it survives a new device. Fully explained, no surprises.' },
+          { title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture, and it tells you when it is running on synthetic priors versus your data. We explain how things work — and we say what is shipped versus still in development.' },
+          { title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
+        ];
+---
+
+<Layout
+  title="About"
+  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it. The BioProxal wearable is being built for it by Michael Moschello."
+>
+  <PageHead
+    eyebrow="About Amplifly"
+    title="Built from lived experience,"
+    accent="not a feature brief."
+    lead="Amplifly started as a personal tool. It became an app because nothing else was honest about what ND brains actually need."
+  />
+
+  <!-- Team -->
+  <section class="band" data-theme="paper">
+    <div class="wrap">
+      <header class="sh">
+        <div class="sh__num" aria-hidden="true">01</div>
+        <div>
+          <p class="eyebrow">Who's building it</p>
+          <h2 class="h2 sh__title wipe">Two founders, <em>one rule.</em></h2>
+        </div>
+      </header>
+      {team.map(person => (
+        <article class="person">
+          <img class="person__photo" src={person.img} alt={person.alt} width="640" height="800" loading="lazy" decoding="async" />
+          <div>
+            <h3 class="person__name">{person.heading}</h3>
+            <p class="eyebrow person__role">{person.role}</p>
+            {person.paragraphs.map(p => <p class="body">{p}</p>)}
+            <a class="person__in" href={person.linkedin} target="_blank" rel="noopener" aria-label={`${person.name} on LinkedIn`}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.2 0 22.23 0z"/></svg>
+              LinkedIn
+            </a>
           </div>
-        ))}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- What it is -->
+  <section class="band" data-theme="navy">
+    <div class="wrap">
+      <header class="sh">
+        <div class="sh__num" aria-hidden="true">02</div>
+        <div>
+          <p class="eyebrow">What Amplifly actually is</p>
+          <h2 class="h2 sh__title wipe">Six parts. <em>No magic.</em></h2>
+        </div>
+      </header>
+      <div class="split">
+        <div class="col-a-narrow faq-intro">
+          <p class="body">Every part of the app, described the way it's built, including what each piece can't do yet.</p>
+        </div>
+        <ol class="principles col-b-wide">
+          {what.map(item => <li><div><h3>{item.title}</h3></div><p>{item.desc}</p></li>)}
+        </ol>
       </div>
     </div>
   </section>
 
-  <!-- Live vs. next -->
-  <section class="py-20 bg-soft-blue">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <h2 class="text-deep-navy text-2xl font-bold mb-3">What's live, and what's next</h2>
-      <p class="text-accessible-gray leading-relaxed mb-8">
-        Two versions exist. One you can download today; one is still being built. We keep the
-        line between them clear.
-      </p>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white rounded-xl p-6">
-          <p class="text-green-600 text-xs font-bold tracking-widest uppercase mb-2">Live today</p>
-          <h3 class="text-deep-navy font-bold text-lg mb-2">{APP_STORE_NAME}</h3>
-          <p class="text-accessible-gray leading-relaxed text-sm mb-4">
-            The software-only release, on the App Store for iOS. Everything described above —
-            brain states, conditions, the recommender, the forecast, the Focus timer, the manual —
-            with no hardware required.
-          </p>
-          <a href={APP_STORE_URL} target="_blank" rel="noopener" class="text-bright-blue text-sm font-semibold hover:text-deep-navy transition-colors">
-            Get it on the App Store →
-          </a>
+  <!-- Data -->
+  <section class="band" data-theme="paper">
+    <div class="wrap">
+      <header class="sh">
+        <div class="sh__num" aria-hidden="true">03</div>
+        <div>
+          <p class="eyebrow">Where your data actually lives</p>
+          <h2 class="h2 sh__title wipe">How it's built, <em>not a policy summary.</em></h2>
         </div>
-        <div class="bg-white rounded-xl p-6">
-          <p class="text-bright-blue text-xs font-bold tracking-widest uppercase mb-2">In development</p>
-          <h3 class="text-deep-navy font-bold text-lg mb-2">BioProxal wearable integration</h3>
-          <p class="text-accessible-gray leading-relaxed text-sm mb-4">
-            Built with Michael and BioProxal: an optional wrist-worn optical sensor that computes a
-            flow score, heart rate, HRV, SpO2, and breathing rate on the wearable itself and sends only
-            those finished values to the app over Bluetooth. It will ship as an update to the same app,
-            so your history carries forward. Not in the App Store build, and no release date yet.
+      </header>
+      <div class="split">
+        <div class="col-a-narrow faq-intro">
+          <p class="body">
+            The <a class="link" href="/privacy-policy">privacy policy</a> is the formal version. This is
+            what actually happens to what you log.
           </p>
-          <a href="/#wearable" class="text-bright-blue text-sm font-semibold hover:text-deep-navy transition-colors">
-            How it's built →
-          </a>
+        </div>
+        <ul class="claims col-b-wide">
+          {data.map(item => <li><strong>{item.title}</strong><span>{item.desc}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live vs next -->
+  <section class="band" data-theme="navy">
+    <div class="wrap">
+      <header class="sh">
+        <div class="sh__num" aria-hidden="true">04</div>
+        <div>
+          <p class="eyebrow">What's live, and what's next</p>
+          <h2 class="h2 sh__title wipe">Two versions. <em>A clear line between them.</em></h2>
+        </div>
+      </header>
+      <div class="versions">
+        <div class="version" style="border-top-color:var(--accent)">
+          <p class="status"><i></i>Live today</p>
+          <h3>{APP_STORE_NAME}</h3>
+          <p class="body">
+            The software-only release, on the App Store for iOS. Everything described above (brain
+            states, conditions, the recommender, the forecast, the Focus timer, the manual) with no
+            hardware required.
+          </p>
+          <a class="link" href={APP_STORE_URL} target="_blank" rel="noopener">Get it on the App Store</a>
+        </div>
+        <div class="version" style="border-top-color:var(--line-strong)">
+          <p class="status status--dev"><i></i>In development</p>
+          <h3>BioProxal wearable integration</h3>
+          <p class="body">
+            Built with Michael and BioProxal: an optional wrist-worn optical sensor that computes a flow
+            score, heart rate, HRV, SpO2 and breathing rate on the wearable itself and sends only those
+            finished values to the app over Bluetooth. It will ship as an update to the same app, so your
+            history carries forward. Not in the App Store build, and no release date yet.
+          </p>
+          <a class="link" href="/#wearable">How it's built</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Values -->
-  <section class="py-20 bg-deep-navy">
-    <div class="container px-6 mx-auto max-w-3xl">
-      <h2 class="text-white text-2xl font-bold mb-10">What guides us</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          { icon: '🧠', title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
-          { icon: '🔒', title: 'Privacy as a feature', desc: 'Your data is yours. Written to your phone first, computed on your phone, synced only to your own account so it survives a new device. Fully explained, no surprises.' },
-          { icon: '🤖', title: 'Honest technology', desc: 'The recommendation engine is a Thompson-sampling bandit, not "AI magic." The forecast is a neural network with documented architecture, and it tells you when it is running on synthetic priors versus your data. We explain how things work — and we say what is shipped versus still in development.' },
-          { icon: '📈', title: 'Progress over perfection', desc: 'Missed a day? Your streak resets but your posteriors don\'t. The app never punishes you for being human.' },
-        ].map(v => (
-          <div class="flex gap-4">
-            <div class="text-2xl flex-shrink-0">{v.icon}</div>
-            <div>
-              <h3 class="text-white font-semibold mb-1">{v.title}</h3>
-              <p class="text-medium-blue text-sm leading-relaxed">{v.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+  <section class="band" data-theme="paper">
+    <div class="wrap">
+      <header class="sh">
+        <div class="sh__num" aria-hidden="true">05</div>
+        <div>
+          <p class="eyebrow">What guides us</p>
+          <h2 class="h2 sh__title wipe">Four rules we <em>don't bend.</em></h2>
+        </div>
+      </header>
+      <ol class="principles" style="max-width:860px">
+        {values.map(v => <li><div><h3>{v.title}</h3></div><p>{v.desc}</p></li>)}
+      </ol>
     </div>
   </section>
 
   <!-- Contact -->
-  <section class="py-16 bg-white">
-    <div class="container px-6 mx-auto max-w-3xl text-center">
-      <h2 class="text-deep-navy text-2xl font-bold mb-4">Get in touch</h2>
-      <p class="text-accessible-gray mb-6">Questions, feedback, or support — we read every email.</p>
-      <a href="mailto:hello@amplifly.me"
-         class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors">
-        hello@amplifly.me
-      </a>
+  <section class="band band--tight" data-theme="blue">
+    <div class="wrap split" style="align-items:end">
+      <div class="col-a-wide">
+        <p class="eyebrow">Get in touch</p>
+        <a class="mailbig" href="mailto:hello@amplifly.me">hello@amplifly.me</a>
+      </div>
+      <div class="col-b-narrow">
+        <p class="body">Questions, feedback or support. We read every email.</p>
+      </div>
     </div>
   </section>
 
