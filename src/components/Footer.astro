@@ -2,58 +2,51 @@
 import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
 const year = new Date().getFullYear();
 ---
-<footer class="bg-deep-navy border-t border-white/10 py-16">
-  <div class="container px-6 mx-auto">
+<footer class="band foot" data-theme="navy">
+  <div class="wrap">
+    <p class="foot__word" aria-hidden="true">Amplifly</p>
 
-    <div class="grid md:grid-cols-4 gap-10 mb-12">
-
-      <!-- Brand -->
-      <div class="md:col-span-2">
-        <p class="text-white font-bold text-xl mb-3">Amplifly</p>
-        <p class="text-medium-blue text-sm leading-relaxed max-w-xs mb-5">
-          A flow and strengths tool for neurodivergent minds. Understand your patterns.
-          Work with your brain. Build your manual.
+    <div class="foot__grid">
+      <div>
+        <p class="body" style="max-width:34ch;color:var(--white)">
+          A flow and strengths tool for neurodivergent minds. Understand your patterns. Work with your
+          brain. Build your manual.
         </p>
-        <p class="text-medium-blue/50 text-xs">Computed on your device. Synced only to your account. No analytics tracking.</p>
-        <p class="text-medium-blue/50 text-xs mt-1">On the App Store as {APP_STORE_NAME}. BioProxal wearable integration in development.</p>
+        <p class="small" style="margin-top:16px">Computed on your device. Synced only to your account. No analytics tracking.</p>
+        <p class="small" style="margin-top:4px">On the App Store as {APP_STORE_NAME}. BioProxal wearable integration in development.</p>
       </div>
-
-      <!-- Links: Product -->
-      <div>
-        <p class="text-medium-blue text-xs font-semibold uppercase tracking-widest mb-4">Product</p>
-        <ul class="space-y-3">
-          <li><a href={APP_STORE_URL} target="_blank" rel="noopener" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Download</a></li>
-          <li><a href="/#brain-states" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Brain States</a></li>
-          <li><a href="/#conditions"   class="text-medium-blue/70 hover:text-white text-sm transition-colors">Conditions</a></li>
-          <li><a href="/#wearable"     class="text-medium-blue/70 hover:text-white text-sm transition-colors">Wearable</a></li>
-          <li><a href="/#manual"       class="text-medium-blue/70 hover:text-white text-sm transition-colors">Your Manual</a></li>
-          <li><a href="/#privacy"      class="text-medium-blue/70 hover:text-white text-sm transition-colors">Privacy</a></li>
-          <li><a href="/#faq"          class="text-medium-blue/70 hover:text-white text-sm transition-colors">FAQ</a></li>
-          <li><a href="/#email-updates" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Email Updates</a></li>
+      <nav aria-label="Product">
+        <h2>Product</h2>
+        <ul>
+          <li><a href={APP_STORE_URL} target="_blank" rel="noopener">Download</a></li>
+          <li><a href="/#states">Brain states</a></li>
+          <li><a href="/#conditions">Conditions</a></li>
+          <li><a href="/#manual">Your manual</a></li>
+          <li><a href="/#wearable">Wearable</a></li>
+          <li><a href="/#email-updates">Email updates</a></li>
         </ul>
-      </div>
-
-      <!-- Links: Company + Legal -->
-      <div>
-        <p class="text-medium-blue text-xs font-semibold uppercase tracking-widest mb-4">Company</p>
-        <ul class="space-y-3 mb-6">
-          <li><a href="/about"              class="text-medium-blue/70 hover:text-white text-sm transition-colors">About</a></li>
-          <li><a href="/support"            class="text-medium-blue/70 hover:text-white text-sm transition-colors">Support</a></li>
-          <li><a href="mailto:hello@amplifly.me" class="text-medium-blue/70 hover:text-white text-sm transition-colors">Contact</a></li>
+      </nav>
+      <nav aria-label="Company">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="mailto:hello@amplifly.me">Contact</a></li>
         </ul>
-        <p class="text-medium-blue text-xs font-semibold uppercase tracking-widest mb-4">Legal</p>
-        <ul class="space-y-3">
-          <li><a href="/privacy-policy"    class="text-medium-blue/70 hover:text-white text-sm transition-colors">Privacy Policy</a></li>
-          <li><a href="/terms-of-service"  class="text-medium-blue/70 hover:text-white text-sm transition-colors">Terms of Service</a></li>
+      </nav>
+      <nav aria-label="Legal">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy-policy">Privacy policy</a></li>
+          <li><a href="/terms-of-service">Terms of service</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
-    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-medium-blue/50 text-sm">© {year} Amplifly. All rights reserved.</p>
-      <p class="text-medium-blue/50 text-sm">
-        Questions? <a href="mailto:hello@amplifly.me" class="text-medium-blue hover:text-white transition-colors">hello@amplifly.me</a>
-      </p>
+    <div class="foot__base">
+      <p class="small">© {year} Amplifly. All rights reserved.</p>
+      <p class="small">Questions? <a class="link" href="mailto:hello@amplifly.me">hello@amplifly.me</a></p>
     </div>
   </div>
 </footer>

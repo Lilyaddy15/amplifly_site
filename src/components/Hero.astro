@@ -1,63 +1,97 @@
 ---
 import AppStoreBadge from './AppStoreBadge.astro';
 import { APP_STORE_NAME } from '../consts';
+import { STATES, glyph } from '../lib/states';
+
+const first = STATES[1]; // Sharp
+const tick = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 ---
-<section class="bg-deep-navy min-h-screen flex items-center pt-16">
-  <div class="container px-6 mx-auto py-24 lg:py-32">
-
-    <div class="max-w-3xl">
-      <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-6">
-        A flow &amp; strengths tool for neurodivergent minds
+<section class="band hero" data-theme="navy" id="top">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">A flow &amp; strengths tool for neurodivergent minds</p>
+      <h1 class="display wipe" style="margin-top:20px">Your brain has five modes. <em>Work with all of them.</em></h1>
+      <p class="lead">
+        Check in with how your brain feels right now. Get conditions matched to that state.
+        Log your sessions, and watch a personal operating manual build itself.
       </p>
-
-      <h1 class="text-white text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
-        Your brain has five modes.<br/>
-        <span class="text-bright-blue">Amplifly helps you<br/>work with all of them.</span>
-      </h1>
-
-      <p class="text-medium-blue text-lg md:text-xl leading-relaxed mb-10 max-w-2xl">
-        Check in with how your brain feels right now. Get matched techniques that work for
-        that specific state. Log your sessions. Watch a personal operating manual build
-        itself — computed on your device, synced only to your own account, no analytics tracking.
-      </p>
-
-      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+      <div class="actions">
         <AppStoreBadge height="h-14" />
-        <a href="/#how-it-works"
-           class="border border-medium-blue/40 hover:border-medium-blue text-medium-blue hover:text-white font-semibold px-8 py-4 rounded-xl transition-colors text-center text-base">
-          See How It Works
-        </a>
+        <a class="btn btn--ghost" href="/#loop">See how it works</a>
       </div>
-
-      <p class="text-medium-blue/70 text-sm mb-14 max-w-2xl">
-        On the App Store as <span class="text-white font-semibold">{APP_STORE_NAME}</span> — the software-only
-        release. Integration with the BioProxal wearable is in development.{' '}
-        <a href="/#wearable" class="text-bright-blue hover:text-white transition-colors font-semibold">What that means →</a>
+      <p class="small hero__note">
+        On the App Store as <strong>{APP_STORE_NAME}</strong>, the software-only release. The BioProxal
+        wearable integration is in development. <a class="link" href="/#wearable">What that means</a>
       </p>
-
-      <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-medium-blue/70">
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Computed on your device, synced to your account</span>
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> No analytics or ad tracking</span>
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Now on the App Store for iOS</span>
-      </div>
+      <ul class="ticks">
+        <li><Fragment set:html={tick} /> Computed on your device</li>
+        <li><Fragment set:html={tick} /> Synced only to your account</li>
+        <li><Fragment set:html={tick} /> No analytics or ad tracking</li>
+      </ul>
     </div>
 
-    <!-- Brain state cards -->
-    <div class="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-3xl">
-      {[
-        { emoji: '⚡', label: 'Buzzing',  desc: 'Energy is firing' },
-        { emoji: '🎯', label: 'Sharp',     desc: 'Clear and focused' },
-        { emoji: '🪫', label: 'Flat',      desc: 'Low and neutral' },
-        { emoji: '🌫️', label: 'Foggy',   desc: 'Heavy and slow' },
-        { emoji: '🌪️', label: 'Scattered','desc': 'Overwhelmed' },
-      ].map(s => (
-        <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-          <div class="text-3xl mb-2">{s.emoji}</div>
-          <div class="text-white font-semibold text-sm">{s.label}</div>
-          <div class="text-medium-blue/60 text-xs mt-1">{s.desc}</div>
+    <div id="states">
+      <div class="dial" id="dial" data-state={first.id}>
+        <div>
+          <p class="dial__ask" id="dial-ask">How does your brain feel right now?</p>
+          <div class="dial__picker" role="group" aria-labelledby="dial-ask">
+            {STATES.map(s => (
+              <button class="dial__opt" type="button" data-id={s.id} aria-pressed={String(s.id === first.id)}>
+                <Fragment set:html={glyph(s.id, 22)} />{s.label}
+              </button>
+            ))}
+          </div>
         </div>
-      ))}
+        <div class="dial__big" id="dial-big" aria-hidden="true"><Fragment set:html={glyph(first.id, 320)} /></div>
+        <div style="align-self:end" aria-live="polite">
+          <p class="dial__word" id="dial-word"><span>{first.label}.</span></p>
+          <p class="dial__desc" id="dial-desc">{first.description}.</p>
+        </div>
+        <div class="dial__lists">
+          <div><h3>Best for</h3><ul class="chips" id="dial-best">{first.bestFor.map(x => <li class="chip">{x}</li>)}</ul></div>
+          <div><h3>Protect from</h3><ul class="chips" id="dial-protect">{first.protectFrom.map(x => <li class="chip chip--protect">{x}</li>)}</ul></div>
+        </div>
+      </div>
+      <p class="dial__foot">The five states and their lists, exactly as the app shows them. No wrong answer — update it whenever your brain shifts.</p>
     </div>
-    <p class="text-medium-blue/50 text-sm mt-4">Five brain states. Pick one when you wake up, update it whenever it shifts. No wrong answer.</p>
   </div>
 </section>
+
+<script>
+  import { STATES, stateById, glyph } from '../lib/states';
+  const dial = document.getElementById('dial');
+  const word = document.getElementById('dial-word');
+  const desc = document.getElementById('dial-desc');
+  const best = document.getElementById('dial-best');
+  const protect = document.getElementById('dial-protect');
+  const big = document.getElementById('dial-big');
+  const chips = (list: string[], cls: string) => list.map(x => `<li class="chip ${cls}">${x}</li>`).join('');
+
+  const select = (id: string) => {
+    const s = stateById(id);
+    if (!dial || dial.dataset.state === s.id) return;
+    dial.dataset.state = s.id;
+    dial.querySelectorAll<HTMLButtonElement>('.dial__opt').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === s.id)));
+    if (word) word.innerHTML = `<span>${s.label}.</span>`;
+    if (desc) desc.textContent = s.description + '.';
+    if (best) best.innerHTML = chips(s.bestFor, '');
+    if (protect) protect.innerHTML = chips(s.protectFrom, 'chip--protect');
+    if (big) big.innerHTML = glyph(s.id, 320);
+    try { sessionStorage.setItem('amp-state', s.id); } catch {}
+    document.dispatchEvent(new CustomEvent('amp:state', { detail: s.id }));
+  };
+
+  dial?.addEventListener('click', e => {
+    const b = (e.target as Element).closest<HTMLButtonElement>('.dial__opt');
+    if (b?.dataset.id) select(b.dataset.id);
+  });
+  // Arrow keys move between states, like a toolbar.
+  dial?.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const i = STATES.findIndex(s => s.id === dial.dataset.state);
+    const next = STATES[(i + (e.key === 'ArrowRight' ? 1 : STATES.length - 1)) % STATES.length];
+    select(next.id);
+    dial.querySelector<HTMLButtonElement>(`[data-id="${next.id}"]`)?.focus();
+  });
+  try { const saved = sessionStorage.getItem('amp-state'); if (saved) select(saved); } catch {}
+</script>

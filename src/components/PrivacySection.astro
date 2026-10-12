@@ -1,69 +1,49 @@
 ---
 import { APP_STORE_NAME } from '../consts';
+
+const claims = [
+  {
+    title: 'Computed on your device.',
+    desc: 'The recommender (a Thompson-sampling bandit) and the Flow Forecast (a small neural network) both run on your phone. Nothing you log is sent anywhere to be scored.',
+  },
+  {
+    title: 'Synced only to your account.',
+    desc: "Amplifly needs an account. Your check-ins, sessions, profile and recommender state are stored on your phone and synced to your account on Supabase's servers, encrypted in transit, so they're there on your next device. Never sold, never shared.",
+  },
+  {
+    title: 'No analytics. No ads.',
+    desc: `We collect no analytics, no crash reports and no advertising data. ${APP_STORE_NAME} uses no sensors, wearables or biometric data, just what you tell it.`,
+  },
+];
 ---
-<section id="privacy" class="bg-white py-24">
-  <div class="container px-6 mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-      <!-- Left: headline -->
+<section class="band" data-theme="paper" id="privacy">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">07</div>
       <div>
-        <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Privacy by default</p>
-        <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-6">
-          Your data belongs to you.<br/>
-          <span class="text-bright-blue">All of it. Always.</span>
-        </h2>
-        <p class="text-accessible-gray text-lg leading-relaxed mb-6">
-          Brain check-ins, flow sessions, your ND profile, and the recommendation model all live in
-          your device's local storage, and every algorithm runs on the phone. Your account keeps that
-          data backed up and available across devices — nothing else touches it.
-        </p>
-        <p class="text-accessible-gray text-lg leading-relaxed mb-8">
-          We collect no analytics, no crash reports, and no advertising data. The only service the
-          app talks to is Supabase, and only to sync your own account.
-        </p>
-        <a href="/privacy-policy" class="text-bright-blue font-semibold hover:text-deep-navy transition-colors text-sm">
-          Read the full privacy policy →
-        </a>
+        <p class="eyebrow">Privacy by default</p>
+        <h2 class="h2 sh__title wipe">Your data belongs to you. <em>All of it.</em></h2>
       </div>
+    </header>
 
-      <!-- Right: detail cards -->
-      <div class="space-y-4">
-        {[
-          {
-            icon: '📱',
-            title: 'Stored on your device',
-            desc: 'Every brain check-in, flow session, ND profile, and learned recommendation posterior is stored in your phone\'s local storage using AsyncStorage. Once you\'re signed in, the app works offline.',
-          },
-          {
-            icon: '☁️',
-            title: 'Sync you can read the terms of',
-            desc: 'Amplifly needs an account, so your data syncs to it — encrypted in transit and stored on Supabase\'s servers solely so it\'s there on your next device. Never sold, never shared.',
-          },
-          {
-            icon: '🤖',
-            title: 'On-device AI',
-            desc: `The recommendation engine (Thompson-sampling bandit) and the flow forecast (neural network) both run entirely on your device. ${APP_STORE_NAME}, the version on the App Store today, uses no sensors, wearables, or biometric data — just what you tell it.`,
-          },
-          {
-            icon: '⌚',
-            title: 'The wearable, when it comes',
-            desc: 'The optional BioProxal integration in development keeps the same rule: readings are computed on the wearable, and the app receives only finished numbers, never a raw signal. The privacy policy will be updated to describe the wearable data flow before that version ships.',
-          },
-          {
-            icon: '🗑️',
-            title: 'Delete any time',
-            desc: 'Sign out to immediately stop syncing. Your local data stays on your device. To delete your account and all stored data, email hello@amplifly.me.',
-          },
-        ].map(item => (
-          <div class="flex gap-4 p-5 bg-soft-blue rounded-xl">
-            <div class="text-2xl flex-shrink-0">{item.icon}</div>
-            <div>
-              <h3 class="text-deep-navy font-semibold mb-1 text-base">{item.title}</h3>
-              <p class="text-accessible-gray text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div class="split">
+      <div class="col-a-wide">
+        <ul class="claims">
+          {claims.map(c => <li><strong>{c.title}</strong><span>{c.desc}</span></li>)}
+        </ul>
+      </div>
+      <div class="col-b-narrow">
+        <p class="body">
+          Sign out and syncing stops immediately; your local data stays on your phone. To delete your
+          account and everything stored under it, email
+          <a class="link" href="mailto:hello@amplifly.me">hello@amplifly.me</a>.
+        </p>
+        <p class="body">
+          The BioProxal integration, when it comes, keeps the same rule: readings are computed on the
+          wearable, and the app receives only finished numbers. The privacy policy will be updated
+          before that version ships.
+        </p>
+        <p class="body" style="margin-top:28px"><a class="link" href="/privacy-policy">Read the full privacy policy</a></p>
       </div>
     </div>
   </div>

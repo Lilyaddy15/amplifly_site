@@ -6,71 +6,40 @@ const profiles = [
   'Bipolar', 'Twice Exceptional (2e)', 'Other',
 ];
 const withPriors = ['ADHD', 'Autism', 'AuDHD', 'Dyslexia', 'Dyscalculia'];
+const principles = [
+  { title: 'Not a productivity app', desc: "Amplifly doesn't tell you to do more. It helps you understand how your brain actually works so you can stop fighting it." },
+  { title: 'An algorithm that actually learns', desc: 'The on-device recommender is a Thompson-sampling contextual bandit. It starts from research priors and updates every time you give feedback.' },
+  { title: 'Different brains, different days', desc: "AuDHD isn't the same as ADHD. A Sharp day isn't the same as a Foggy one. Learning is keyed to your ND profile, brain state and time of day, so it never averages across contexts." },
+  { title: 'Starts useful, gets better', desc: 'Research priors make recommendations sensible from day one. Every thumbs up, thumbs down or tagged session adds an observation; at around 20–30 outcomes your own data takes over.' },
+];
 ---
-<section id="for-nd" class="bg-deep-navy py-24">
-  <div class="container px-6 mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Left: ND profiles -->
+<section class="band" data-theme="paper" id="for-nd">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">05</div>
       <div>
-        <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">Built for you</p>
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
-          15 ND profiles. Zero judgment.<br/>
-          <span class="text-bright-blue">You tell us once.</span>
-        </h2>
-        <p class="text-medium-blue text-lg leading-relaxed mb-4">
-          Pick the profiles that match your brain — during onboarding or whenever you feel like it.
-          Five of them come with research-cited priors that warm up the recommender before you've
-          logged a single session. The rest start from the brain-state and time-of-day priors and
-          learn purely from your own outcomes — no invented effect sizes.
-        </p>
-        <p class="text-medium-blue text-base leading-relaxed mb-8">
-          You can pick none if you'd rather not say; the recommender still works, it just starts more generic.
-        </p>
-
-        <div class="flex flex-wrap gap-2">
-          {profiles.map(p => (
-            <span class={`border text-sm px-3 py-1.5 rounded-full ${withPriors.includes(p) ? 'bg-bright-blue/10 border-bright-blue/30 text-white' : 'bg-white/5 border-white/10 text-medium-blue'}`}>
-              {p}
-            </span>
-          ))}
-        </div>
-        <p class="text-medium-blue/50 text-xs mt-3">Highlighted profiles ship with research-cited priors.</p>
+        <p class="eyebrow">Built for your wiring</p>
+        <h2 class="h2 sh__title wipe">15 ND profiles. Zero judgment. <em>You tell us once.</em></h2>
       </div>
+    </header>
 
-      <!-- Right: values -->
-      <div class="space-y-6">
-        {[
-          {
-            icon: '🧩',
-            title: 'Not a productivity app',
-            desc: 'Amplifly doesn\'t tell you to do more. It helps you understand how your brain actually works so you can stop fighting it.',
-          },
-          {
-            icon: '📡',
-            title: 'An algorithm that actually learns',
-            desc: 'The on-device recommender is a Thompson-sampling contextual bandit. It starts from research priors and updates a Beta posterior every time you give feedback.',
-          },
-          {
-            icon: '🔄',
-            title: 'Different brains, different days',
-            desc: 'AuDHD isn\'t the same as ADHD. A sharp day isn\'t the same as a foggy one. Amplifly\'s arm key includes your ND profile, brain state, and time of day — so posteriors don\'t average across contexts.',
-          },
-          {
-            icon: '🌱',
-            title: 'Starts useful, gets better',
-            desc: 'Research priors mean recommendations make sense from day one. Every thumbs-up, thumbs-down, or tagged session adds a full observation; after roughly 10–20 outcomes in a given context, your personal data dominates.',
-          },
-        ].map(item => (
-          <div class="flex gap-4">
-            <div class="text-2xl flex-shrink-0">{item.icon}</div>
-            <div>
-              <h3 class="text-white font-semibold mb-1">{item.title}</h3>
-              <p class="text-medium-blue text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div class="split">
+      <div class="col-a">
+        <p class="body">
+          Pick the profiles that match your brain, during onboarding or whenever you like. Five of them
+          come with research-cited priors that warm up the recommender before you've logged a single
+          session. The rest learn purely from your own outcomes, with no invented effect sizes.
+        </p>
+        <p class="body">You can pick none if you'd rather not say. The recommender still works; it just starts more generic.</p>
+        <ul class="chips profiles" style="margin-top:28px">
+          {profiles.map(p => <li class={`chip ${withPriors.includes(p) ? 'chip--on' : ''}`}>{p}</li>)}
+        </ul>
+        <p class="small" style="margin-top:12px">Filled profiles ship with research-cited priors.</p>
+      </div>
+      <div class="col-b">
+        <ol class="principles">
+          {principles.map(p => <li><div><h3>{p.title}</h3></div><p>{p.desc}</p></li>)}
+        </ol>
       </div>
     </div>
   </div>

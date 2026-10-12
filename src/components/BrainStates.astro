@@ -1,98 +1,85 @@
 ---
-import { APP_STORE_URL } from '../consts';
-const states = [
-  {
-    emoji: '⚡',
-    label: 'Buzzing',
-    description: 'Lots of energy, ideas firing, hard to sit still.',
-    bestFor: ['Creative work', 'Brainstorming', 'Recording ideas', 'Movement'],
-    protectFrom: ['Long meetings', 'Detail work that needs precision'],
-  },
-  {
-    emoji: '🎯',
-    label: 'Sharp',
-    description: 'Clear, focused, the world feels organized.',
-    bestFor: ['Deep work', 'Hard problems', 'Writing', 'Big decisions'],
-    protectFrom: ['Notifications', 'Context switches', 'Errands'],
-  },
-  {
-    emoji: '🪫',
-    label: 'Flat',
-    description: 'Low energy, neutral, nothing pulling you.',
-    bestFor: ['Admin', 'Errands', 'Tidying', 'Low-stakes tasks', 'Walks'],
-    protectFrom: ['Big decisions', 'Anything dopamine-dependent'],
-  },
-  {
-    emoji: '🌫️',
-    label: 'Foggy',
-    description: 'Hard to think, words slow, body feels heavy.',
-    bestFor: ['Rest', 'One tiny win', 'Hydration + food', 'Comfort routines'],
-    protectFrom: ['Forcing productivity', 'Self-judgment'],
-  },
-  {
-    emoji: '🌪️',
-    label: 'Scattered',
-    description: 'Overwhelmed, too many tabs open in your head.',
-    bestFor: ['Grounding', 'One anchor task', 'Brain dump', 'Movement'],
-    protectFrom: ['Adding more inputs', 'Long todo lists'],
-  },
-];
+import { glyph, stateById } from '../lib/states';
+
+// Example day, in minutes after midnight (7 AM – 10 PM).
+const day = [
+  ['foggy', 420, 510], ['buzzing', 510, 780], ['sharp', 780, 1020],
+  ['flat', 1020, 1170], ['scattered', 1170, 1260], ['foggy', 1260, 1320],
+] as const;
+const start = 420, span = 900;
 ---
-<section id="brain-states" class="bg-deep-navy py-24">
-  <div class="container px-6 mx-auto">
+<section class="band" data-theme="navy" id="through-the-day">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">02</div>
+      <div>
+        <p class="eyebrow">Five brain states, one day</p>
+        <h2 class="h2 sh__title wipe">Most apps assume your brain works the same all day. <em>Amplifly starts with how it actually feels.</em></h2>
+      </div>
+    </header>
 
-    <div class="max-w-2xl mb-16">
-      <p class="text-medium-blue text-sm font-semibold tracking-widest uppercase mb-4">Five brain states</p>
-      <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">
-        Most apps assume your brain works the same every day.
-        <span class="text-bright-blue"> Amplifly starts with how it actually feels.</span>
-      </h2>
-      <p class="text-medium-blue text-lg leading-relaxed">
-        Your brain state shapes everything — what kind of work you can do, which techniques will help,
-        how to protect your energy. Knowing which state you're in is the whole game.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {states.map(s => (
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
-          <div class="text-4xl mb-3">{s.emoji}</div>
-          <h3 class="text-white font-bold text-xl mb-2">{s.label}</h3>
-          <p class="text-medium-blue text-sm mb-4 leading-relaxed">{s.description}</p>
-
-          <div class="space-y-3">
-            <div>
-              <p class="text-medium-blue/50 text-xs font-semibold uppercase tracking-wider mb-2">Best for</p>
-              <div class="flex flex-wrap gap-2">
-                {s.bestFor.map(item => (
-                  <span class="bg-bright-blue/10 text-bright-blue text-xs px-2 py-1 rounded-md">{item}</span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p class="text-medium-blue/50 text-xs font-semibold uppercase tracking-wider mb-2">Protect from</p>
-              <div class="flex flex-wrap gap-2">
-                {s.protectFrom.map(item => (
-                  <span class="bg-white/5 text-medium-blue/70 text-xs px-2 py-1 rounded-md">{item}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-
-      <!-- Closing card -->
-      <div class="bg-bright-blue/10 border border-bright-blue/20 rounded-2xl p-6 flex flex-col justify-center">
-        <p class="text-white font-bold text-lg mb-3">Your brain shifts. So does Amplifly.</p>
-        <p class="text-medium-blue text-sm leading-relaxed mb-4">
-          Check in when you wake up, then update your state whenever it changes — Buzzing at 9, Sharp
-          by 2, Flat by 5. Every recommendation is filtered through your <em>current</em> state and the
-          time of day, and each check-in is timestamped so your manual learns how you move through a day.
+    <div class="split">
+      <div class="col-a-wide">
+        <p class="body" style="max-width:56ch;margin-bottom:40px">
+          Check in when you wake up, then update your state whenever it changes. Every recommendation
+          is filtered through your <em>current</em> state and the time of day, and each check-in is
+          timestamped, so your manual learns how you move through a day.
         </p>
-        <a href={APP_STORE_URL} target="_blank" rel="noopener" class="text-bright-blue text-sm font-semibold hover:text-white transition-colors">
-          Get it on the App Store →
-        </a>
+
+        <div class="day" id="day">
+          <div class="day__readout" aria-live="polite">
+            <span class="day__time" id="day-time">2:00 PM</span>
+            <span class="day__now" id="day-now"></span>
+          </div>
+          <div class="day__track">
+            <div class="day__band" id="day-band">
+              {day.map(([id, a, b]) => (
+                <div class="day__seg" data-s={id} style={`width:${((b - a) / span) * 100}%`}>
+                  <Fragment set:html={glyph(id, 18)} />
+                  {b - a >= 120 && <span class="lbl">{stateById(id).label}</span>}
+                </div>
+              ))}
+            </div>
+            <input class="day__range" id="day-range" type="range" min={start} max={start + span} step="10" value="840" aria-label="Time of day in an example day" />
+            <div class="day__head" id="day-head" style="left:46.67%"></div>
+          </div>
+          <div class="day__ticks" aria-hidden="true"><span>7 AM</span><span>10 AM</span><span>1 PM</span><span>4 PM</span><span>7 PM</span><span>10 PM</span></div>
+          <p class="day__hint">An example day. Drag along it to see what the app suggests at each check-in.</p>
+        </div>
+      </div>
+
+      <div class="col-b-narrow">
+        <img class="shot shot--center"
+          src="/images/app/04-brain-through-day-480.webp"
+          srcset="/images/app/04-brain-through-day-480.webp 480w, /images/app/04-brain-through-day-900.webp 900w"
+          sizes="320px" width="1284" height="2778" loading="lazy" decoding="async"
+          alt="The Manual tab's 'Your brain through the day' card: your most common state each morning, midday, afternoon and evening." />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { stateById } from '../lib/states';
+  const day = [['foggy', 420, 510], ['buzzing', 510, 780], ['sharp', 780, 1020], ['flat', 1020, 1170], ['scattered', 1170, 1260], ['foggy', 1260, 1320]] as const;
+  const range = document.getElementById('day-range') as HTMLInputElement | null;
+  const segs = document.querySelectorAll<HTMLElement>('#day-band .day__seg');
+  const fmt = (m: number) => {
+    const h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? 'PM' : 'AM';
+    return `${h % 12 || 12}:${mm < 10 ? '0' : ''}${mm} ${ap}`;
+  };
+  const update = () => {
+    if (!range) return;
+    const m = Number(range.value);
+    let i = 0; while (i < day.length - 1 && m >= day[i][2]) i++;
+    const s = stateById(day[i][0]);
+    (document.getElementById('day-time') as HTMLElement).textContent = fmt(m);
+    (document.getElementById('day-now') as HTMLElement).innerHTML =
+      `Checked in <b>${s.label}</b>. Best for ${s.bestFor.slice(0, 2).join(' or ').toLowerCase()}.`;
+    (document.getElementById('day-head') as HTMLElement).style.left = ((m - 420) / 900) * 100 + '%';
+    range.setAttribute('aria-valuetext', `${fmt(m)}, ${s.label}`);
+    segs.forEach((el, j) => el.classList.toggle('is-dim', j !== i));
+  };
+  range?.addEventListener('input', update);
+  update();
+</script>

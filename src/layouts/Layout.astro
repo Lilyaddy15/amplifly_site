@@ -9,13 +9,14 @@ interface Props {
 
 const {
   title,
-  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched techniques, log your sessions, and build a personal operating manual — computed on your device. On the App Store as Amplifly Lite; BioProxal wearable integration in development.",
+  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched conditions, log your sessions, and build a personal operating manual — computed on your device. On the App Store as Amplifly Lite; BioProxal wearable integration in development.",
   keywords = "neurodivergent, ADHD, autism, flow state, focus, executive function, brain states, productivity, offline, privacy, mental health",
   ogImage = "/images/og-image.png",
   canonical = Astro.url.href
 } = Astro.props;
 
 import Navigation from '../components/Navigation.astro';
+import '../styles/amp.css';
 
 // Social cards need an absolute image URL.
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${ogImage}`;
@@ -72,6 +73,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${
     </script>
 
     <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,800;6..12,900&display=swap" rel="stylesheet">
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
 
     <script>
       document.addEventListener('click', function(e) {
@@ -88,9 +94,18 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${
       });
     </script>
   </head>
-  <body class="font-avenir">
+  <body class="font-avenir amp">
     <Navigation />
     <slot />
+    <script>
+      // The one scroll effect: headlines marked .wipe reveal the first time they enter.
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      document.querySelectorAll('.wipe, .manual').forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>
 

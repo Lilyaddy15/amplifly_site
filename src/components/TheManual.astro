@@ -1,97 +1,65 @@
 ---
 import { APP_STORE_URL } from '../consts';
+import { glyph } from '../lib/states';
+
+// Example values only; the row labels are sections the Manual tab really has.
+const rows = [
+  { k: 'A', label: 'When you flow', value: '4–5 ★ around 2 PM', w: 0 },
+  { k: 'B', label: 'Your usual brain', value: `${glyph('sharp', 22)}Sharp · 4 of 12`, w: 33 },
+  { k: 'C', label: 'Mornings', value: `${glyph('buzzing', 22)}Buzzing · 3 of 4`, w: 75 },
+  { k: 'D', label: 'What gets you in', value: 'Quiet space', w: 64 },
+  { k: 'E', label: 'Recommender learned', value: 'Flow Playlist · 80%', w: 80 },
+];
+const sections = [
+  ['When you flow', 'The hour your 4–5 ★ sessions cluster around'],
+  ['Through the day', 'Your most common state each morning, midday, afternoon and evening'],
+  ['State × flow quality', 'Which brain states produce your best work'],
+  ['Gets you in / pulls you out', 'The helpers and drains that keep showing up'],
+  ['Recommender learned', 'Conditions ranked by how often they actually helped'],
+];
 ---
-<section id="manual" class="bg-soft-blue py-24">
-  <div class="container px-6 mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Left: copy -->
+<section class="band" data-theme="navy" id="manual">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">04</div>
       <div>
-        <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">Your operating manual</p>
-        <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-6">
-          A living doc, built entirely from your own data.
-        </h2>
-        <p class="text-accessible-gray text-lg leading-relaxed mb-6">
-          Every brain check-in and flow session you log teaches Amplifly something. Over time,
-          the Manual tab becomes the most honest description of how your brain actually works —
-          not how it's supposed to work.
-        </p>
-        <p class="text-accessible-gray text-lg leading-relaxed mb-8">
-          The more you log, the sharper it gets. Patterns that took years to half-notice become
-          visible in weeks.
-        </p>
-        <a href={APP_STORE_URL} target="_blank" rel="noopener"
-           class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-base">
-          Start building yours
-        </a>
+        <p class="eyebrow">Your operating manual</p>
+        <h2 class="h2 sh__title wipe">A living doc, <em>built entirely from your own data.</em></h2>
       </div>
+    </header>
 
-      <!-- Right: insight cards -->
-      <div class="grid grid-cols-2 gap-4">
-        {[
-          {
-            icon: '🕐',
-            title: 'Your sharpest hour',
-            value: '10 AM',
-            sub: 'Most 4–5★ sessions logged here',
-          },
-          {
-            icon: '🧠',
-            title: 'Highest-flow state',
-            value: 'Sharp 🎯',
-            sub: 'Avg 4.3★ in Sharp sessions',
-          },
-          {
-            icon: '🔥',
-            title: 'Current streak',
-            value: '12 days',
-            sub: 'Longest: 21 days',
-          },
-          {
-            icon: '⚡',
-            title: 'Top helper',
-            value: 'Music / playlist',
-            sub: 'Appeared in 14 sessions',
-          },
-          {
-            icon: '📅',
-            title: 'Best day of week',
-            value: 'Tuesday',
-            sub: '6 high-intensity sessions',
-          },
-          {
-            icon: '🎯',
-            title: 'Top condition',
-            value: 'One Tab Only',
-            sub: '78% success rate · 9 outcomes',
-          },
-        ].map(card => (
-          <div class="bg-white rounded-xl p-5 shadow-sm border border-white/80">
-            <div class="text-2xl mb-2">{card.icon}</div>
-            <p class="text-neutral-gray text-xs font-semibold uppercase tracking-wider mb-1">{card.title}</p>
-            <p class="text-deep-navy font-bold text-base">{card.value}</p>
-            <p class="text-accessible-gray text-xs mt-1">{card.sub}</p>
-          </div>
-        ))}
-        <p class="col-span-2 text-neutral-gray text-xs text-center mt-1">Example values. Your manual is built only from what you log.</p>
-      </div>
-    </div>
-
-    <!-- What builds it -->
-    <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
-      {[
-        { icon: '🕓', label: 'Your brain through the day', desc: 'Your most common state at each time of day' },
-        { icon: '📊', label: 'Brain state × flow quality', desc: 'Which states produce your best work' },
-        { icon: '📈', label: 'Day-of-week patterns', desc: 'Bar chart of your 4–5★ sessions by weekday' },
-        { icon: '🤖', label: 'Learned condition rankings', desc: 'What the recommender has figured out' },
-      ].map(item => (
-        <div>
-          <div class="text-3xl mb-3">{item.icon}</div>
-          <p class="text-deep-navy font-semibold text-sm">{item.label}</p>
-          <p class="text-accessible-gray text-sm mt-1">{item.desc}</p>
+    <div class="split">
+      <div class="col-a">
+        <p class="body">
+          Every check-in and flow session teaches Amplifly something. Over time the Manual tab becomes
+          the most honest description of how your brain actually works, not how it's supposed to.
+        </p>
+        <p class="body">
+          Patterns appear after a few logged sessions, and the recommender's picks get reliable at
+          around 20–30 outcomes. Things that took years to half-notice become visible in weeks.
+        </p>
+        <ul class="sections">
+          {sections.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}
+        </ul>
+        <div class="actions" style="margin-top:36px">
+          <a class="btn btn--primary" href={APP_STORE_URL} target="_blank" rel="noopener">Start building yours <span class="arrow">→</span></a>
         </div>
-      ))}
+      </div>
+
+      <div class="col-b">
+        <article class="manual" aria-label="Example manual">
+          <div class="manual__top"><h3>Your manual</h3><span>Example · last 14 days</span></div>
+          {rows.map(r => (
+            <div class="manual__row">
+              <span class="k">{r.k}</span>
+              <span class="l">{r.label}</span>
+              <span class="v"><Fragment set:html={r.value} /></span>
+              {r.w > 0 && <div class="manual__bar"><i style={`--w:${r.w}%`}></i></div>}
+            </div>
+          ))}
+          <p class="manual__note">Example values. Your manual is built only from what you log.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>

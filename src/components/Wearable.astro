@@ -37,73 +37,49 @@ const inDevelopment = [
   },
 ];
 ---
-<section id="wearable" class="bg-navy-light py-24 scroll-mt-16">
-  <div class="container px-6 mx-auto">
+<section class="band" data-theme="navy" id="wearable">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">06</div>
+      <div>
+        <p class="eyebrow">What's live, and what's next</p>
+        <h2 class="h2 sh__title wipe">{APP_STORE_NAME} is on the App Store today. <em>The BioProxal wearable is what we're building next.</em></h2>
+      </div>
+    </header>
 
-    <div class="max-w-3xl mb-14">
-      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">What's live, and what's next</p>
-      <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
-        {APP_STORE_NAME} is on the App Store today.<br/>
-        <span class="text-bright-blue">The BioProxal wearable is what we're building next.</span>
-      </h2>
-      <p class="text-medium-blue text-lg leading-relaxed mb-4">
-        The app you can download right now is <strong class="text-white">{APP_STORE_NAME}</strong>: every
-        feature on this page, no hardware required. In parallel, we're partnering with BioProxal, a
-        separate company whose wearable is being built specifically for Amplifly, to bring a live
-        physiological signal into the same loop. The wearable will be optional.
-      </p>
-      <p class="text-medium-blue text-lg leading-relaxed">
-        The wearable integration is not in the App Store build yet, and we won't say it is until it
-        ships. What's below describes how it is actually built today, not a promise about the final version.
-      </p>
-    </div>
+    <div class="split">
+      <div class="col-a-narrow">
+        <p class="body">
+          The app you can download right now is <strong>{APP_STORE_NAME}</strong>: everything on this
+          page, no hardware required. Alongside it, we're partnering with BioProxal, a separate company
+          whose wearable is being built specifically for Amplifly, to bring a live physiological signal
+          into the same loop. The wearable will be optional.
+        </p>
+        <p class="body">
+          It isn't in the App Store build yet, and we won't say it is until it ships. What's here
+          describes how it's built today, not a promise about the final version.
+        </p>
 
-    <div class="grid lg:grid-cols-5 gap-6">
-
-      <!-- Live today -->
-      <div class="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="inline-block w-2 h-2 rounded-full bg-green-400"></span>
-          <p class="text-green-400 text-xs font-bold tracking-widest uppercase">Live today · {APP_STORE_NAME}</p>
-        </div>
-        <p class="text-white font-bold text-xl mb-4">Software only. Nothing to pair.</p>
-        <ul class="space-y-3 mb-6">
+        <p class="status" style="margin-top:40px"><i></i>Live today · {APP_STORE_NAME}</p>
+        <ul class="checks">
           {liveToday.map(item => (
-            <li class="flex gap-3 text-medium-blue text-sm leading-relaxed">
-              <span class="text-green-400 flex-shrink-0">✓</span>
-              <span>{item}</span>
-            </li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>{item}</span></li>
           ))}
         </ul>
-        <a href={APP_STORE_URL} target="_blank" rel="noopener"
-           class="inline-block bg-bright-blue hover:bg-bright-blue/80 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
-          Get {APP_STORE_NAME} on the App Store
-        </a>
+        <a class="btn btn--primary" href={APP_STORE_URL} target="_blank" rel="noopener">Get {APP_STORE_NAME} <span class="arrow">→</span></a>
       </div>
 
-      <!-- In development -->
-      <div class="lg:col-span-3 bg-white/5 border border-bright-blue/30 rounded-2xl p-6">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="inline-block w-2 h-2 rounded-full bg-bright-blue"></span>
-          <p class="text-bright-blue text-xs font-bold tracking-widest uppercase">In development · BioProxal wearable</p>
-        </div>
-        <p class="text-white font-bold text-xl mb-5">How the integration is built</p>
-        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+      <div class="col-b-wide">
+        <p class="status status--dev"><i></i>In development · BioProxal wearable</p>
+        <div class="devlist">
           {inDevelopment.map(item => (
-            <div>
-              <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
-              <p class="text-medium-blue text-sm leading-relaxed">{item.desc}</p>
-            </div>
+            <div><h3>{item.title}</h3><p>{item.desc}</p></div>
           ))}
         </div>
-        <div class="mt-6 pt-5 border-t border-white/10">
-          <p class="text-medium-blue/70 text-sm leading-relaxed">
-            No release date yet. The privacy policy will describe the wearable data flow before a
-            wearable-enabled version ships.{' '}
-            <a href="/#email-updates" class="text-bright-blue hover:text-white transition-colors font-semibold">Join the email list</a>
-            {' '}and we'll tell you when it does.
-          </p>
-        </div>
+        <p class="small" style="margin-top:24px">
+          No release date yet. The privacy policy will describe the wearable data flow before a
+          wearable-enabled version ships. <a class="link" href="/#email-updates">Join the email list</a> and we'll tell you when it does.
+        </p>
       </div>
     </div>
   </div>

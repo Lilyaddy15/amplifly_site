@@ -1,59 +1,93 @@
 ---
-import { APP_STORE_URL } from '../consts';
+const steps = [
+  {
+    title: 'Check your brain',
+    desc: 'Buzzing, Sharp, Flat, Foggy or Scattered. Takes five seconds. Brains shift through the day, so check in again whenever yours does. Each check-in is timestamped.',
+    shot: '02-brain-states', alt: 'The Amplifly Today screen asking what kind of brain you have today, with the five states.',
+  },
+  {
+    title: 'Get matched conditions',
+    desc: 'Primers, Protectors, Recovery and Resets: twelve built in, plus your own. An on-device recommender ranks them for your brain state, the time of day and your ND profile, then learns from your thumbs up or down and your best sessions.',
+    shot: '06-conditions', alt: 'The Conditions tab showing top picks for a Sharp brain.',
+  },
+  {
+    title: 'Log a flow session',
+    desc: 'What you worked on, how long, how locked in you were, what helped and what drained you. About 60 seconds. Or run the Focus timer, and when you stop it the log opens with the time already filled in.',
+    shot: '05-flow', alt: 'The Flow tab with recent sessions, star ratings, and what helped or drained.',
+  },
+  {
+    title: 'Your manual builds',
+    desc: 'After a few sessions the Manual tab fills in: when you flow, your brain through the day, which states produce your best work, what gets you in, what pulls you out, and what the recommender has learned.',
+    shot: '03-manual', alt: 'The Manual tab: how you work best, with flow hours, streaks and when you flow.',
+  },
+];
 ---
-<section id="how-it-works" class="bg-white py-24">
-  <div class="container px-6 mx-auto">
+<section class="band" data-theme="paper" id="loop">
+  <div class="wrap">
+    <header class="sh">
+      <div class="sh__num" aria-hidden="true">01</div>
+      <div>
+        <p class="eyebrow">The loop</p>
+        <h2 class="h2 sh__title wipe">Four steps. <em>It runs itself.</em></h2>
+      </div>
+    </header>
 
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <p class="text-bright-blue text-sm font-semibold tracking-widest uppercase mb-4">The Loop</p>
-      <h2 class="text-deep-navy text-3xl md:text-4xl font-bold mb-4">Four steps. Runs itself.</h2>
-      <p class="text-accessible-gray">
-        Not another wellness tracker — a tool for spending more hours per week in your zone.
-        It's a feedback loop that gets smarter the more you use it, without you doing extra work.
-      </p>
-    </div>
+    <div class="loop" id="loop-ui">
+      <div>
+        <p class="body" style="max-width:52ch;margin-bottom:28px">
+          Not another wellness tracker: a tool for spending more hours in your zone. It's a feedback
+          loop that gets smarter the more you use it, without extra work from you.
+        </p>
+        <ol class="loop__steps">
+          {steps.map((s, i) => (
+            <li class="loop__step" aria-current={i === 0 ? 'step' : undefined}>
+              <button type="button" data-i={i} aria-controls={`loop-shot-${i}`}>
+                <span class="loop__n">0{i + 1}</span>
+                <span class="loop__t">{s.title}</span>
+                <span class="loop__d"><span>{s.desc}</span></span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      {[
-        {
-          step: '01',
-          title: 'Check your brain',
-          desc: 'Pick the state that matches how your brain feels — Buzzing, Sharp, Flat, Foggy, or Scattered. Takes five seconds, and you can update it any time your brain shifts.',
-          icon: '🧠',
-        },
-        {
-          step: '02',
-          title: 'Get matched conditions',
-          desc: 'Amplifly\'s on-device recommender suggests the conditions most likely to work for your current state — then learns from your feedback.',
-          icon: '🎯',
-        },
-        {
-          step: '03',
-          title: 'Log your sessions',
-          desc: 'After deep work, log how long, how locked-in you were, what helped, and what drained you. 60 seconds — or run the built-in Focus timer and the log opens with the time already measured.',
-          icon: '📝',
-        },
-        {
-          step: '04',
-          title: 'Your manual builds',
-          desc: 'Over time, the Manual tab fills in: your best hours, your top helpers, your highest-flow brain states, what the recommender has learned.',
-          icon: '📖',
-        },
-      ].map(item => (
-        <div class="relative bg-soft-blue rounded-2xl p-6">
-          <div class="text-4xl mb-4">{item.icon}</div>
-          <div class="text-bright-blue text-xs font-bold tracking-widest mb-2">{item.step}</div>
-          <h3 class="text-deep-navy font-bold text-lg mb-3">{item.title}</h3>
-          <p class="text-accessible-gray text-sm leading-relaxed">{item.desc}</p>
+      <div class="loop__stage" aria-hidden="false">
+        <svg class="loop__ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="loop__track" cx="50" cy="50" r="48" />
+          <circle class="loop__arc" id="loop-arc" cx="50" cy="50" r="48" pathLength="100" stroke-dasharray="100" stroke-dashoffset="75" />
+        </svg>
+        <div class="loop__shots">
+          {steps.map((s, i) => (
+            <img
+              id={`loop-shot-${i}`}
+              class={i === 0 ? 'is-on' : ''}
+              src={`/images/app/${s.shot}-480.webp`}
+              srcset={`/images/app/${s.shot}-480.webp 480w, /images/app/${s.shot}-900.webp 900w`}
+              sizes="300px" width="1284" height="2778" alt={s.alt}
+              loading={i === 0 ? 'eager' : 'lazy'} decoding="async"
+            />
+          ))}
         </div>
-      ))}
-    </div>
-
-    <div class="mt-12 text-center">
-      <a href={APP_STORE_URL} target="_blank" rel="noopener"
-         class="inline-block bg-deep-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-xl transition-colors text-base">
-        Get it on the App Store
-      </a>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const ui = document.getElementById('loop-ui');
+  const arc = document.getElementById('loop-arc');
+  const go = (i: number) => {
+    ui?.querySelectorAll('.loop__step').forEach((li, j) => j === i ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current'));
+    ui?.querySelectorAll('.loop__shots img').forEach((img, j) => img.classList.toggle('is-on', j === i));
+    arc?.setAttribute('stroke-dashoffset', String(100 - (i + 1) * 25));
+  };
+  ui?.addEventListener('click', e => {
+    const b = (e.target as Element).closest<HTMLButtonElement>('.loop__step button');
+    if (b) go(Number(b.dataset.i));
+  });
+  ui?.addEventListener('mouseover', e => {
+    if (!matchMedia('(hover: hover)').matches) return;
+    const b = (e.target as Element).closest<HTMLButtonElement>('.loop__step button');
+    if (b) go(Number(b.dataset.i));
+  });
+</script>
