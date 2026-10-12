@@ -18,7 +18,7 @@ import { APP_STORE_NAME } from '../consts';
       <p class="text-medium-blue text-lg md:text-xl leading-relaxed mb-10 max-w-2xl">
         Check in with how your brain feels right now. Get matched techniques that work for
         that specific state. Log your sessions. Watch a personal operating manual build
-        itself — stored and computed on your device, no analytics tracking.
+        itself — computed on your device, synced only to your own account, no analytics tracking.
       </p>
 
       <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
@@ -36,7 +36,7 @@ import { APP_STORE_NAME } from '../consts';
       </p>
 
       <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-medium-blue/70">
-        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Stored and computed on your device</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Computed on your device, synced to your account</span>
         <span class="flex items-center gap-2"><span class="text-green-400">✓</span> No analytics or ad tracking</span>
         <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Now on the App Store for iOS</span>
       </div>
@@ -45,8 +45,8 @@ import { APP_STORE_NAME } from '../consts';
     <!-- Brain state cards -->
     <div class="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-3xl">
       {[
-        { emoji: '🎯', label: 'Sharp',     desc: 'Clear and focused' },
         { emoji: '⚡', label: 'Buzzing',  desc: 'Energy is firing' },
+        { emoji: '🎯', label: 'Sharp',     desc: 'Clear and focused' },
         { emoji: '🪫', label: 'Flat',      desc: 'Low and neutral' },
         { emoji: '🌫️', label: 'Foggy',   desc: 'Heavy and slow' },
         { emoji: '🌪️', label: 'Scattered','desc': 'Overwhelmed' },
