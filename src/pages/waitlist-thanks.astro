@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import { APP_STORE_NAME } from '../consts';
+import { STATES, glyph } from '../lib/states';
+---
+
+<Layout title="You're on the waitlist" description="Thanks for joining the BioProxal wearable waitlist.">
+  <section class="band ty" data-theme="navy">
+    <div class="wrap">
+      <div class="ty__glyphs" aria-hidden="true">
+        {STATES.map(s => <Fragment set:html={glyph(s.id, 40)} />)}
+      </div>
+      <p class="eyebrow">Wearable waitlist</p>
+      <h1 class="display" style="margin-top:16px">You're on <em>the waitlist.</em></h1>
+      <p class="lead" style="margin-top:24px;max-width:42ch">
+        We'll tell you when the BioProxal wearable ships. It's still in development, with no release
+        date yet, and we'll only email this list about the wearable.
+      </p>
+      <p class="body" style="margin-top:32px">
+        Until then, {APP_STORE_NAME} is live on iOS and works without any hardware:
+      </p>
+      <div class="actions" style="margin-top:16px">
+        <AppStoreBadge height="h-14" />
+        <a class="btn btn--ghost" href="/">Back to Amplifly</a>
+      </div>
+      <p class="small" style="margin-top:40px;max-width:52ch">
+        Want app updates and Android news too? That's a <a class="link" href="/#email-updates">separate list</a>.
+        Questions about the wearable? Email <a class="link" href="mailto:hello@amplifly.me">hello@amplifly.me</a>.
+      </p>
+    </div>
+  </section>
+  <Footer />
+</Layout>

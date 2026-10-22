@@ -23,11 +23,10 @@ const ndProfiles = [
       </div>
 
       <div class="col-b-wide" id="email-updates">
-        <h3 class="h2" style="font-size:clamp(26px,3vw,32px)">Want to know when the wearable ships?</h3>
+        <h3 class="h2" style="font-size:clamp(26px,3vw,32px)">Get Amplifly updates.</h3>
         <p class="body" style="margin:12px 0 36px;max-width:52ch">
-          Leave your email and we'll tell you about app updates, the BioProxal wearable integration and
-          the Android release.
-        </p>
+          Leave your email and we'll tell you about app updates and the Android release. The wearable
+          has <a class="link" href="/#wearable-waitlist">its own waitlist</a>.</p>
 
         <form class="signup" method="POST" action="/.netlify/functions/beta-signup">
           <div class="field">
@@ -49,7 +48,7 @@ const ndProfiles = [
           </div>
           <div style="display:grid;gap:12px">
             <label class="opt"><input type="checkbox" name="updates" value="true" /> <span>Send me updates about Amplifly</span></label>
-            <label class="opt"><input type="checkbox" name="wearable" value="true" /> <span>Tell me when the BioProxal wearable ships</span></label>
+            <label class="opt"><input type="checkbox" name="wearable" value="true" /> <span>Also add me to the BioProxal wearable waitlist</span></label>
           </div>
           <div class="actions">
             <button class="btn btn--solid" type="submit" style="--ink:var(--deep-navy);--surface:var(--white)">Keep me posted <span class="arrow">→</span></button>

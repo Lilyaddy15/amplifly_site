@@ -306,6 +306,12 @@ body.amp { margin: 0; background: var(--white); color: var(--deep-navy); font-fa
 .devlist p { margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted); }
 @media (min-width: 720px) { .devlist { grid-template-columns: 1fr 1fr; } }
 
+/* ---------- Wearable waitlist ---------- */
+.waitlist { margin-top: 40px; padding: 28px; border-radius: 20px; background: var(--surface-raised); }
+.waitlist__form { display: grid; gap: 20px; margin-top: 8px; }
+.waitlist__form .btn { justify-self: start; }
+@media (min-width: 720px) { .waitlist__form { grid-template-columns: 1.4fr 1fr; align-items: end; } .waitlist__form .btn { grid-column: 1 / -1; } }
+
 /* ---------- Privacy ---------- */
 .claims { list-style: none; margin: 0; padding: 0; }
 .claims li { padding: 28px 0; border-top: 2px solid var(--ink); }

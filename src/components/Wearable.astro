@@ -78,8 +78,25 @@ const inDevelopment = [
         </div>
         <p class="small" style="margin-top:24px">
           No release date yet. The privacy policy will describe the wearable data flow before a
-          wearable-enabled version ships. <a class="link" href="/#email-updates">Join the email list</a> and we'll tell you when it does.
+          wearable-enabled version ships.
         </p>
+
+        <div class="waitlist" id="wearable-waitlist">
+          <p class="eyebrow">Wearable waitlist</p>
+          <h3 class="h2" style="font-size:clamp(24px,2.6vw,30px);margin-top:10px">Be first to hear when it ships.</h3>
+          <p class="small" style="margin-top:8px">A separate list from app updates. We'll only email it about the wearable.</p>
+          <form class="waitlist__form" method="POST" action="/.netlify/functions/wearable-waitlist">
+            <div class="field">
+              <input type="email" id="wl-email" name="email" required placeholder="you@example.com" autocomplete="email" />
+              <label for="wl-email">Your email</label>
+            </div>
+            <div class="field">
+              <input type="text" id="wl-name" name="first_name" placeholder="First name" autocomplete="given-name" />
+              <label for="wl-name">First name (optional)</label>
+            </div>
+            <button class="btn btn--primary" type="submit">Join the waitlist <span class="arrow">→</span></button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
