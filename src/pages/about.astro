@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import PageHead from '../components/PageHead.astro';
-import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
+import { APP_STORE_URL, PLAY_STORE_URL, APP_STORE_NAME } from '../consts';
 
 const team = [
   {
@@ -63,7 +63,7 @@ const what = [
 const data = [
           {
             title: 'Your phone comes first',
-            desc: 'Every check-in, session, and setting is written to your phone\'s local storage the moment you save it. The screen never waits on the network, and the app keeps working with no connection once you are signed in. The phone holds a bounded recent copy — your last 2,000 check-ins and 365 sessions — and your account holds the full history.',
+            desc: 'Every check-in, session, and setting is written to your phone\'s local storage the moment you save it. The screen never waits on the network, and the app keeps working with no connection once you are signed in. The phone holds a bounded recent copy — your last 2,000 check-ins and 2,000 sessions — and your account holds the full history.',
           },
           {
             title: 'Your account is the backup',
@@ -71,7 +71,7 @@ const data = [
           },
           {
             title: 'What syncs',
-            desc: 'Your name and ND profile, brain check-ins, flow sessions, the recommender\'s learned state and each outcome it learned from, the things you told it about yourself, and any tools you added. That is the whole list for the version on the App Store today.',
+            desc: 'Your name and ND profile, brain check-ins, flow sessions, the recommender\'s learned state and each outcome it learned from, the things you told it about yourself, any tools you added, and your "Today I…" items and the days you marked them. That is the whole list for the version on the App Store and Google Play today.',
           },
           {
             title: 'Every algorithm runs on your phone',
@@ -193,11 +193,11 @@ const values = [
           <p class="status"><i></i>Live today</p>
           <h3>{APP_STORE_NAME}</h3>
           <p class="body">
-            The software-only release, on the App Store for iOS. Everything described above (brain
-            states, conditions, the recommender, the forecast, the Focus timer, the manual) with no
-            hardware required.
+            The software-only release, on the App Store for iPhone and Google Play for Android. Everything
+            described above (brain states, conditions, the recommender, the forecast, the Focus timer,
+            History, day tracking, the manual) with no hardware required.
           </p>
-          <a class="link" href={APP_STORE_URL} target="_blank" rel="noopener">Get it on the App Store</a>
+          <p style="display:flex;flex-wrap:wrap;gap:8px 20px"><a class="link" href={APP_STORE_URL} target="_blank" rel="noopener">Get it on the App Store</a> <a class="link" href={PLAY_STORE_URL} target="_blank" rel="noopener">Get it on Google Play</a></p>
         </div>
         <div class="version" style="border-top-color:var(--line-strong)">
           <p class="status status--dev"><i></i>In development</p>
@@ -206,7 +206,7 @@ const values = [
             Built with Michael and BioProxal: an optional wrist-worn optical sensor that computes a flow
             score, heart rate, HRV, SpO2 and breathing rate on the wearable itself and sends only those
             finished values to the app over Bluetooth. It will ship as an update to the same app, so your
-            history carries forward. Not in the App Store build, and no release date yet.
+            history carries forward. Not in the current release, and no release date yet.
           </p>
           <a class="link" href="/#wearable">How it's built</a>
         </div>

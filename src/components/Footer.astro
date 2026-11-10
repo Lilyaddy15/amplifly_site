@@ -1,5 +1,5 @@
 ---
-import { APP_STORE_URL, APP_STORE_NAME } from '../consts';
+import { APP_STORE_URL, PLAY_STORE_URL, APP_STORE_NAME } from '../consts';
 const year = new Date().getFullYear();
 ---
 <footer class="band foot" data-theme="navy">
@@ -13,12 +13,13 @@ const year = new Date().getFullYear();
           brain. Build your manual.
         </p>
         <p class="small" style="margin-top:16px">Computed on your device. Synced only to your account. No analytics tracking.</p>
-        <p class="small" style="margin-top:4px">On the App Store as {APP_STORE_NAME}. BioProxal wearable integration in development.</p>
+        <p class="small" style="margin-top:4px">On the App Store and Google Play as {APP_STORE_NAME}. BioProxal wearable integration in development.</p>
       </div>
       <nav aria-label="Product">
         <h2>Product</h2>
         <ul>
-          <li><a href={APP_STORE_URL} target="_blank" rel="noopener">Download</a></li>
+          <li><a href={APP_STORE_URL} target="_blank" rel="noopener">App Store</a></li>
+          <li><a href={PLAY_STORE_URL} target="_blank" rel="noopener">Google Play</a></li>
           <li><a href="/#states">Brain states</a></li>
           <li><a href="/#conditions">Conditions</a></li>
           <li><a href="/#manual">Your manual</a></li>

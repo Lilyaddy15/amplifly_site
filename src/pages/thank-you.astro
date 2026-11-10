@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
-import AppStoreBadge from '../components/AppStoreBadge.astro';
+import StoreBadges from '../components/StoreBadges.astro';
 import { APP_STORE_NAME } from '../consts';
 import { STATES, glyph } from '../lib/states';
 ---
@@ -15,12 +15,12 @@ import { STATES, glyph } from '../lib/states';
       <p class="eyebrow">Subscribed</p>
       <h1 class="display" style="margin-top:16px">You're on <em>the list.</em></h1>
       <p class="lead" style="margin-top:24px;max-width:40ch">
-        Thanks for subscribing. We'll keep you posted on app updates and the Android release, and if
+        Thanks for subscribing. We'll keep you posted on app updates and new features, and if
         you also joined the wearable waitlist, we'll tell you the moment the BioProxal wearable ships.
       </p>
-      <p class="body" style="margin-top:32px">{APP_STORE_NAME} is already live on iOS:</p>
+      <p class="body" style="margin-top:32px">{APP_STORE_NAME} is already live on iPhone and Android:</p>
       <div class="actions" style="margin-top:16px">
-        <AppStoreBadge height="h-14" />
+        <StoreBadges height="h-14" />
         <a class="btn btn--ghost" href="/">Back to Amplifly</a>
       </div>
       <p class="small" style="margin-top:40px;max-width:52ch">

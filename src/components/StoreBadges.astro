@@ -1,0 +1,14 @@
+---
+// The App Store and Google Play badges side by side. Renders as siblings so the
+// parent's flex `.actions` row handles spacing and wrapping.
+import AppStoreBadge from './AppStoreBadge.astro';
+import PlayStoreBadge from './PlayStoreBadge.astro';
+
+interface Props {
+  height?: string;
+}
+
+const { height = 'h-14' } = Astro.props;
+---
+<AppStoreBadge height={height} />
+<PlayStoreBadge height={height} />

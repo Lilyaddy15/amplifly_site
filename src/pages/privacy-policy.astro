@@ -5,7 +5,7 @@ import PageHead from '../components/PageHead.astro';
 import Doc from '../components/Doc.astro';
 import { APP_STORE_NAME } from '../consts';
 
-const lastUpdated = 'September 2026';
+const lastUpdated = 'November 2026';
 ---
 
 <Layout
@@ -23,7 +23,7 @@ const lastUpdated = 'September 2026';
         <h2>The short version</h2>
         <p>
           Everything you do in Amplifly — brain check-ins, flow and focus sessions, your ND profile,
-          your own tools and insights, the recommendation model — is stored on your device, and every
+          your own tools and insights, the things you track with "Today I…", the recommendation model — is stored on your device, and every
           algorithm runs on your device. Amplifly requires an account to use, so that data also syncs
           to your account: encrypted in transit, stored encrypted at rest on Supabase's servers, and
           never sold, shared, or used for any purpose other than keeping your data available to you.
@@ -42,6 +42,7 @@ const lastUpdated = 'September 2026';
           <li>Flow and focus sessions (activity, duration, intensity, interest level, helpers, drains, condition used, optional note)</li>
           <li>Your ND profile (which profiles you selected, executive function rating, working memory rating)</li>
           <li>Tools you add yourself and self-insights you record</li>
+          <li>"Today I…" day tracking: the items you track (built-in or your own) and the days you marked them, with any amount you entered</li>
           <li>Your name (optional, used only for personalized greetings)</li>
           <li>The recommendation engine's learned state (Beta posteriors per condition/context cell) and its outcome history</li>
         </ul>
@@ -52,7 +53,7 @@ const lastUpdated = 'September 2026';
         </p>
         <p>
           Local storage is capped so it stays bounded — the most recent 2,000 brain check-ins,
-          365 flow sessions, 500 recommendation outcomes, 50 self-insights, and 100 custom tools.
+          2,000 flow sessions, 10,000 day-tracking entries, 500 recommendation outcomes, 50 self-insights, and 100 custom tools.
         </p>
       </section>
 
@@ -102,7 +103,7 @@ const lastUpdated = 'September 2026';
           flow sessions you have logged; that calibration is computed on the spot, not stored.
         </p>
         <p>
-          {APP_STORE_NAME}, the version of Amplifly on the App Store today, uses no sensors,
+          {APP_STORE_NAME}, the version of Amplifly on the App Store and Google Play today, uses no sensors,
           wearables, or biometric data. Everything it reasons about comes from what you tell it
           and what the phone already knows.
         </p>
@@ -111,14 +112,14 @@ const lastUpdated = 'September 2026';
       <section id="the-bioproxal-wearable-in-development">
         <h2>The BioProxal wearable (in development)</h2>
         <p>
-          An optional BioProxal wearable integration is being built and is <strong>not part of the App
-          Store release</strong>. As currently built, the wearable computes its readings on the device
+          An optional BioProxal wearable integration is being built and is <strong>not part of the current
+          release</strong>. As currently built, the wearable computes its readings on the device
           itself and sends only finished values — a flow score, heart rate, HRV, SpO2, and
           breathing rate — to the app over Bluetooth while the app is open. The app never receives
           raw sensor signals.
         </p>
         <p>
-          This policy describes the App Store release only. Before a wearable-enabled version is
+          This policy describes the current App Store and Google Play release only. Before a wearable-enabled version is
           released, it will be updated to describe what the app stores, syncs, and does with the
           wearable's numbers, and the date at the top of this page will change.
         </p>

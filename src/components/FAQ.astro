@@ -3,14 +3,14 @@ import { APP_STORE_NAME } from '../consts';
 const faqs = [
   {
     q: 'Does this require any hardware — a wearable, a ring, anything?',
-    a: `Not today. ${APP_STORE_NAME}, the version on the App Store, is pure software: you check in by tapping one of five brain states. No sensors, no wearables, no external services. A BioProxal wearable integration is in development. It will be optional: the rest of the app keeps working with or without a device connected.`,
+    a: `Not today. ${APP_STORE_NAME}, the version on the App Store and Google Play, is pure software: you check in by tapping one of five brain states. No sensors, no wearables, no external services. A BioProxal wearable integration is in development. It will be optional: the rest of the app keeps working with or without a device connected.`,
   },
   {
     q: 'What is the BioProxal wearable, and when is it coming?',
-    a: 'BioProxal is a separate company; its wrist-worn optical sensor is being built specifically for Amplifly and connects to the app over Bluetooth while the app is open. It computes a flow score, heart rate, HRV, SpO2, and breathing rate on the wearable itself and sends only those finished numbers to the phone — never raw signals. The integration is being built on a separate branch of the app and is not in the App Store release. We don\'t have a release date to share; join the wearable waitlist on this page and we\'ll tell you when it ships.',
+    a: 'BioProxal is a separate company; its wrist-worn optical sensor is being built specifically for Amplifly and connects to the app over Bluetooth while the app is open. It computes a flow score, heart rate, HRV, SpO2, and breathing rate on the wearable itself and sends only those finished numbers to the phone — never raw signals. The integration is being built on a separate branch of the app and is not in the current release. We don\'t have a release date to share; join the wearable waitlist on this page and we\'ll tell you when it ships.',
   },
   {
-    q: 'Why is it called Amplifly Lite on the App Store?',
+    q: 'Why is it called Amplifly Lite in the app stores?',
     a: `${APP_STORE_NAME} is the software-only release: every feature described on this page, without the wearable. The name marks it as the version that doesn't need hardware. It is the same app, from the same account, and your data carries forward.`,
   },
   {
@@ -47,7 +47,11 @@ const faqs = [
   },
   {
     q: 'What platforms is it on?',
-    a: `${APP_STORE_NAME} is out now on iOS — download it from the App Store. It's built in React Native with Expo, so an Android release is on the way; sign up for Amplifly updates to be notified when it lands.`,
+    a: `${APP_STORE_NAME} is out now on iPhone (App Store) and Android (Google Play), $2.99 on both. It's the same app with the same features, and your account works on either, so you can switch phones and keep your history.`,
+  },
+  {
+    q: 'Can I look back at how my days went?',
+    a: 'Yes. The History tab shows a month calendar colored by each day\'s brain state; tap a day to see its check-ins and sessions. Week, Month and All-time graphs show your minutes in flow, how locked in you were, your brain-state mix, and the conditions, helpers and drains that showed up. "Today I…" lets you mark things like sleep, exercise, time outside or caffeine (13 built in, plus your own, with an optional amount), and History compares days with and without each one. Those comparisons are patterns in your own data, not cause and effect.',
   },
   {
     q: 'Can Amplifly replace therapy or medical support?',

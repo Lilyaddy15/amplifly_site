@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched conditions, log your sessions, and build a personal operating manual — computed on your device. On the App Store as Amplifly Lite; BioProxal wearable integration in development.",
+  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched conditions, log your sessions, and build a personal operating manual — computed on your device. On the App Store and Google Play as Amplifly Lite; BioProxal wearable integration in development.",
   keywords = "neurodivergent, ADHD, autism, flow state, focus, executive function, brain states, productivity, offline, privacy, mental health",
   ogImage = "/images/og-image.png",
   canonical = Astro.url.href
@@ -63,10 +63,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${
         "@type": "SoftwareApplication",
         "name": "Amplifly",
         "alternateName": "Amplifly Lite",
-        "description": "A flow and strengths tool for neurodivergent minds. Listed on the App Store as Amplifly Lite; BioProxal wearable integration in development.",
+        "description": "A flow and strengths tool for neurodivergent minds. Listed on the App Store and Google Play as Amplifly Lite; BioProxal wearable integration in development.",
         "url": "https://amplifly.me",
         "applicationCategory": "HealthApplication",
-        "operatingSystem": "iOS",
+        "operatingSystem": "iOS, Android",
         "offers": { "@type": "Offer", "price": "2.99", "priceCurrency": "USD" },
         "publisher": { "@type": "Organization", "name": "Amplifly" }
       }

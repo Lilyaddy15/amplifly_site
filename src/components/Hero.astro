@@ -1,5 +1,5 @@
 ---
-import AppStoreBadge from './AppStoreBadge.astro';
+import StoreBadges from './StoreBadges.astro';
 import { APP_STORE_NAME } from '../consts';
 import { STATES, glyph } from '../lib/states';
 
@@ -16,11 +16,11 @@ const tick = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
         Log your sessions, and watch a personal operating manual build itself.
       </p>
       <div class="actions">
-        <AppStoreBadge height="h-14" />
+        <StoreBadges height="h-14" />
         <a class="btn btn--ghost" href="/#loop">See how it works</a>
       </div>
       <p class="small hero__note">
-        On the App Store as <strong>{APP_STORE_NAME}</strong>, the software-only release. The BioProxal
+        On iPhone and Android as <strong>{APP_STORE_NAME}</strong>, the software-only release. The BioProxal
         wearable integration is in development. <a class="link" href="/#wearable">What that means</a>
       </p>
       <ul class="ticks">

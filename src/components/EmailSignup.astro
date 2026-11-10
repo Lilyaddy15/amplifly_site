@@ -1,5 +1,5 @@
 ---
-import AppStoreBadge from './AppStoreBadge.astro';
+import StoreBadges from './StoreBadges.astro';
 import { APP_STORE_NAME } from '../consts';
 
 const ndProfiles = [
@@ -14,18 +14,18 @@ const ndProfiles = [
     <div class="split">
       <div class="col-a-narrow">
         <p class="eyebrow">Out now</p>
-        <h2 class="display wipe" style="margin-top:16px;font-size:clamp(44px,6.4vw,76px)">{APP_STORE_NAME} is on the App Store.</h2>
+        <h2 class="display wipe" style="margin-top:16px;font-size:clamp(44px,6.4vw,76px)">{APP_STORE_NAME} is on iPhone and Android.</h2>
         <p class="lead" style="margin-top:24px">
-          Download it and start building your operating manual today. This is the software-only
+          Get it on the App Store or Google Play and start building your operating manual today. This is the software-only
           release; the BioProxal wearable integration is still in development.
         </p>
-        <div class="actions" style="margin-top:32px"><AppStoreBadge height="h-14" /></div>
+        <div class="actions" style="margin-top:32px"><StoreBadges height="h-14" /></div>
       </div>
 
       <div class="col-b-wide" id="email-updates">
         <h3 class="h2" style="font-size:clamp(26px,3vw,32px)">Get Amplifly updates.</h3>
         <p class="body" style="margin:12px 0 36px;max-width:52ch">
-          Leave your email and we'll tell you about app updates and the Android release. The wearable
+          Leave your email and we'll tell you about app updates and new features. The wearable
           has <a class="link" href="/#wearable-waitlist">its own waitlist</a>.</p>
 
         <form class="signup" method="POST" action="/.netlify/functions/beta-signup">

@@ -38,11 +38,16 @@ const sections = [
           Patterns appear after a few logged sessions, and the recommender's picks get reliable at
           around 20–30 outcomes. Things that took years to half-notice become visible in weeks.
         </p>
+        <p class="body">
+          The History tab adds the long view: a calendar colored by brain state, graphs of your flow
+          minutes and ratings, and "Today I…" day tracking that compares days with and without things
+          like sleep or exercise. Patterns, not cause and effect.
+        </p>
         <ul class="sections">
           {sections.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}
         </ul>
         <div class="actions" style="margin-top:36px">
-          <a class="btn btn--primary" href={APP_STORE_URL} target="_blank" rel="noopener">Start building yours <span class="arrow">→</span></a>
+          <a class="btn btn--primary" href="/#download">Start building yours <span class="arrow">→</span></a>
         </div>
       </div>
 
