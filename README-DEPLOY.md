@@ -65,16 +65,28 @@ The `netlify.toml` file in the project root contains the Netlify configuration:
 ```toml
 [build]
   command = "npm run build"
-  publish = "dist/"
+  publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 ```
+
+There is deliberately no `/* -> /index.html` catch-all redirect. The site is static and
+multi-page, so unknown URLs should return the real `404.html`; a catch-all would make every
+mistyped URL a soft 404 (a 200 copy of the homepage) in search engines.
+
+### Search and AI discoverability
+
+- `src/layouts/Layout.astro` sets the canonical URL, Open Graph / Twitter tags and JSON-LD
+  for every page. `astro.config.mjs` must keep `site: "https://amplifly.me"` or canonicals
+  fall back to localhost.
+- `src/lib/schema.ts` holds the schema.org graph (Organization, WebSite, the app, FAQ,
+  breadcrumbs). Update it when prices, store links or features change.
+- `src/pages/sitemap.xml.ts` generates `/sitemap.xml`. Add new public pages there.
+- `public/robots.txt` allows all crawlers, including AI assistants, and points at the sitemap.
+- `public/llms.txt` is a plain-text summary of the product for AI assistants
+  (see https://llmstxt.org). Keep its facts in step with the site copy.
 
 ## Troubleshooting
 

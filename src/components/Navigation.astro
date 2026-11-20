@@ -8,7 +8,7 @@ const links = [
   { href: '/#manual', label: 'Your manual' },
   { href: '/#wearable', label: 'Wearable' },
   { href: '/#privacy', label: 'Privacy' },
-  { href: '/about', label: 'About' },
+  { href: '/about/', label: 'About' },
 ];
 ---
 <header class="nav">
@@ -68,7 +68,7 @@ const links = [
     pip.style.width = a.offsetWidth + 'px';
     pip.style.opacity = '1';
   };
-  if (location.pathname === '/about') place(anchors.find(a => a.getAttribute('href') === '/about'));
+  if (location.pathname.replace(/\/$/, '') === '/about') place(anchors.find(a => a.getAttribute('href') === '/about/'));
   const sections = anchors
     .map(a => ({ a, el: a.dataset.section ? document.getElementById(a.dataset.section) : null }))
     .filter((x): x is { a: HTMLAnchorElement; el: HTMLElement } => !!x.el);

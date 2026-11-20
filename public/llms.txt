@@ -1,0 +1,53 @@
+# Amplifly
+
+> Amplifly is a flow and strengths app for neurodivergent minds (ADHD, autism, AuDHD, dyslexia, dyscalculia and more). You check in with one of five brain states, get "conditions" matched to that state, log flow sessions or run a Focus timer, and the app builds a personal operating manual from your own data. It is on the App Store and Google Play as "Amplifly Lite" ($2.99, iPhone and Android). Website: https://amplifly.me
+
+## Key facts
+
+- Name: Amplifly. Listed in the app stores as "Amplifly Lite", the software-only release. Same app, same account; the name marks the version that needs no hardware.
+- Platforms: iPhone (App Store, https://apps.apple.com/us/app/amplifly-lite/id6775978052) and Android (Google Play, https://play.google.com/store/apps/details?id=com.amplifly.app). $2.99 one-time on both.
+- Made by: Amplifly, founded by Lily Stone, a neurodivergent founder. Contact: hello@amplifly.me (the only support address; there is no amplifly.app domain).
+- Account: required. There is no guest mode. Once signed in the app works offline; the account keeps data backed up and synced across devices.
+- Not a medical product. Amplifly is a self-understanding and focus tool. It does not diagnose, treat or replace therapy or medical care.
+- Hardware: none required. The current release uses no sensors, wearables or biometric data.
+
+## How it works
+
+1. Check your brain. Pick one of five brain states: Buzzing (lots of energy, ideas firing), Sharp (clear, focused), Flat (low energy, neutral), Foggy (hard to think, body heavy), Scattered (overwhelmed, too many tabs open). Each check-in is timestamped and you can update it whenever your brain shifts.
+2. Get matched conditions. Twelve built-in conditions across four phases: Primers (Box Breathing, Movement Snack, One Tab Only, Flow Playlist), Protectors (Do Not Disturb + Timer, Parking Lot, Body Check), Recovery (Flow Debrief, Horizontal Rest) and Resets (Brain Dump, One Anchor Task, 5-4-3-2-1 Grounding). You can add your own conditions and they become first-class options.
+3. Log a flow session. What you worked on, how long, how locked in you were, what helped, what drained you. About 60 seconds. Or run the Focus timer (25, 50, 90 minutes or open-ended, optional breaks) and the log opens with the time already measured.
+4. Your manual builds. The Manual tab shows when you flow, your most common brain state at each time of day, which states produce your best work, what gets you in and pulls you out, and what the recommender has learned. The History tab adds a month calendar colored by brain state, flow graphs, and "Today I…" day tracking (sleep, exercise, caffeine and so on) that compares days with and without each item. These are patterns in your own data, not cause and effect.
+
+## The algorithms, honestly described
+
+- Recommender: a Thompson-sampling contextual bandit that runs on the phone. Each condition is an arm keyed by ND profile, brain state and time of day. It starts from research-cited priors and updates a Beta posterior on every thumbs up/down, tagged session, or 4–5 star session logged within 2 hours of an opened recommendation. After roughly 10–20 outcomes in a context, the user's own data dominates.
+- Flow Forecast: a small neural network with fixed weights, trained on synthetic data built from published research, not on real participants. It runs for profiles that include ADHD, Autism, AuDHD, Dyslexia or Dyscalculia, otherwise the app falls back to a labelled brain-state-by-time-of-day estimate. It tells the user when it is still running on priors rather than their data.
+- Neurodivergent profiles (15): ADHD, Autism, AuDHD, Dyslexia, Dyscalculia, Dyspraxia/DCD, Tourette's/Tics, Sensory Processing, OCD, Anxiety, Depression, PTSD/C-PTSD, Bipolar, Twice Exceptional (2e), Other. Several can be selected; research-cited priors exist for the first five.
+
+## Privacy and data
+
+- Every check-in, session and setting is written to the phone first and every algorithm runs on the phone. Nothing is sent anywhere to be scored.
+- Data syncs to the user's own account (Supabase), encrypted in transit, so it is there on the next device. It is never sold, shared or used for advertising.
+- No analytics, crash reporting or advertising SDKs. Reminders are local notifications.
+- Sign out and syncing stops; local data stays on the phone. Account deletion: email hello@amplifly.me with the subject "Delete my account" (removed within 7 days).
+- Full policy: https://amplifly.me/privacy-policy/
+
+## BioProxal wearable (in development, not released)
+
+- BioProxal is a separate company, founded by Michael Moschello, building a wrist-worn optical sensor specifically for Amplifly. It connects over Bluetooth LE while the app is open.
+- Flow score, heart rate, HRV, SpO2 and breathing rate are computed on the wearable; the app receives only finished numbers, never raw signals.
+- The wearable will be optional. It is not in the App Store or Google Play build, there is no release date, and the privacy policy will be updated before a wearable-enabled version ships. Waitlist: https://amplifly.me/#wearable-waitlist
+
+## Pages
+
+- [Home](https://amplifly.me/): brain states, how it works, conditions, the manual, ND profiles, wearable status, privacy, FAQ
+- [About](https://amplifly.me/about/): founders, what each part of the app is and can't do yet, where data lives
+- [Support](https://amplifly.me/support/): contact and common questions (getting started, accounts, sync, notifications, deleting data)
+- [Privacy policy](https://amplifly.me/privacy-policy/)
+- [Terms of service](https://amplifly.me/terms-of-service/)
+
+## Optional
+
+- [App Store listing](https://apps.apple.com/us/app/amplifly-lite/id6775978052)
+- [Google Play listing](https://play.google.com/store/apps/details?id=com.amplifly.app)
+- [Sitemap](https://amplifly.me/sitemap.xml)

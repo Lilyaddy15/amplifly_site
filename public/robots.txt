@@ -1,4 +1,27 @@
+# amplifly.me — everyone is welcome to crawl this site.
 User-agent: *
 Allow: /
 
-Sitemap: https://amplifly.me/sitemap.xml 
+# AI assistants and answer engines, named explicitly so the intent is unambiguous.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://amplifly.me/sitemap.xml
+
+# Plain-text summary of the product for AI assistants: https://amplifly.me/llms.txt

@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import { STATES, glyph } from '../lib/states';
+---
+
+<Layout title="Page not found" description="That page doesn't exist on amplifly.me." noindex>
+  <section class="band ty" data-theme="navy">
+    <div class="wrap">
+      <div class="ty__glyphs" aria-hidden="true">
+        {STATES.map(s => <Fragment set:html={glyph(s.id, 40)} />)}
+      </div>
+      <p class="eyebrow">404</p>
+      <h1 class="display" style="margin-top:16px">That page <em>isn't here.</em></h1>
+      <p class="lead" style="margin-top:24px;max-width:40ch">
+        The link may be old or mistyped. Everything about Amplifly is on the homepage.
+      </p>
+      <div class="actions" style="margin-top:32px">
+        <a class="btn btn--primary" href="/">Back to Amplifly</a>
+        <a class="btn btn--ghost" href="/support/">Support</a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>

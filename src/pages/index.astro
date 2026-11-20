@@ -11,11 +11,19 @@ import PrivacySection from '../components/PrivacySection.astro';
 import FAQ from '../components/FAQ.astro';
 import EmailSignup from '../components/EmailSignup.astro';
 import Footer from '../components/Footer.astro';
+import { faqs } from '../lib/faqs';
+import { webPage, faqPage } from '../lib/schema';
+
+const description = 'A flow and strengths app for neurodivergent minds (ADHD, autism, AuDHD and more). Check in with one of five brain states, get matched conditions, log flow sessions, and build a personal operating manual from your own data. On iPhone and Android as Amplifly Lite.';
 ---
 
 <Layout
-  title="Amplifly"
-  description="A flow and strengths tool for neurodivergent minds. Check your brain state, get matched conditions, log your sessions, and build a personal operating manual — computed on your device. Out now on iOS as Amplifly Lite; BioProxal wearable integration in development."
+  title="Amplifly – Flow & focus app for neurodivergent minds"
+  description={description}
+  jsonLd={[
+    webPage({ path: '/', name: 'Amplifly: a flow and strengths tool for neurodivergent minds', description }),
+    faqPage(faqs, '/'),
+  ]}
 >
   <main>
     <Hero />

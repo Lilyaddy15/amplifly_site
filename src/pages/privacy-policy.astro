@@ -4,13 +4,20 @@ import Footer from '../components/Footer.astro';
 import PageHead from '../components/PageHead.astro';
 import Doc from '../components/Doc.astro';
 import { APP_STORE_NAME } from '../consts';
+import { webPage, breadcrumbs } from '../lib/schema';
 
 const lastUpdated = 'November 2026';
+const lastUpdatedIso = '2026-11';
+const privacyDescription = "Amplifly's privacy policy. Everything you log is stored on your device and synced to your account; every algorithm runs on your device. No analytics, no advertising, no data sales.";
 ---
 
 <Layout
   title="Privacy Policy"
-  description="Amplifly's privacy policy. Everything you log is stored on your device and synced to your account; every algorithm runs on your device. No analytics, no advertising, no data sales."
+  description={privacyDescription}
+  jsonLd={[
+    webPage({ path: '/privacy-policy/', name: 'Amplifly privacy policy', description: privacyDescription, dateModified: lastUpdatedIso }),
+    breadcrumbs([['Privacy policy', '/privacy-policy/']]),
+  ]}
 >
   <PageHead eyebrow="Legal" title="Privacy policy" lead="What Amplifly stores, where it lives, and what we never do with it. No analytics, no advertising, no data sales.">
     <p class="small">Last updated: {lastUpdated}</p>

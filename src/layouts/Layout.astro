@@ -1,25 +1,46 @@
 ---
+import { baseGraph, SITE_DESCRIPTION } from '../lib/schema';
+
 interface Props {
   title: string;
   description?: string;
   keywords?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   canonical?: string;
+  noindex?: boolean;      // thank-you pages, 404: keep them out of search results
+  jsonLd?: object[];      // page-specific schema.org nodes, added to the shared graph
 }
 
 const {
   title,
-  description = "Amplifly is a flow and strengths tool for neurodivergent minds. Check your brain state, get matched conditions, log your sessions, and build a personal operating manual — computed on your device. On the App Store and Google Play as Amplifly Lite; BioProxal wearable integration in development.",
-  keywords = "neurodivergent, ADHD, autism, flow state, focus, executive function, brain states, productivity, offline, privacy, mental health",
+  description = SITE_DESCRIPTION,
+  keywords = "neurodivergent, ADHD, autism, AuDHD, flow state, focus app, executive function, brain states, operating manual, privacy, Amplifly Lite",
   ogImage = "/images/og-image.png",
-  canonical = Astro.url.href
+  ogImageAlt = "Amplifly: a flow and strengths tool for neurodivergent minds",
+  canonical,
+  noindex = false,
+  jsonLd = [],
 } = Astro.props;
 
 import Navigation from '../components/Navigation.astro';
 import '../styles/amp.css';
 
+// Astro.site comes from astro.config.mjs. Netlify serves pages at /about/ (with the slash), so the
+// canonical uses that form too and every page agrees on one URL.
+const site = Astro.site ?? new URL('https://amplifly.me');
+const pathname = Astro.url.pathname;
+const canonicalPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '') + '/';
+const canonicalUrl = canonical ?? new URL(canonicalPath, site).href;
+
+// The homepage sets its own full title; inner pages get the site name appended.
+const fullTitle = title.includes('Amplifly') ? title : `${title} — Amplifly`;
+
 // Social cards need an absolute image URL.
-const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${ogImage}`;
+const ogImageUrl = new URL(ogImage, site).href;
+
+const graph = { '@context': 'https://schema.org', '@graph': [...baseGraph, ...jsonLd] };
+const graphJson = JSON.stringify(graph).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -30,47 +51,36 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://amplifly.me${
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title === 'Amplifly' ? 'Amplifly' : `${title} — Amplifly`}</title>
-    <meta name="title" content={title === 'Amplifly' ? 'Amplifly' : `${title} — Amplifly`} />
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Amplifly" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={`${title} — Amplifly`} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:site_name" content="Amplifly" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonical} />
-    <meta property="twitter:title" content={`${title} — Amplifly`} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <meta name="theme-color" content="#15273F" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Amplifly" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Amplifly",
-        "alternateName": "Amplifly Lite",
-        "description": "A flow and strengths tool for neurodivergent minds. Listed on the App Store and Google Play as Amplifly Lite; BioProxal wearable integration in development.",
-        "url": "https://amplifly.me",
-        "applicationCategory": "HealthApplication",
-        "operatingSystem": "iOS, Android",
-        "offers": { "@type": "Offer", "price": "2.99", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "Amplifly" }
-      }
-    </script>
+    <script type="application/ld+json" set:html={graphJson} />
 
     <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">

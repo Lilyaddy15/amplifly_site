@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import PageHead from '../components/PageHead.astro';
 import { APP_STORE_URL, PLAY_STORE_URL, APP_STORE_NAME } from '../consts';
+import { webPage, breadcrumbs, person } from '../lib/schema';
 
 const team = [
   {
@@ -87,6 +88,8 @@ const data = [
           },
         ];
 
+const aboutDescription = 'Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it. The BioProxal wearable is being built for it by Michael Moschello. What each part of the app is, and where your data lives.';
+
 const values = [
           { title: 'ND brains, not \'fixed\' brains', desc: 'Amplifly doesn\'t treat neurodivergence as a problem to solve. It treats it as a context to understand.' },
           { title: 'Privacy as a feature', desc: 'Your data is yours. Written to your phone first, computed on your phone, synced only to your own account so it survives a new device. Fully explained, no surprises.' },
@@ -97,7 +100,12 @@ const values = [
 
 <Layout
   title="About"
-  description="Amplifly was built by Lily Stone, a neurodivergent founder who wanted a tool that worked with her brain instead of against it. The BioProxal wearable is being built for it by Michael Moschello."
+  description={aboutDescription}
+  jsonLd={[
+    webPage({ path: '/about/', name: 'About Amplifly', description: aboutDescription, type: 'AboutPage' }),
+    breadcrumbs([['About', '/about/']]),
+    ...team.map(t => person({ name: t.name, jobTitle: 'Founder', worksFor: t.role.replace('Founder, ', ''), image: t.img, sameAs: t.linkedin })),
+  ]}
 >
   <PageHead
     eyebrow="About Amplifly"
@@ -167,7 +175,7 @@ const values = [
       <div class="split">
         <div class="col-a-narrow faq-intro">
           <p class="body">
-            The <a class="link" href="/privacy-policy">privacy policy</a> is the formal version. This is
+            The <a class="link" href="/privacy-policy/">privacy policy</a> is the formal version. This is
             what actually happens to what you log.
           </p>
         </div>

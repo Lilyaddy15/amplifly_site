@@ -3,13 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import PageHead from '../components/PageHead.astro';
 import Doc from '../components/Doc.astro';
+import { webPage, breadcrumbs } from '../lib/schema';
 
 const lastUpdated = 'November 2026';
+const lastUpdatedIso = '2026-11';
+const termsDescription = 'The terms for using Amplifly: what the app is and is not (it is not a medical device), your account, and our responsibilities to each other, in plain language.';
 ---
 
 <Layout
   title="Terms of Service"
-  description="Amplifly terms of service."
+  description={termsDescription}
+  jsonLd={[
+    webPage({ path: '/terms-of-service/', name: 'Amplifly terms of service', description: termsDescription, dateModified: lastUpdatedIso }),
+    breadcrumbs([['Terms of service', '/terms-of-service/']]),
+  ]}
 >
   <PageHead eyebrow="Legal" title="Terms of service" lead="The agreement for using Amplifly, in plain language where we can manage it.">
     <p class="small">Last updated: {lastUpdated}</p>

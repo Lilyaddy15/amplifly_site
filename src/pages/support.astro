@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import PageHead from '../components/PageHead.astro';
 import { APP_STORE_NAME } from '../consts';
+import { webPage, breadcrumbs, faqPage } from '../lib/schema';
+
+const supportDescription = 'Get help with Amplifly: contact hello@amplifly.me, and answers to common questions about getting started, accounts, sync across devices, notifications, and deleting your data.';
 
 const supportEmail = 'hello@amplifly.me';
 
@@ -48,7 +51,12 @@ const topics = [
 
 <Layout
   title="Support"
-  description="Get help with Amplifly. Contact support, find answers to common questions, and learn how to manage your account and data."
+  description={supportDescription}
+  jsonLd={[
+    webPage({ path: '/support/', name: 'Amplifly support', description: supportDescription, type: 'ContactPage' }),
+    breadcrumbs([['Support', '/support/']]),
+    faqPage(topics, '/support/'),
+  ]}
 >
   <PageHead eyebrow="Support" title="Stuck? We read" accent="every message." lead="We're a small team. Here's how to get help, and answers to what people ask most." />
 
@@ -94,9 +102,9 @@ const topics = [
       <div class="col-b-wide">
         <ul class="reslist">
           <li><a href="/#faq"><div>Frequently asked questions<span>How the recommender, forecast and timer work</span></div><span class="arrow">→</span></a></li>
-          <li><a href="/privacy-policy"><div>Privacy policy<span>What we store and how sync works</span></div><span class="arrow">→</span></a></li>
-          <li><a href="/terms-of-service"><div>Terms of service<span>The agreement for using Amplifly</span></div><span class="arrow">→</span></a></li>
-          <li><a href="/about"><div>About Amplifly<span>Who's building it, and why</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/privacy-policy/"><div>Privacy policy<span>What we store and how sync works</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/terms-of-service/"><div>Terms of service<span>The agreement for using Amplifly</span></div><span class="arrow">→</span></a></li>
+          <li><a href="/about/"><div>About Amplifly<span>Who's building it, and why</span></div><span class="arrow">→</span></a></li>
         </ul>
       </div>
     </div>
