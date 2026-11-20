@@ -352,7 +352,7 @@ body.amp { margin: 0; background: var(--white); color: var(--deep-navy); font-fa
 
 /* ---------- Footer ---------- */
 .foot { padding: 96px 0 40px; }
-.foot__word { font-weight: 900; font-size: clamp(72px, 17vw, 220px); line-height: .9; letter-spacing: -.02em; color: transparent; -webkit-text-stroke: 1.5px var(--line-strong); margin: 0 0 48px; user-select: none; }
+.foot__lockup { display: block; width: min(100%, 560px); height: auto; margin: 0 0 56px; }
 .foot__grid { display: grid; gap: 40px; }
 .foot__grid h2 { margin: 0 0 14px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 800; color: var(--ink-muted); }
 .foot__grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
