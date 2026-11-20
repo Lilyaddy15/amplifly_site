@@ -146,7 +146,7 @@ body.amp { margin: 0; background: var(--white); color: var(--deep-navy); font-fa
 .nav { position: fixed; z-index: 50; top: 12px; left: 12px; right: 12px; display: flex; justify-content: center; pointer-events: none; }
 .nav__bar { pointer-events: auto; width: 100%; max-width: var(--max); display: flex; align-items: center; justify-content: space-between; gap: 16px; background: rgba(21, 39, 63, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--white); border-radius: 9999px; padding: 6px 6px 6px 18px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); }
 .nav__mark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -.02em; color: var(--white); text-decoration: none; }
-.nav__mark img { border-radius: 7px; }
+.nav__mark img { display: block; width: 33px; height: 28px; }
 .nav__links { position: relative; display: none; gap: 2px; }
 .nav__links a { position: relative; z-index: 1; font: 500 14px/1 var(--font-avenir); color: var(--medium-blue); text-decoration: none; padding: 10px 13px; border-radius: 9999px; transition: color 200ms var(--ease); white-space: nowrap; }
 .nav__links a:hover, .nav__links a[aria-current="true"] { color: var(--white); }

@@ -1,0 +1,43 @@
+<!doctype html>
+<!--
+  Source frame for public/images/og-image.png (1200x630).
+  Render from the site root with headless Chrome:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --window-size=1200,630 --screenshot=public/images/og-image.png "file://$PWD/scripts/og-image.html"
+  Brand rules: Deep Navy #15273F, Vibrant Blue #6093D4, white only. Never recolor the swoosh.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #15273F; font-family: Avenir, "Avenir Next", "Helvetica Neue", Arial, sans-serif; color: #fff; position: relative; }
+  .ring { position: absolute; border-radius: 50%; background: rgba(255,255,255,.035); }
+  .ring.r1 { width: 1180px; height: 1180px; right: -520px; top: -640px; }
+  .ring.r2 { width: 900px; height: 900px; right: -380px; top: -500px; background: rgba(255,255,255,.04); }
+  .ring.r3 { width: 620px; height: 620px; right: -240px; top: -360px; background: rgba(255,255,255,.045); }
+  .frame { position: absolute; inset: 0; padding: 60px 80px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .lockup { display: flex; align-items: center; gap: 14px; }
+  .lockup img { height: 44px; width: auto; display: block; }
+  .tag { margin: 14px 0 0; font-size: 23px; font-weight: 500; color: #ADC9E9; letter-spacing: .01em; }
+  h1 { margin: 46px 0 0; font-size: 68px; line-height: 1.08; font-weight: 800; letter-spacing: -.02em; }
+  h1 .blue { color: #6093D4; }
+  .pills { display: flex; gap: 14px; margin-top: 34px; }
+  .pill { font-size: 22px; font-weight: 800; padding: 12px 24px; border-radius: 9999px; background: #1E3859; box-shadow: inset 0 0 0 1px rgba(173,201,233,.35); }
+  .foot { margin: auto 0 0; font-size: 20px; font-weight: 500; color: #ADC9E9; white-space: nowrap; }
+  .foot .dot { margin: 0 14px; opacity: .6; }
+</style>
+</head>
+<body>
+  <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+  <div class="frame">
+    <div class="lockup"><img src="../public/images/brand/amplifly-lockup-on-dark.svg" alt="Amplifly"></div>
+    <p class="tag">A flow &amp; strengths tool for neurodivergent minds</p>
+    <h1>Your brain has five modes.<br><span class="blue">Amplifly helps you<br>work with all of them.</span></h1>
+    <div class="pills">
+      <span class="pill">Buzzing</span><span class="pill">Sharp</span><span class="pill">Flat</span><span class="pill">Foggy</span><span class="pill">Scattered</span>
+    </div>
+    <p class="foot">amplifly.me<span class="dot">·</span>On the App Store and Google Play as Amplifly Lite<span class="dot">·</span>BioProxal wearable in development</p>
+  </div>
+</body>
+</html>

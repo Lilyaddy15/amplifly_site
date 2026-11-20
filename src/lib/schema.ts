@@ -22,7 +22,7 @@ export const organization = {
   '@id': ORG_ID,
   name: 'Amplifly',
   url: SITE,
-  logo: { '@type': 'ImageObject', url: `${SITE}/favicon.svg` },
+  logo: { '@type': 'ImageObject', url: `${SITE}/favicon-512.png`, width: 512, height: 512 },
   image: `${SITE}/images/og-image.png`,
   email: SUPPORT_EMAIL,
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: SUPPORT_EMAIL, url: `${SITE}/support/` },
